@@ -1,0 +1,320 @@
+/* Interactive figures inside notes: no frame, just the thing itself, its controls and a
+   caption, with room above and below so it reads as its own moment. */
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 16px 0 32px;
+}
+
+/* Without a frame, the caption and controls centre under the demo, so nothing hangs off the
+   text column's edge. */
+.caption {
+  max-width: 440px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.controls {
+  justify-content: center;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+
+.range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 180px;
+  color: var(--muted);
+}
+
+.value {
+  min-width: 4ch;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* A thin slider: a hairline track that fills up to a small round handle. */
+.slider {
+  flex: 1;
+  height: 18px;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--foreground) var(--fill, 50%),
+    color-mix(in srgb, var(--muted) 25%, transparent) var(--fill, 50%)
+  );
+}
+
+.slider::-moz-range-track {
+  height: 2px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 25%, transparent);
+}
+
+.slider::-moz-range-progress {
+  height: 2px;
+  border-radius: 999px;
+  background: var(--foreground);
+}
+
+.slider::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  margin-top: -5px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--foreground);
+  -webkit-appearance: none;
+  transition: transform 120ms ease-out;
+}
+
+.slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--foreground);
+}
+
+.slider:active::-webkit-slider-thumb {
+  transform: scale(1.25);
+}
+
+.slider:focus-visible {
+  outline: none;
+}
+
+.slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--foreground) 25%, transparent);
+}
+
+/* A small on/off switch with its label. */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.switch[aria-checked="true"] {
+  color: var(--foreground);
+}
+
+.track {
+  position: relative;
+  width: 24px;
+  height: 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 30%, transparent);
+  transition: background-color 160ms ease-out;
+}
+
+.switch[aria-checked="true"] .track {
+  background: var(--foreground);
+}
+
+.knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--background);
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.switch[aria-checked="true"] .knob {
+  transform: translateX(10px);
+}
+
+.switch:focus-visible .track {
+  outline: 2px solid color-mix(in srgb, var(--foreground) 40%, transparent);
+  outline-offset: 2px;
+}
+
+/* The Eye, drawn from its formula. */
+.eye {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  image-rendering: pixelated;
+}
+
+/* Who made what: a hairline track per layer, my share drawn over it, the AI's share the
+   track left showing. */
+.rows {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 88px 1fr 40px;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  font: inherit;
+  color: var(--muted);
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 7px 0;
+  cursor: pointer;
+  transition: color 160ms ease-out;
+}
+
+.row[aria-pressed="true"] {
+  color: var(--foreground);
+}
+
+.bar {
+  position: relative;
+  height: 4px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--muted) 20%, transparent);
+}
+
+.you {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--foreground) 70%, transparent);
+  transition:
+    width 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 160ms ease-out;
+}
+
+.row[aria-pressed="true"] .you {
+  background: var(--foreground);
+}
+
+.share {
+  text-align: right;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.legend {
+  justify-content: center;
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 4px;
+  margin-right: 6px;
+  border-radius: 999px;
+  vertical-align: 2px;
+}
+
+.swatchMe {
+  background: var(--foreground);
+}
+
+.swatchAi {
+  background: color-mix(in srgb, var(--muted) 20%, transparent);
+}
+
+/* The game, in a window. */
+.window {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #050307;
+}
+
+/* The game lays itself out for the size it's given, so it gets a desktop-sized window
+   drawn at half scale: the full layout, in miniature. */
+.window iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  border: 0;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.screenButton {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.window video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+/* A button that reads as a link in a caption. */
+.textButton {
+  font: inherit;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.textButton:hover {
+  opacity: 0.72;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .you,
+  .row,
+  .slider::-webkit-slider-thumb,
+  .track,
+  .knob {
+    transition: none;
+  }
+}

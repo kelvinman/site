@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inconsolata } from "next/font/google";
+import { Hanken_Grotesk, Inconsolata } from "next/font/google";
 import "./globals.css";
 
 const inconsolata = Inconsolata({
@@ -8,10 +8,17 @@ const inconsolata = Inconsolata({
   display: "swap",
 });
 
+// The reading font. Everything around the sentences stays in Inconsolata.
+const hankenGrotesk = Hanken_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-hanken-grotesk",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Kelvin Man",
   description:
-    "Founder of SuperNice, a product studio based in Los Angeles, CA.",
+    "Design engineer in Los Angeles, running SuperNice, a product studio.",
 };
 
 export default function RootLayout({
@@ -20,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inconsolata.variable}>
+    <html lang="en" className={`${inconsolata.variable} ${hankenGrotesk.variable}`}>
       <body className={inconsolata.className}>{children}</body>
     </html>
   );

@@ -1,14 +1,20 @@
 :root {
-  --background: #faf6f2;
-  --foreground: #432818;
-  --muted: #73574a;
+  /* Two typefaces, one job each: sentences in Hanken Grotesk, everything around them (names,
+     dates, headings, captions, code) in Inconsolata. */
+  --font-read: var(--font-hanken-grotesk), system-ui, sans-serif;
+  /* Stone: a warm off-white and near-black, with terracotta as the one colour, on links. */
+  --background: #f8f7f4;
+  --foreground: #1f1b18;
+  --muted: #77706a;
+  --accent: #b0502c;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1c1917;
-    --foreground: #fef1df;
-    --muted: #9a918a;
+    --background: #1c1a18;
+    --foreground: #f3f1ee;
+    --muted: #a39d96;
+    --accent: #e48a62;
   }
 }
 
@@ -38,11 +44,23 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--accent);
   text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
   text-underline-offset: 2px;
 }
 
 a:hover {
   opacity: 0.72;
+}
+
+/* Contents links in notes glide to their section, unless motion is reduced. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+h2[id] {
+  scroll-margin-top: 100px;
 }

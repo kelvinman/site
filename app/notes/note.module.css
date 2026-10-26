@@ -1,0 +1,83 @@
+/* A note's page: the same narrow column as the home page, with the side space put to use
+   on wide screens. */
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 440px);
+  justify-content: center;
+  min-height: 100vh;
+  padding: 100px 24px;
+}
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.back {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--foreground);
+  opacity: 1;
+}
+
+.contents {
+  display: none;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* Wide screens: a rail on the left, the column centred, demos wider than the text. */
+@media (min-width: 1000px) {
+  .page {
+    grid-template-columns: 200px minmax(0, 440px) 200px;
+    column-gap: 40px;
+  }
+
+  .rail {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+    margin-bottom: 0;
+  }
+
+  .contents {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    list-style: none;
+  }
+
+  .contents a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 160ms ease-out;
+  }
+
+  .contents a:hover,
+  .contents a[aria-current="true"] {
+    color: var(--foreground);
+    opacity: 1;
+  }
+
+  .article > figure {
+    width: calc(100% + 120px);
+    margin-inline: -60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contents a {
+    transition: none;
+  }
+}

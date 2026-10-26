@@ -23,6 +23,8 @@
 
 .name {
   color: var(--foreground);
+  /* The note title is an h1: same size and weight as everything else on the site. */
+  font: inherit;
 }
 
 .meta {
@@ -36,4 +38,160 @@
 .body {
   color: var(--foreground);
   width: 100%;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* Each note's title with its one-line summary under it. */
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  list-style: none;
+}
+
+.notes li {
+  display: flex;
+  flex-direction: column;
+}
+
+/* A summary is a sentence, so it takes the reading font, muted. */
+.summary {
+  font-family: var(--font-read);
+  color: var(--muted);
+}
+
+/* Inside a note: section headings at the body size, lists, and code. */
+.subhead {
+  font: inherit;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 24px;
+}
+
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding-left: 18px;
+}
+
+.bullets strong {
+  font-weight: 600;
+}
+
+/* Paragraphs and lists are sentences, so they're set in the reading font. */
+.body,
+.bullets {
+  font-family: var(--font-read);
+}
+
+.body code,
+.bullets code {
+  font-family: var(--font-inconsolata), Menlo, monospace;
+  font-size: 0.93em;
+  padding: 0 3px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--muted) 14%, transparent);
+}
+
+.code {
+  width: 100%;
+  padding: 12px 14px;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--muted) 12%, transparent);
+  font: inherit;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+/* A section of the home page: a small muted label, then its list. */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.label {
+  font: inherit;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Where I've worked: role and place, a dotted line, then the years, like a table of contents. */
+.work {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  list-style: none;
+}
+
+.work li {
+  display: flex;
+  align-items: baseline;
+  gap: 0 10px;
+}
+
+.role {
+  color: var(--muted);
+  white-space: pre;
+}
+
+.place {
+  margin-left: -10px;
+  white-space: nowrap;
+}
+
+/* On a phone the role takes its own line above the place, so nothing wraps mid-row. */
+@media (max-width: 480px) {
+  .work {
+    gap: 10px;
+  }
+
+  .work li {
+    flex-wrap: wrap;
+  }
+
+  .role {
+    flex-basis: 100%;
+  }
+
+  .slash {
+    display: none;
+  }
+
+  .place {
+    margin-left: 0;
+  }
+}
+
+.leader {
+  flex: 1;
+  min-width: 16px;
+  border-bottom: 1px dotted color-mix(in srgb, var(--muted) 45%, transparent);
+  transform: translateY(-4px);
+}
+
+.years {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
