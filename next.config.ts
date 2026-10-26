@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
+// Every page is static, so the site is exported as plain HTML into out/ for Netlify to serve.
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
 };
 
 export default nextConfig;

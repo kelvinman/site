@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+# Notes are listed on the home page, so /notes sends people there.
+[[redirects]]
+  from = "/notes"
+  to = "/"
+  status = 301
+  force = true
