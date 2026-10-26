@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# kelvinman.com
 
-## Getting Started
+My personal site: who I am, where I've worked, and notes on things I've built.
 
-First, run the development server:
+Live at [kelvinman.com](https://www.kelvinman.com).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## What's in it
+
+- **Home:** a short intro, a work list, and the notes.
+- **Notes:** longer pieces with live demos inside them.
+  - [The thinking I kept](https://www.kelvinman.com/notes/the-thinking-i-kept): on making [The Last Apostate](https://github.com/kelvinman/the-last-apostate). It has a recording of the game playing itself, a chart of who made what, and the game's Eye redrawn from its rule as you drag its size.
+  - [Under the glass](https://www.kelvinman.com/notes/under-the-glass): getting a full-screen hero under the status bar and toolbar in iOS Safari 26, with a recording from the iPhone simulator in a drawn iPhone frame.
+
+## How it's built
+
+- **Next.js** (App Router), exported as static HTML (`output: "export"`) and served from Netlify.
+- **Two typefaces, one job each.** Sentences are set in Hanken Grotesk; everything around them (names, dates, labels, captions, code) is Inconsolata.
+- **CSS Modules**, no UI library. Colours are a handful of variables in `app/globals.css`, with a dark mode.
+- **Motion that stays out of the way.** Pages fade up as they load, demos play only while on screen, and everything holds still under `prefers-reduced-motion`.
+- **Icons and link previews** are plain files in `app/` (`icon.png`, `apple-icon.png`, `opengraph-image.png`), which Next.js picks up on its own.
+
+## Layout
+
+```
+app/
+  page.tsx              the home page
+  work.ts               the work list
+  notes/
+    notes.ts            every note, newest first
+    NoteLayout.tsx      a note's page, with the contents rail
+    CodeBlock.tsx       code with a small highlighter and a copy button
+    demos/              the demos used inside notes
+    <slug>/page.tsx     one note
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running it
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`npm run build` writes the static site to `out/`.
 
-## Learn More
+## Writing a note
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add an entry to `app/notes/notes.ts`, then a folder in `app/notes/` with a `page.tsx` that uses `NoteLayout` and `NoteHeader`. An `opengraph-image.png` in the same folder becomes its link preview.
