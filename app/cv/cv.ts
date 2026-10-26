@@ -19,7 +19,7 @@ export const ROLES = [
     name: "Left Field Labs",
     role: "Senior product designer",
     note: "via SuperNice",
-    what: "",
+    what: "Brought in project by project by an experiential agency: decks, exhibition graphics, AR, event apps and games for Meta, Microsoft, Salesforce, Snap and GitHub. One was a Microsoft event app where attendees made an avatar, printed it as stickers and found each other.",
     href: "https://leftfieldlabs.com",
     current: true,
   },
