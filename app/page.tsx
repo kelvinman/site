@@ -27,7 +27,7 @@ export default function Home() {
 
         <p className={styles.body}>
           I run <Out href="https://studiosupernice.com">SuperNice</Out>, a
-          product studio I started in 2017.
+          product studio.
         </p>
 
         <p className={styles.body}>
