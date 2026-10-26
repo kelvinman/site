@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk, Inconsolata } from "next/font/google";
 import "./globals.css";
 
@@ -15,10 +15,22 @@ const hankenGrotesk = Hanken_Grotesk({
   display: "swap",
 });
 
+const description = "Design engineer in Los Angeles, running SuperNice, a product studio.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.kelvinman.com"),
   title: "Kelvin Man",
-  description:
-    "Design engineer in Los Angeles, running SuperNice, a product studio.",
+  description,
+  openGraph: { title: "Kelvin Man", description, url: "/", siteName: "Kelvin Man", type: "website" },
+  twitter: { card: "summary_large_image", creator: "@0xKelvin" },
+};
+
+// The browser's toolbar on phones takes the page's background colour.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f8f7f4" },
+    { media: "(prefers-color-scheme: dark)", color: "#1c1a18" },
+  ],
 };
 
 export default function RootLayout({

@@ -9,6 +9,7 @@ import { WhoMadeWhat } from "../demos/WhoMadeWhat";
 export const metadata: Metadata = {
   title: "The thinking I kept · Kelvin Man",
   description: "On making The Last Apostate, a game about how much of your thinking you've handed over.",
+  openGraph: { title: "The thinking I kept", description: "On making The Last Apostate, a game about how much of your thinking you've handed over.", url: "/notes/the-thinking-i-kept", siteName: "Kelvin Man", type: "article" },
 };
 
 /** Opens in a new tab, for links that leave the site. */
