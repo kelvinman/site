@@ -43,6 +43,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Phones are read closer and smaller, so text steps up a size there. */
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+    line-height: 23px;
+  }
+}
+
 a {
   color: var(--accent);
   text-decoration: underline;

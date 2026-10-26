@@ -58,7 +58,7 @@
 .notes {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 18px;
   width: 100%;
   list-style: none;
 }
@@ -66,11 +66,20 @@
 .notes li {
   display: flex;
   flex-direction: column;
+  gap: 3px;
 }
 
-/* A summary is a sentence, so it takes the reading font, muted. */
+/* Titles a touch heavier, so they lead the summary under them. */
+.notes li > a {
+  font-weight: 500;
+}
+
+/* A summary is a sentence, so it takes the reading font, muted, a step smaller than the
+   title it sits under. */
 .summary {
   font-family: var(--font-read);
+  font-size: 0.93em;
+  line-height: 1.5;
   color: var(--muted);
 }
 
@@ -131,7 +140,7 @@
 
 .label {
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
 }
 
