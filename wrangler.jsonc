@@ -1,10 +1,17 @@
-// Cloudflare Workers config: the static export in out/ is the whole site, no Worker script.
-// public/_headers and public/_redirects are copied into out/ and applied by Cloudflare.
+// Cloudflare Workers config: worker.js redirects the bare domain to www, and everything else
+// is the static export in out/. public/_headers and public/_redirects are copied into out/.
 {
   "name": "site",
   "compatibility_date": "2026-05-01",
+  "main": "./worker.js",
   "assets": {
     "directory": "./out",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
+  },
+  "vars": {
+    "BARE_HOST": "kelvinman.com",
+    "CANONICAL_HOST": "www.kelvinman.com"
   }
 }
