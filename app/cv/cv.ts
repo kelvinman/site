@@ -7,11 +7,11 @@ export const ABOUT =
 
 export const ROLES = [
   {
-    years: "2026 – now",
+    years: "2024 – now",
     name: "DecorX",
     role: "Founding design engineer",
     note: "via SuperNice",
-    what: "An AI imagery platform for furniture brands, taken from an empty repo to a multi-tenant product in nine months. I designed and built the design system, the main tools, the data model, billing and the infrastructure.",
+    what: "An AI imagery platform for furniture brands. In 2026 I took it from an empty repo to a multi-tenant product in nine months, designing and building the design system, the main tools, the data model, billing and the infrastructure.",
     current: true,
   },
   {
