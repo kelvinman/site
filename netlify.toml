@@ -8,3 +8,14 @@
   to = "/"
   status = 301
   force = true
+
+# The CV is unlisted: reachable by its link, but never indexed.
+[[headers]]
+  for = "/cv"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/cv.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

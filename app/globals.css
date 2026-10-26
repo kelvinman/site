@@ -95,3 +95,21 @@ h2[id] {
     transform: translateY(8px);
   }
 }
+
+/* Printing always uses the light palette on white, and never catches a page mid-reveal. */
+@media print {
+  :root {
+    --background: #fff;
+    --foreground: #1f1b18;
+    --muted: #77706a;
+    --accent: #b0502c;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .reveal > * {
+    animation: none !important;
+  }
+}
