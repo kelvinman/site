@@ -1,0 +1,5 @@
+# The CV is unlisted: reachable by its link, but never indexed.
+/cv
+  X-Robots-Tag: noindex, nofollow
+/cv.html
+  X-Robots-Tag: noindex, nofollow
