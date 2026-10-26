@@ -31,7 +31,7 @@ export default function Home() {
         </p>
 
         <p className={styles.body}>
-          I studied computer science, started out writing front-end code, moved
+          I studied informatics, started out writing front-end code, moved
           into product, and taught myself design. Along the way I&apos;ve worked
           with teams at <Out href="https://meta.com">Meta</Out>,{" "}
           <Out href="https://snap.com">Snap</Out>,{" "}
