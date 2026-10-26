@@ -1,7 +1,7 @@
 // Cloudflare Workers config: the static export in out/ is the whole site, no Worker script.
 // public/_headers and public/_redirects are copied into out/ and applied by Cloudflare.
 {
-  "name": "kelvinman",
+  "name": "site",
   "compatibility_date": "2026-05-01",
   "assets": {
     "directory": "./out",
