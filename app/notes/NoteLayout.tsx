@@ -62,7 +62,7 @@ export function NoteLayout({ sections = [], children }: { sections?: Section[]; 
           </ol>
         )}
       </nav>
-      <article className={styles.article}>{children}</article>
+      <article className={`${styles.article} reveal`}>{children}</article>
     </main>
   );
 }

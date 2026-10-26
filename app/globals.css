@@ -64,3 +64,26 @@ a:hover {
 h2[id] {
   scroll-margin-top: 100px;
 }
+
+/* On load, each block of a page fades up into place, a little after the one before it.
+   Under reduced motion everything is simply there. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal > * {
+    animation: reveal 600ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+
+  .reveal > :nth-child(2) { animation-delay: 80ms; }
+  .reveal > :nth-child(3) { animation-delay: 160ms; }
+  .reveal > :nth-child(4) { animation-delay: 240ms; }
+  .reveal > :nth-child(5) { animation-delay: 320ms; }
+  .reveal > :nth-child(6) { animation-delay: 400ms; }
+  .reveal > :nth-child(7) { animation-delay: 480ms; }
+  .reveal > :nth-child(n + 8) { animation-delay: 560ms; }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

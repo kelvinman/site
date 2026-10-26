@@ -15,7 +15,7 @@ function Out({ href, children }: { href: string; children: React.ReactNode }) {
 export default function Home() {
   return (
     <main className={styles.page}>
-      <div className={styles.col}>
+      <div className={`${styles.col} reveal`}>
         <header className={styles.header}>
           <p className={styles.name}>Kelvin Man</p>
           <p className={styles.meta}>Design engineer, Los Angeles</p>
