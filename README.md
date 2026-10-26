@@ -13,7 +13,7 @@ Live at [kelvinman.com](https://www.kelvinman.com).
 
 ## How it's built
 
-- **Next.js** (App Router), exported as static HTML (`output: "export"`) and served from Netlify.
+- **Next.js** (App Router), exported as static HTML (`output: "export"`) and served from Cloudflare Workers static assets. Every push to `main` deploys.
 - **Two typefaces, one job each.** Sentences are set in Hanken Grotesk; everything around them (names, dates, labels, captions, code) is Inconsolata.
 - **CSS Modules**, no UI library. Colours are a handful of variables in `app/globals.css`, with a dark mode.
 - **Motion that stays out of the way.** Pages fade up as they load, demos play only while on screen, and everything holds still under `prefers-reduced-motion`.
