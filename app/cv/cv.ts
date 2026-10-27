@@ -3,14 +3,14 @@
  * DecorX case study. `current` rows get the accent colour on their years.
  */
 export const ABOUT =
-  "Founding design engineer at DecorX, where I replaced the first platform with one I led and built in 9 months, now used by Wayfair. Eight years across front-end, product and design mean I can help shape what to build, then design and ship it.";
+  "Founding design engineer at DecorX, where I led and built the platform that brought its two products into one in 9 months, now used by Wayfair. Eight years across front-end, product and design mean I can help shape what to build, then design and ship it.";
 
 export const ROLES = [
   {
     years: "2024 – now",
     name: "DecorX",
     role: "Founding design engineer",
-    what: "An AI imagery platform for furniture brands. I designed the first version while another team built it, then in January 2026 started a prototype that replaced their platform. In 9 months it grew into a multi-tenant product, and I designed and built its core: the design system, the data model, billing and the infrastructure. I also set the engineering and Linear workflows for a team of 6 across the US and China, and merged 80 of the 83 PRs they shipped. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce. In October I shipped a sales tool and a showroom app for High Point Market, and reps' selections created 438 buyer projects in the market week.",
+    what: "An AI imagery platform for furniture brands. DecorX began as two products: one for interior designers, which I designed and the team in China built, and one for retailers, which I started as a prototype in January 2026. In 9 months mine grew into the one platform both now run on, and I designed and built its core: the design system, the data model, billing and the infrastructure. I also set the engineering and Linear workflows for a team of 6 across the US and China, and merged 80 of the 83 PRs they shipped. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce. In October I shipped a sales tool and a showroom app for High Point Market, and reps' selections created 438 buyer projects in the market week.",
     current: true,
   },
   {
