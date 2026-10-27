@@ -9,7 +9,7 @@ export const ROLES = [
   {
     years: "2024 – now",
     name: "DecorX",
-    role: "Founding design engineer",
+    role: "Founding design engineer, contract",
     what: "An AI imagery platform for furniture brands. DecorX began as two products: one for interior designers, which I designed and the team in China built, and one for retailers, which I started as a prototype in January 2026. In 9 months the two became one platform, built on the retailer product, and I designed and built its core: the design system, the data model, billing and the infrastructure. I also set the engineering and Linear workflows for a team of 6 across the US and China, and review the PRs they ship. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce. In October I shipped a sales tool and a showroom app for High Point Market.",
     current: true,
   },

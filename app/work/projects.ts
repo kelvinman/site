@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
       height: 1036,
     },
     summary:
-      "DecorX, an AI imagery platform for furniture brands, began as two products: one for interior designers that I designed, and one for retailers that I started as a prototype in January 2026. In 9 months mine became the one platform both run on, used by Wayfair, Nebraska Furniture Mart and Kathy Kuo Home. I designed and built its core, set how a team of 6 across the US and China builds on it, and plan strategy and priorities with the CEO.",
+      "DecorX, an AI imagery platform for furniture brands, began as two products: one for interior designers that I designed, and one for retailers that I started as a prototype in January 2026. In 9 months the two became one platform, built on the retailer product, now used by Wayfair, Nebraska Furniture Mart and Kathy Kuo Home. I designed and built its core, set how a team of 6 across the US and China builds on it, and plan strategy and priorities with the CEO.",
     parts: [
       {
         title: "The platform",
@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
       },
       {
         title: "How the team builds",
-        text: "I wrote the engineering and Linear workflows, and review the team's pull requests: 80 of the 83 merged from others came through me.",
+        text: "I wrote the engineering and Linear workflows, and review the team's pull requests.",
       },
     ],
     links: [
@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
     role: "Senior product designer",
     years: "2023–",
     summary:
-      "Left Field Labs brings me in project by project to design interactive experiences for brand events and conferences, for teams at Meta, Snap, Microsoft, GitHub and Salesforce.",
+      "Left Field Labs brings me in project by project to design interactive experiences for brand events and conferences, for teams at Meta, Microsoft, GitHub and Salesforce.",
     parts: [
       {
         title: "The Connection Wall, Microsoft Build 2025",

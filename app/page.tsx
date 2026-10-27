@@ -37,7 +37,6 @@ export default function Home() {
           I studied informatics, started out writing front-end code, moved
           into product, and taught myself design. Along the way I&apos;ve worked
           with teams at <Out href="https://meta.com">Meta</Out>,{" "}
-          <Out href="https://snap.com">Snap</Out>,{" "}
           <Out href="https://microsoft.com">Microsoft</Out>,{" "}
           <Out href="https://salesforce.com">Salesforce</Out>,{" "}
           <Out href="https://github.com">GitHub</Out>, Moment (acquired by{" "}
