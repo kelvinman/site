@@ -136,10 +136,6 @@
   color: var(--muted);
 }
 
-.note {
-  color: color-mix(in srgb, var(--muted) 75%, transparent);
-}
-
 .what {
   font-family: var(--font-read);
   color: color-mix(in srgb, var(--foreground) 85%, transparent);

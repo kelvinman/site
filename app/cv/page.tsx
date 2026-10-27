@@ -41,10 +41,7 @@ export default function CV() {
               <span className={entry.current ? `${styles.years} ${styles.current}` : styles.years}>{entry.years}</span>
               <div className={styles.who}>
                 <span className={styles.company}>{entry.href ? <a href={entry.href}>{entry.name}</a> : entry.name}</span>
-                <span className={styles.title}>
-                  {entry.role}
-                  {entry.note && <span className={styles.note}>, {entry.note}</span>}
-                </span>
+                <span className={styles.title}>{entry.role}</span>
               </div>
               <p className={styles.what}>{entry.what}</p>
             </div>
