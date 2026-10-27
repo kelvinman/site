@@ -46,7 +46,7 @@ export const ROLES = [
     years: "2022 – 23",
     name: "Moment",
     role: "Senior product designer",
-    what: "Designed the Worlds web and mobile apps from zero to launch in 6 months. 5 creator worlds went live on it, including Paris Hilton and the Jonas Brothers. Patreon acquired Moment in October 2023.",
+    what: "Designed the Worlds web and mobile apps from zero to launch in 6 months. 5 creator worlds went live on it, including Paris Hilton and the Jonas Brothers. I shared the verified badges I drew for it on Figma Community, where 18.1k people have used them. Patreon acquired Moment in October 2023.",
   },
   {
     years: "2020 – 22",
@@ -70,7 +70,7 @@ export const ROLES = [
 ];
 
 export const ALSO = [
-  { label: "Projects", text: "The Last Apostate (2026), a browser game about how much of your thinking you hand over to AI, directed and shipped with AI. Notes with live demos on kelvinman.com." },
+  { label: "Projects", text: "Founding Designers (2026), a job board for founding designer roles at early-stage startups, designed and built with a weekly agent that keeps it current. The Last Apostate (2026), a browser game about how much of your thinking you hand over to AI, directed and shipped with AI. Notes with live demos on kelvinman.com." },
   { label: "AI", text: "Builds with Claude Code, Codex and Cursor, running several agents in parallel." },
   { label: "Education", text: "BS in Informatics, UC Irvine, 2018. Front End Development Certificate, freeCodeCamp." },
   { label: "Mentoring", text: "ADPList mentor since 2022, top 1% in design (2023). MentorCruise mentor since 2025." },
