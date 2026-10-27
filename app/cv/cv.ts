@@ -3,7 +3,7 @@
  * DecorX case study. `current` rows get the accent colour on their years.
  */
 export const ABOUT =
-  "Founding design engineer at DecorX, where I replaced the first platform with one I largely built in 9 months, now used by Wayfair. Eight years across front-end, product and design mean I can help shape what to build, then design and ship it.";
+  "Founding design engineer at DecorX, where I replaced the first platform with one I led and built in 9 months, now used by Wayfair. Eight years across front-end, product and design mean I can help shape what to build, then design and ship it.";
 
 export const ROLES = [
   {
