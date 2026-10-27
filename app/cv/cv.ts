@@ -11,7 +11,7 @@ export const ROLES = [
     name: "DecorX",
     role: "Founding design engineer",
     note: "via SuperNice",
-    what: "An AI imagery platform for furniture brands. I designed the first version while another team built it, then in January 2026 started a prototype that replaced their platform. In 9 months it grew into a multi-tenant product, and I designed and built its core: the design system, the data model, billing and the infrastructure. I also set the engineering and Linear workflows for a team of 6 across the US and China, and merged 80 of the 83 PRs they shipped. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce.",
+    what: "An AI imagery platform for furniture brands. I designed the first version while another team built it, then in January 2026 started a prototype that replaced their platform. In 9 months it grew into a multi-tenant product, and I designed and built its core: the design system, the data model, billing and the infrastructure. I also set the engineering and Linear workflows for a team of 6 across the US and China, and merged 80 of the 83 PRs they shipped. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce. In October I shipped a sales tool and a showroom app for High Point Market, and reps' selections created 438 buyer projects in its first week.",
     current: true,
   },
   {
@@ -76,7 +76,7 @@ export const ROLES = [
 
 export const ALSO = [
   { label: "Projects", text: "The Last Apostate (2026), a browser game about how much of your thinking you hand over to AI, directed and shipped with AI. Notes with live demos on kelvinman.com." },
-  { label: "AI", text: "Builds with Claude Code, Cursor and Codex, running parallel agent sessions." },
+  { label: "AI", text: "Builds with Claude Code, Codex and Cursor, running several agents in parallel." },
   { label: "Education", text: "BS in Informatics, UC Irvine, 2018. Front End Development Certificate, freeCodeCamp." },
   { label: "Mentoring", text: "ADPList mentor since 2022, top 1% in design (2023). MentorCruise mentor since 2025." },
 ];
