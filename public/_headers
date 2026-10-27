@@ -3,3 +3,11 @@
   X-Robots-Tag: noindex, nofollow
 /cv.html
   X-Robots-Tag: noindex, nofollow
+
+# Work and its case studies are shared by link, never indexed.
+/work
+  X-Robots-Tag: noindex, nofollow
+/work.html
+  X-Robots-Tag: noindex, nofollow
+/work/*
+  X-Robots-Tag: noindex, nofollow

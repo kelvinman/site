@@ -1,0 +1,139 @@
+/* The work page: the home page's column, one block per role, set apart by space rather than rules.
+   Roles sit 64px apart; inside one, blocks sit 14px apart, and each part's lines 4px. */
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  padding-top: 48px;
+}
+
+/* Name, then role and years on one line under it. */
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.name {
+  font: inherit;
+  font-weight: 500;
+}
+
+.leader {
+  flex: 1;
+  min-width: 16px;
+  border-bottom: 1px dotted color-mix(in srgb, var(--muted) 45%, transparent);
+  transform: translateY(-4px);
+}
+
+.years {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.role {
+  color: var(--muted);
+  margin-top: -12px;
+}
+
+.text {
+  font-family: var(--font-read);
+}
+
+/* What I did there: each part's title, a sentence under it. */
+.parts {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  list-style: none;
+  margin-top: 4px;
+}
+
+.parts li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.partTitle {
+  font-size: 0.93em;
+}
+
+.partText {
+  font-family: var(--font-read);
+  font-size: 0.93em;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 13px;
+}
+
+.shot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  outline: 1px solid color-mix(in srgb, var(--muted) 20%, transparent);
+  outline-offset: -1px;
+}
+
+.caption {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* One cover per role, right under its title, so scanning the page is scanning the work. */
+.cover {
+  margin-top: 2px;
+}
+
+/* An image inside a part gets room from the text above it and the link below. */
+.parts .cover {
+  margin: 8px 0 6px;
+}
+
+.cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* A transparent image, like phones cut out of their background, needs no frame. */
+.cover img.bare {
+  border-radius: 0;
+}
+
+.cover a {
+  display: block;
+  transition: opacity 150ms ease-out;
+}
+
+@media (hover: hover) {
+  .cover a:hover {
+    opacity: 0.88;
+  }
+}
+
+/* "My own" opens a new group: a role's space above its label, and its first entry right under it. */
+.own {
+  margin-top: 48px;
+}
+
+.own .project:first-of-type {
+  padding-top: 0;
+}

@@ -1,0 +1,116 @@
+/* Draft-only marks: a banner saying the page isn't his words yet, gaps to fill, and boxes
+   where screenshots will go. All of this comes out before the page is published. */
+.draft {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--foreground);
+  background: color-mix(in srgb, #e8a33d 18%, transparent);
+}
+
+.gap {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border-left: 2px solid #e8a33d;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.gap strong {
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.shot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  padding: 16px;
+  border: 1px dashed color-mix(in srgb, var(--muted) 45%, transparent);
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 16px;
+  width: 100%;
+  font-size: 13px;
+}
+
+.facts dt {
+  color: var(--muted);
+}
+
+/* Headline numbers: large figures over short labels, one row, no rules. */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(var(--count), 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stats b {
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.stats span {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  .stats {
+    gap: 12px;
+  }
+
+  .stats b {
+    font-size: 22px;
+  }
+
+  .stats span {
+    font-size: 11px;
+  }
+}

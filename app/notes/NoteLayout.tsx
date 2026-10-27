@@ -11,7 +11,16 @@ export type Section = { id: string; title: string };
  * sections, a contents list that follows along as you read. On narrow screens the back link
  * sits above the title and the contents list is left out.
  */
-export function NoteLayout({ sections = [], children }: { sections?: Section[]; children: React.ReactNode }) {
+export function NoteLayout({
+  sections = [],
+  back = { href: "/", label: "Home" },
+  children,
+}: {
+  sections?: Section[];
+  /** Where the top-left link goes: the page's parent. Home for notes, Work for case studies. */
+  back?: { href: string; label: string };
+  children: React.ReactNode;
+}) {
   const [current, setCurrent] = useState(sections[0]?.id);
 
   // Highlight the section whose heading most recently passed the top third of the screen.
@@ -43,8 +52,8 @@ export function NoteLayout({ sections = [], children }: { sections?: Section[]; 
   return (
     <main className={styles.page}>
       <nav className={styles.rail} aria-label="Note">
-        <Link href="/" className={styles.back}>
-          ← Home
+        <Link href={back.href} className={styles.back}>
+          ← {back.label}
         </Link>
         {sections.length > 0 && (
           <ol className={styles.contents}>

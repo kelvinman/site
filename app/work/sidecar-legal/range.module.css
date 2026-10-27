@@ -1,0 +1,70 @@
+/* A histogram of settlements on a log scale: quiet bars, the middle half in the accent, the median as a line. */
+.plot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.summary {
+  font-family: var(--font-read);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.summary b {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 160px;
+  padding-top: 8px;
+  border-bottom: 1px solid color-mix(in srgb, var(--muted) 35%, transparent);
+}
+
+.bar {
+  flex: 1;
+  border-radius: 2px 2px 0 0;
+  background: color-mix(in srgb, var(--foreground) 22%, transparent);
+  transition: height 320ms cubic-bezier(0.2, 0.8, 0.2, 1), background 200ms ease-out;
+}
+
+.bar[data-inside] {
+  background: var(--accent);
+}
+
+.median {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--foreground);
+  opacity: 0.6;
+  transition: left 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.axis {
+  position: relative;
+  height: 16px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.axis span {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar,
+  .median {
+    transition: none;
+  }
+}
