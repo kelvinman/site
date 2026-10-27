@@ -26,8 +26,10 @@ export default function Home() {
         </p>
 
         <p className={styles.body}>
-          I run <Out href="https://studiosupernice.com">SuperNice</Out>, a
-          product studio.
+          I&apos;m the founding design engineer at{" "}
+          <Out href="https://www.decorx.com">DecorX</Out>, and I run{" "}
+          <Out href="https://studiosupernice.com">SuperNice</Out>, a product
+          studio.
         </p>
 
         <p className={styles.body}>
@@ -39,7 +41,7 @@ export default function Home() {
           <Out href="https://salesforce.com">Salesforce</Out>,{" "}
           <Out href="https://github.com">GitHub</Out>, Moment (acquired by{" "}
           <Out href="https://www.patreon.com">Patreon</Out>),{" "}
-          <Out href="https://www.triumphlabs.com/">Triumph</Out>, and more.
+          <Out href="https://mirascope.com">Mirascope</Out>, and more.
         </p>
 
         <p className={styles.body}>
