@@ -3,7 +3,7 @@
  * DecorX case study. `current` rows get the accent colour on their years.
  */
 export const ABOUT =
-  "I like making the thing itself, not just the picture of it. I studied informatics, started in front-end code, moved into product and taught myself design, and each role since has closed more of the distance between design and code. Now I run SuperNice, a product studio for early-stage startups, usually as the only design and front-end person on a small team.";
+  "Founding design engineer at DecorX, where I replaced the first platform with one I largely built in 9 months, now used by Wayfair. Eight years across front-end, product and design mean I can help shape what to build, then design and ship it.";
 
 export const ROLES = [
   {
@@ -11,7 +11,7 @@ export const ROLES = [
     name: "DecorX",
     role: "Founding design engineer",
     note: "via SuperNice",
-    what: "An AI imagery platform for furniture brands. I designed it while an outside team built it, then in January 2026 started a prototype that replaced their platform. In 9 months it grew into a multi-tenant product, and I designed and built the design system, the main tools, the data model, billing and the infrastructure. I also ran code review for designers and engineers in the US and China, merging 80 of the 83 PRs they shipped. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce.",
+    what: "An AI imagery platform for furniture brands. I designed the first version while another team built it, then in January 2026 started a prototype that replaced their platform. In 9 months it grew into a multi-tenant product, and I designed and built the design system, the main tools, the data model, billing and the infrastructure. I also ran code review for designers and engineers in the US and China, merging 80 of the 83 PRs they shipped. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce.",
     current: true,
   },
   {
@@ -19,7 +19,7 @@ export const ROLES = [
     name: "Left Field Labs",
     role: "Senior product designer",
     note: "via SuperNice",
-    what: "Designed interactive experiences for brand events and conferences, brought in project by project: an AR experience for Meta; the Connection Wall for Microsoft Build, a networking app built to connect about 4,000 in-person attendees with 200,000 online, where people built avatar profiles, printed them as stickers and found each other; and booth games for GitHub and for Salesforce at Dreamforce.",
+    what: "Designed interactive experiences for brand events and conferences, brought in project by project: an AR experience for Meta; the Connection Wall for Microsoft Build, a networking app built to connect about 4,000 in-person attendees with 200,000 online, where people built avatar profiles, printed them as stickers and found each other; and playable experiences explaining GitHub Copilot and Salesforce's AI features at their conferences, including Dreamforce.",
     href: "https://leftfieldlabs.com",
     current: true,
   },
@@ -70,7 +70,7 @@ export const ROLES = [
     years: "2017 – 19",
     name: "BluPrint",
     role: "Co-founder",
-    what: "Helped non-STEM students land first jobs in tech. Led brand, UX and visual design. Finalist, UCI New Venture and Butterworth competitions.",
+    what: "Co-founded a startup helping non-STEM students land their first jobs in tech, and did the product, design and code. Finalist, UCI New Venture and Butterworth competitions.",
   },
 ];
 
