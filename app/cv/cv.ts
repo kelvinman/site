@@ -10,14 +10,14 @@ export const ROLES = [
     years: "2024 – now",
     name: "DecorX",
     role: "Founding design engineer, contract",
-    what: "An AI imagery platform for furniture brands. DecorX began as two products: one for interior designers, which I designed and the team in China built, and one for retailers, which I started as a prototype in January 2026. In 9 months the two became one platform, built on the retailer product, and I designed and built its core: the design system, the data model, billing and the infrastructure. I also set the engineering and Linear workflows for a team of 6 across the US and China, and review the PRs they ship. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce. In October I shipped a sales tool and a showroom app for High Point Market.",
+    what: "An AI imagery platform for furniture brands. DecorX began as two products: one for interior designers, which I designed and the team in China built, and one for retailers, which I started as a prototype in January 2026. In 9 months the two became one platform, built on the retailer product, and I designed and built its core: the design system, the data model, billing and the infrastructure. I also set the engineering and Linear workflows for a team of 6 across the US and China, and merged 80 of the 83 PRs they shipped. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce. In October I shipped a sales tool and a showroom app for High Point Market, and reps' selections created 438 buyer projects in the market week.",
     current: true,
   },
   {
     years: "2023 – now",
     name: "Left Field Labs",
     role: "Senior product designer",
-    what: "Designed interactive experiences for brand events and conferences, brought in project by project: an AR experience for Meta; the Connection Wall for Microsoft Build, a networking app built to connect about 4,000 in-person attendees with 200,000 online, where people built avatar profiles, printed them as stickers and found each other; and playable experiences explaining GitHub Copilot and Salesforce's AI features at their conferences, including Dreamforce.",
+    what: "Designed interactive experiences for brand events and conferences, brought in project by project: an AR experience for Meta; a Snap Spectacles pitch, Hacking Reality; the Connection Wall for Microsoft Build, a networking app built to connect about 4,000 in-person attendees with 200,000 online, where people built avatar profiles, printed them as stickers and found each other; and playable experiences explaining GitHub Copilot and Salesforce's AI features at their conferences, including Dreamforce.",
     href: "https://leftfieldlabs.com",
     current: true,
   },
@@ -33,7 +33,7 @@ export const ROLES = [
     years: "2025",
     name: "Sidecar Legal",
     role: "Product designer",
-    what: "Designed a legal-tech startup's main app and helped build 2 of its sites in code.",
+    what: "Designed a legal-tech startup's main app and helped build 2 of its sites in code, one a web app that estimates lawsuit payouts.",
   },
   {
     years: "2022 – 25",
@@ -73,5 +73,5 @@ export const ALSO = [
   { label: "Projects", text: "Founding Designers (2026), a job board for founding designer roles at early-stage startups, designed and built with a weekly agent that keeps it current. The Last Apostate (2026), a browser game about how much of your thinking you hand over to AI, directed and shipped with AI. Notes with live demos on kelvinman.com." },
   { label: "AI", text: "Builds with Claude Code, Codex and Cursor, running several agents in parallel." },
   { label: "Education", text: "BS in Informatics, UC Irvine, 2018. Front End Development Certificate, freeCodeCamp." },
-  { label: "Mentoring", text: "ADPList mentor since 2022, top 1% in design (2023). MentorCruise mentor since 2025." },
+  { label: "Mentoring", text: "ADPList mentor since 2022, with 51 sessions and top 1% in design (2023). MentorCruise mentor since 2025." },
 ];
