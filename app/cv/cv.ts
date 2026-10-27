@@ -11,7 +11,7 @@ export const ROLES = [
     name: "DecorX",
     role: "Founding design engineer",
     note: "via SuperNice",
-    what: "An AI imagery platform for furniture brands. I designed the first version while another team built it, then in January 2026 started a prototype that replaced their platform. In 9 months it grew into a multi-tenant product, and I designed and built the design system, the main tools, the data model, billing and the infrastructure. I also ran code review for designers and engineers in the US and China, merging 80 of the 83 PRs they shipped. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce.",
+    what: "An AI imagery platform for furniture brands. I designed the first version while another team built it, then in January 2026 started a prototype that replaced their platform. In 9 months it grew into a multi-tenant product, and I designed and built its core: the design system, the data model, billing and the infrastructure. I also set the engineering and Linear workflows for a team of 6 across the US and China, and merged 80 of the 83 PRs they shipped. Retailers using it include Wayfair, Nebraska Furniture Mart, Kathy Kuo Home and Layla Grayce.",
     current: true,
   },
   {
