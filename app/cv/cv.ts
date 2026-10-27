@@ -17,7 +17,7 @@ export const ROLES = [
     years: "2023 – now",
     name: "Left Field Labs",
     role: "Senior product designer",
-    what: "Designed interactive experiences for brand events and conferences, brought in project by project: an AR experience for Meta; the Connection Wall for Microsoft Build, a networking app built to connect about 4,000 in-person attendees with 200,000 online, where people built avatar profiles, printed them as stickers and found each other; and playable experiences explaining GitHub Copilot and Salesforce's AI features at their conferences, including Dreamforce.",
+    what: "Designed interactive experiences for brand events and conferences, brought in project by project: an AR experience for Meta; a Snap Spectacles pitch, Hacking Reality; the Connection Wall for Microsoft Build, a networking app built to connect about 4,000 in-person attendees with 200,000 online, where people built avatar profiles, printed them as stickers and found each other; and playable experiences explaining GitHub Copilot and Salesforce's AI features at their conferences, including Dreamforce.",
     href: "https://leftfieldlabs.com",
     current: true,
   },
@@ -46,7 +46,7 @@ export const ROLES = [
     years: "2022 – 23",
     name: "Moment",
     role: "Senior product designer",
-    what: "Designed the Worlds web and mobile apps from zero to launch in 6 months. 5 creator worlds went live on it, including Paris Hilton and the Jonas Brothers. Patreon acquired Moment in 2023.",
+    what: "Designed the Worlds web and mobile apps from zero to launch in 6 months. 5 creator worlds went live on it, including Paris Hilton and the Jonas Brothers. Patreon acquired Moment in October 2023.",
   },
   {
     years: "2020 – 22",
@@ -59,7 +59,7 @@ export const ROLES = [
     years: "2017 – 22",
     name: "Freelance",
     role: "Product designer",
-    what: "Designed Flipper (2022), an NFT insights dashboard sponsored by BanklessDAO, with rarity ranks, appraisals and in-app buying. Its presale sold out in 3 minutes.",
+    what: "Designed Flipper (2022), an NFT trading dashboard sponsored by BanklessDAO, with rarity ranks, appraisals and in-app buying. Its presale sold out in 3 minutes.",
   },
   {
     years: "2017 – 19",
