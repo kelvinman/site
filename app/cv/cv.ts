@@ -46,7 +46,7 @@ export const ROLES = [
     years: "2022 – 23",
     name: "Moment",
     role: "Senior product designer",
-    what: "Designed the Worlds web and mobile apps from zero to launch in 6 months. 5 creator worlds went live on it, including Paris Hilton and the Jonas Brothers. I shared the verified badges I drew for it on Figma Community, where 18.1k people have used them. Patreon acquired Moment in October 2023.",
+    what: "Designed the Worlds web and mobile apps: fan communities with boards, chat, shared spaces, merch and tickets. 5 creator worlds went live on it, including Paris Hilton and the Jonas Brothers. I shared the verified badges I drew for it on Figma Community, where 18.1k people have used them. Patreon acquired Moment in October 2023.",
   },
   {
     years: "2020 – 22",

@@ -147,7 +147,7 @@ export const PROJECTS: Project[] = [
     role: "Senior product designer",
     years: "2022–23",
     summary:
-      "I designed the Worlds web and mobile apps from zero to launch in 6 months: fan communities with boards, chat, shared spaces, merch and tickets. 5 creator worlds went live, including Paris Hilton and the Jonas Brothers. A separate 3D team built the spaces themselves. I shared the verified badges I drew for it on Figma Community, where 18.1k people have used them. Patreon acquired Moment in October 2023.",
+      "I designed the Worlds web and mobile apps: fan communities with boards, chat, shared spaces, merch and tickets. 5 creator worlds went live, including Paris Hilton and the Jonas Brothers. A separate 3D team built the spaces themselves. I shared the verified badges I drew for it on Figma Community, where 18.1k people have used them. Patreon acquired Moment in October 2023.",
     cover: {
       src: "/work/cover-moment.webp",
       alt: "Murder With My Husband World on iOS: home, board, chats, the 3D space and people",
