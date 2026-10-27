@@ -92,6 +92,13 @@ function Entry({ project }: { project: Project }) {
         </figure>
       ))}
 
+      {project.quote && (
+        <blockquote className={styles.quote}>
+          <p>&ldquo;{project.quote.text}&rdquo;</p>
+          <footer>{project.quote.who}</footer>
+        </blockquote>
+      )}
+
       {project.links && <Links links={project.links} />}
 
       {project.caseStudy && (

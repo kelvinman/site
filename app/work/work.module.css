@@ -68,6 +68,21 @@
   color: var(--muted);
 }
 
+/* A colleague's words under the role: the quote in the reading face, their name quieter. */
+.quote {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 2px 0 0;
+  font-family: var(--font-read);
+}
+
+.quote footer {
+  font-family: inherit;
+  font-size: 0.93em;
+  color: var(--muted);
+}
+
 .links {
   display: flex;
   flex-wrap: wrap;

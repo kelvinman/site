@@ -20,6 +20,8 @@ export type Project = {
   links?: Link[];
   /** Set when the role has its own case study page at /work/<slug>. */
   caseStudy?: boolean;
+  /** Someone who worked with me there, in their own words. Trim with an ellipsis, never reword. */
+  quote?: { text: string; who: string };
 };
 
 export const PROJECTS: Project[] = [
@@ -126,6 +128,10 @@ export const PROJECTS: Project[] = [
     },
     summary:
       "Mirascope, which started as SOTAI, brought me back for several projects over two and a half years.",
+    quote: {
+      text: "Kelvin is an exceptional designer who worked closely with us on various projects for SOTAI… he went above and beyond to ensure that we were completely satisfied with the final product.",
+      who: "William Bakst, co-founder of SOTAI, now Mirascope",
+    },
     parts: [
       {
         title: "Artifice, 2022",
@@ -177,6 +183,10 @@ export const PROJECTS: Project[] = [
     },
     summary:
       "At Wethos, a platform for freelancers and small studios to scope projects and split payments, I led the design system and designed Templates, which customers credited with cutting proposal writing from 5 to 7 hours down to 1.",
+    quote: {
+      text: "…for bringing the 'building contracts' designs to the tech team early and often, and iterating to get to a model that's clear and simple and feasible.",
+      who: "Al Huizenga, Director of Product Management, Wethos",
+    },
   },
   {
     slug: "flipper",

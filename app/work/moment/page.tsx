@@ -181,6 +181,11 @@ export default function Moment() {
 
       <p className={styles.body}>Built with Giel, another designer; Arjun Mehta, the CEO; Clayton Barnes; and an engineer.</p>
 
+      <p className={styles.body}>
+        &ldquo;He understood our business needs&hellip; He was able to work efficiently in a fast-paced environment.&rdquo;
+        Arjun Mehta, CEO of Moment.
+      </p>
+
       <Gap>
         <strong>Fill in:</strong> Clayton&apos;s role (he interviewed you with Arjun in August 2022, but isn&apos;t a
         designer) and the engineer&apos;s name.
