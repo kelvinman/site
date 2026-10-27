@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { NOTES } from "./notes/notes";
+import { PROJECTS } from "./projects";
 import { WORK } from "./work";
 
 /** Opens in a new tab, for links that leave the site. */
@@ -69,6 +70,20 @@ export default function Home() {
             ))}
           </ul>
           <p className={styles.summary}>More work I can walk through on a call.</p>
+        </section>
+
+        <section className={styles.section} aria-labelledby="projects">
+          <h2 id="projects" className={styles.label}>
+            Projects
+          </h2>
+          <ul className={styles.notes}>
+            {PROJECTS.map((project) => (
+              <li key={project.name}>
+                <Out href={project.href}>{project.name}</Out>
+                <span className={styles.summary}>{project.summary}</span>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className={styles.section} aria-labelledby="notes">
