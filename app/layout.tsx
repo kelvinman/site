@@ -40,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inconsolata.variable} ${hankenGrotesk.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${inconsolata.variable} ${hankenGrotesk.variable}`}>
       <body className={inconsolata.className}>
         {children}
         <LinkPeek />

@@ -62,7 +62,8 @@ a:hover {
   opacity: 0.72;
 }
 
-/* Contents links in notes glide to their section, unless motion is reduced. */
+/* Contents links in notes glide to their section, unless motion is reduced. The html element's
+   data-scroll-behavior tells Next.js to jump, not glide, when it opens a new page. */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
