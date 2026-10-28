@@ -4,21 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Defer · Kelvin Man</title>
-    <meta name="description" content="A crowd of walkers on a field. Each one either thinks for itself or follows, and the more the crowd follows, the stronger one source pulls." />
+    <meta name="description" content="How much of your own thinking do you hand over, and what does that cost? A crowd of walkers either thinks for itself or follows." />
     <script>
-      // Version 24 of Defer, in the ink palette: dark ink on paper, as in the stills I shared.
-      // Any palette in the address still wins, so ?palette=space shows the dark version.
+      // Version 24 of Defer, as published: the ink palette, like the stills I shared, and a
+      // time-lapse opening (?ff, in simulated seconds) so the ink is already building on arrival.
+      // Anything set in the address wins, so ?palette=space&ff=0 shows the dark version at real pace.
       var q = new URLSearchParams(location.search);
-      if (!q.has("palette")) {
-        q.set("palette", "ink");
-        history.replaceState(null, "", location.pathname + "?" + q.toString() + location.hash);
-      }
+      var changed = false;
+      if (!q.has("palette")) { q.set("palette", "ink"); changed = true; }
+      if (!q.has("ff")) { q.set("ff", "40"); changed = true; }
+      if (changed) history.replaceState(null, "", location.pathname + "?" + q.toString() + location.hash);
     </script>
-    <style>html,body{background:#e1ddd1;height:100%;margin:0;overflow:hidden}canvas{object-fit:contain;width:100vw;height:100vh;display:block}#hud{color:#8a877f;white-space:pre;pointer-events:none;font:11px/1.5 ui-monospace,monospace;position:fixed;bottom:10px;left:12px}</style>
-    <script type="module" crossorigin src="./assets/main-C7dpMFMu.js"></script>
+    <style>
+      html, body { margin: 0; height: 100%; background: #e1ddd1; overflow: hidden; }
+      canvas { display: block; width: 100vw; height: 100vh; object-fit: contain; }
+      #hud { position: fixed; left: 12px; bottom: 10px; font: 11px/1.5 ui-monospace, monospace; color: #8a877f; white-space: pre; pointer-events: none; }
+      /* The caption: what this is and who made it, quiet in a corner. It fades once the ink is
+         building, and comes back while the pointer is over it. */
+      #caption {
+        position: fixed; left: 20px; top: 18px; max-width: 280px;
+        font: 13px/1.5 ui-monospace, Menlo, monospace; color: #4a463f;
+        animation: fade 1.2s ease-out 9s forwards;
+        transition: opacity 0.3s ease-out;
+      }
+      #caption:hover { opacity: 1 !important; animation: none; }
+      #caption p { margin: 0 0 6px; }
+      #caption .line { font: 14px/1.45 system-ui, sans-serif; }
+      #caption a { color: inherit; text-underline-offset: 2px; }
+      @keyframes fade { to { opacity: 0.08; } }
+      @media (prefers-reduced-motion: reduce) { #caption { animation: none; } }
+    </style>
+    <script type="module" crossorigin src="./assets/main-DycBVVWM.js"></script>
   </head>
   <body>
     <canvas id="c"></canvas>
+    <div id="caption">
+      <p><b>Defer</b>, 2026</p>
+      <p class="line">How much of your own thinking do you hand over, and what does that cost?</p>
+      <p><a href="/">Kelvin Man</a></p>
+    </div>
     <div id="hud" hidden></div>
   </body>
 </html>
