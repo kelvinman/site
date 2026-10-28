@@ -1,0 +1,14 @@
+/* The other case studies at the end of each one: the name as a link, its line under it. */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  list-style: none;
+}
+
+.list li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

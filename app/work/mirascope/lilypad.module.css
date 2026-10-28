@@ -1,0 +1,378 @@
+/* Lilypad's annotation view in the product's own light look whatever the site's theme: white
+   cards on a pale grey, its violet for what's chosen. */
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #f5f5f4;
+  color: #1c1c1c;
+  font-family: var(--font-read);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.fn {
+  font-family: var(--font-inconsolata), Menlo, monospace;
+  font-weight: 500;
+}
+
+.fnRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* The version switch, in the same segmented toggle as the site's other demos, drawn in the
+   product's light colours: a grey track, the chosen version lifted onto white. */
+.versions {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 8px;
+  background: #e1e1de;
+}
+
+.versions button {
+  font: inherit;
+  font-size: 12px;
+  padding: 2px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: #5f5f5c;
+  cursor: pointer;
+  transition:
+    background 160ms ease-out,
+    color 160ms ease-out;
+}
+
+.versions button[aria-pressed="true"] {
+  background: #fff;
+  color: #1c1c1c;
+  box-shadow:
+    0 0 0 0.5px rgb(0 0 0 / 0.08),
+    0 1px 3px rgb(0 0 0 / 0.14);
+}
+
+.metrics {
+  display: flex;
+  gap: 14px;
+  color: #6b6b6b;
+  font-size: 12px;
+}
+
+.metrics b {
+  color: #1c1c1c;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Input and output side by side at the same height, tall enough for the longer of the two outputs
+   so switching versions doesn't make the card jump. */
+.io {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .io {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 4px;
+  color: #6b6b6b;
+  font-size: 12px;
+}
+
+.box {
+  flex: 1;
+  min-height: 128px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+}
+
+.key {
+  color: #6b6b6b;
+  font-family: var(--font-inconsolata), Menlo, monospace;
+  font-size: 12px;
+}
+
+.key + p {
+  margin-bottom: 6px;
+}
+
+/* The three criteria side by side, each with its own pass or fail under it; stacked on phones. */
+.criteria {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .criteria {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.criterion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+}
+
+.toggle {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #e2e2e0;
+  border-radius: 8px;
+}
+
+.toggle button {
+  flex: 1;
+  font: inherit;
+  font-size: 13px;
+  padding: 3px 12px;
+  border: 0;
+  background: #fff;
+  color: #6b6b6b;
+  cursor: pointer;
+  transition: background 150ms ease-out, color 150ms ease-out;
+}
+
+.toggle button + button {
+  border-left: 1px solid #e2e2e0;
+}
+
+.toggle button[data-kind="pass"][aria-pressed="true"] {
+  background: #e3f4e7;
+  color: #1f7a3a;
+}
+
+.toggle button[data-kind="fail"][aria-pressed="true"] {
+  background: #fde8e8;
+  color: #b42318;
+}
+
+.compare {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.score {
+  width: 100%;
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 110px;
+  align-items: center;
+  gap: 10px;
+  color: #6b6b6b;
+  font-size: 13px;
+}
+
+.score[aria-pressed="true"] {
+  color: #1c1c1c;
+}
+
+.score > span:first-child {
+  font-family: var(--font-inconsolata), Menlo, monospace;
+}
+
+.bar {
+  height: 6px;
+  border-radius: 999px;
+  background: #e7e7e5;
+  overflow: hidden;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: #7c5ce6;
+  transition: width 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.count {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .versions button,
+  .toggle button,
+  .bar span {
+    transition: none;
+  }
+}
+
+/* The Traces view: the list on the left, the open call on the right; stacked on phones. */
+.wide {
+  max-width: 640px;
+}
+
+.traces {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 10px;
+}
+
+@media (max-width: 560px) {
+  .traces {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.traceList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+}
+
+.trace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 26px 44px 28px;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 150ms ease-out;
+}
+
+.trace[aria-pressed="true"] {
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+}
+
+@media (hover: hover) {
+  .trace:hover {
+    background: #fff;
+  }
+}
+
+.traceId {
+  overflow: hidden;
+  font-family: var(--font-inconsolata), Menlo, monospace;
+  text-overflow: ellipsis;
+}
+
+.traceVersion,
+.traceAge {
+  color: #6b6b6b;
+  font-family: var(--font-inconsolata), Menlo, monospace;
+  font-size: 12px;
+}
+
+.traceAge {
+  text-align: right;
+}
+
+.result {
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.result[data-kind="pass"] {
+  background: #e3f4e7;
+  color: #1f7a3a;
+}
+
+.result[data-kind="fail"] {
+  background: #fde8e8;
+  color: #b42318;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+}
+
+.detailHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #efefed;
+}
+
+.badge {
+  margin-left: 4px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: #ece8ff;
+  color: #5b3fd6;
+  font-size: 12px;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  color: #6b6b6b;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.field .label {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace {
+    transition: none;
+  }
+}

@@ -159,17 +159,18 @@
   gap: 0 10px;
 }
 
-.role {
-  color: var(--muted);
-  white-space: pre;
-}
-
+/* Each role leads with the company, the role quieter beside it, so a run of the same title reads
+   as a list of places rather than one word repeated. */
 .place {
-  margin-left: -10px;
   white-space: nowrap;
 }
 
-/* On a phone the role takes its own line above the place, so nothing wraps mid-row. */
+.role {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* On a phone the role takes its own line under the company and years, so nothing wraps mid-row. */
 @media (max-width: 480px) {
   .work {
     gap: 10px;
@@ -180,15 +181,8 @@
   }
 
   .role {
+    order: 4;
     flex-basis: 100%;
-  }
-
-  .slash {
-    display: none;
-  }
-
-  .place {
-    margin-left: 0;
   }
 }
 

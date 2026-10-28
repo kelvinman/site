@@ -12,14 +12,21 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+/** Links under a role: out to another site in a new tab, or to a page on this one in place. */
 function Links({ links }: { links: Out[] }) {
   return (
     <p className={styles.links}>
-      {links.map((link) => (
-        <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
-          {link.label} ↗
-        </a>
-      ))}
+      {links.map((link) =>
+        link.href.startsWith("/") ? (
+          <Link key={link.href} href={link.href}>
+            {link.label} →
+          </Link>
+        ) : (
+          <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
+            {link.label} ↗
+          </a>
+        ),
+      )}
     </p>
   );
 }
@@ -110,8 +117,8 @@ function Entry({ project }: { project: Project }) {
   );
 }
 
-/** The contents rail: one entry per role. */
-const SECTIONS = PROJECTS.map((project) => ({ id: project.slug, title: project.name }));
+/** The contents rail: one entry per role, then my own projects, so every entry on the page is in it. */
+const SECTIONS = [...PROJECTS, ...OWN].map((project) => ({ id: project.slug, title: project.name }));
 
 export default function Work() {
   return (

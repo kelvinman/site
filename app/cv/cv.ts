@@ -32,19 +32,19 @@ export const ROLES = [
   {
     years: "2025",
     name: "Sidecar Legal",
-    role: "Product designer",
+    role: "Senior product designer",
     what: "Designed a legal-tech startup's main app and helped build 2 of its sites in code, one a web app that estimates lawsuit payouts.",
   },
   {
     years: "2025",
     name: "Oppy",
-    role: "Product designer",
+    role: "Senior product designer",
     what: "Designed AI assistants for real estate businesses: the onboarding, the web app, and bulk outreach that drafts a personal message for each contact to review before it goes out.",
   },
   {
     years: "2022 – 25",
     name: "Mirascope",
-    role: "Product designer",
+    role: "Senior product designer",
     what: "Formerly SOTAI, brought in project by project. Designed Artifice, a no-code platform for interpretable ML models from a team out of Google AI, ahead of its 2023 launch, plus a design library through 2 versions. After the pivot to Mirascope, an LLM toolkit with 1.5k GitHub stars, designed Lilypad, its open-source tool for versioning, tracing and annotating LLM calls.",
     href: "https://mirascope.com",
   },

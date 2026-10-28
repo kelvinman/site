@@ -20,6 +20,8 @@ export type Project = {
   links?: Link[];
   /** Set when the role has its own case study page at /work/<slug>. */
   caseStudy?: boolean;
+  /** One line for the case study in the "More work" list at the end of the others. */
+  line?: string;
   /** Someone who worked with me there, in their own words. Trim with an ellipsis, never reword. */
   quote?: { text: string; who: string };
 };
@@ -32,6 +34,7 @@ export const PROJECTS: Project[] = [
     role: "Founding design engineer",
     years: "2024–",
     caseStudy: true,
+    line: "Two products became one AI platform, now used by Wayfair.",
     cover: {
       src: "/work/cover-decorx.jpg",
       alt: "The DecorX Designer canvas: a sofa sketch turned into product shots and room scenes",
@@ -97,7 +100,8 @@ export const PROJECTS: Project[] = [
     slug: "sidecar-legal",
     name: "Sidecar Legal",
     caseStudy: true,
-    role: "Product designer",
+    line: "A payout estimate that shows a range, not a single number.",
+    role: "Senior product designer",
     years: "2025",
     cover: {
       src: "/work/cover-sidecar.webp",
@@ -117,7 +121,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "oppy",
     name: "Oppy",
-    role: "Product designer",
+    role: "Senior product designer",
     years: "2025",
     cover: {
       src: "/work/cover-oppy.webp",
@@ -133,8 +137,10 @@ export const PROJECTS: Project[] = [
     slug: "mirascope",
     name: "Mirascope",
     href: "https://mirascope.com",
-    role: "Product designer",
+    role: "Senior product designer",
     years: "2022–25",
+    caseStudy: true,
+    line: "An LLM tool that judges every answer right beside it.",
     cover: {
       src: "/work/cover-mirascope.webp",
       alt: "Lilypad traces: a list of traced LLM calls with pass and fail results, and one call's cost, latency and output",
@@ -165,6 +171,7 @@ export const PROJECTS: Project[] = [
     slug: "moment",
     name: "Moment",
     caseStudy: true,
+    line: "One home for a creator's community, before Patreon bought it.",
     role: "Senior product designer",
     years: "2022–23",
     summary:
@@ -190,6 +197,8 @@ export const PROJECTS: Project[] = [
     href: "https://www.wethos.co",
     role: "Product designer, then senior",
     years: "2020–22",
+    caseStudy: true,
+    line: "Ready-made scopes that cut proposal writing from hours to one.",
     cover: {
       src: "/work/cover-wethos.webp",
       alt: "Wethos Templates: ready-made project scopes with a price, team size and phases",
@@ -206,7 +215,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "flipper",
     name: "Flipper",
-    role: "Product designer",
+    role: "Senior product designer",
     years: "2022",
     summary:
       "An NFT trading dashboard sponsored by BanklessDAO: rarity ranks as soon as a collection revealed, an appraisal to cut through the data, and buying without leaving the dashboard. Its presale sold out in 3 minutes.",
@@ -215,6 +224,21 @@ export const PROJECTS: Project[] = [
 
 /** Things I made on my own, after the client work. */
 export const OWN: Project[] = [
+  {
+    slug: "founding-designers",
+    name: "Founding Designers",
+    href: "https://foundingdesigners.com",
+    role: "Designer and developer",
+    years: "2026",
+    cover: {
+      src: "/work/cover-founding-designers.webp",
+      alt: "Founding Designers: the logos of the startups saving a seat for their first designer",
+      width: 1200,
+      height: 400,
+    },
+    summary:
+      "A job board for founding designer roles at early-stage startups, and the people behind each one. I designed and built it, and it updates every week.",
+  },
   {
     slug: "the-last-apostate",
     name: "The Last Apostate",
@@ -228,5 +252,20 @@ export const OWN: Project[] = [
       height: 800,
     },
     summary: "A browser game about how much of your thinking you hand over to AI, which I directed and shipped with AI.",
+    links: [{ label: "The note", href: "/notes/the-thinking-i-kept" }],
+  },
+  {
+    slug: "verified-icons",
+    name: "Verified Icons",
+    href: "https://www.figma.com/community/file/1157094402778889516/verified-icons",
+    role: "Designer",
+    years: "2022",
+    cover: {
+      src: "/work/cover-verified-icons.webp",
+      alt: "Verified Icons: six blue verified badges, round, starred and scalloped, filled and outlined",
+      width: 1400,
+      height: 788,
+    },
+    summary: "Verified badges I drew for Moment and shared on Figma Community, where 18.1k people have used them.",
   },
 ];

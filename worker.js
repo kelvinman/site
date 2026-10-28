@@ -2,7 +2,7 @@
 // password, then serves the static export.
 
 // Case studies hold client work, so they need the password. The /work index stays public.
-const CASE_STUDIES = ["/work/decorx", "/work/moment", "/work/sidecar-legal"];
+const CASE_STUDIES = ["/work/decorx", "/work/mirascope", "/work/moment", "/work/sidecar-legal", "/work/wethos"];
 const COOKIE = "case_studies";
 const MONTH = 60 * 60 * 24 * 30;
 

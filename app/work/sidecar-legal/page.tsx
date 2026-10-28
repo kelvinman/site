@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import styles from "../../page.module.css";
 import { NoteLayout } from "../../notes/NoteLayout";
+import { MoreWork } from "../MoreWork";
 import draft from "../decorx/decorx.module.css";
 import { ChatEstimate } from "./ChatEstimate";
 import { Journey } from "./Journey";
@@ -20,6 +21,7 @@ const SECTIONS = [
   { id: "the-journey", title: "The journey" },
   { id: "the-design", title: "The design" },
   { id: "in-code", title: "In code" },
+  { id: "more-work", title: "More work" },
 ];
 
 /** A still from the design files or the running app. */
@@ -52,7 +54,7 @@ export default function SidecarLegal() {
     <NoteLayout sections={SECTIONS} back={{ href: "/work", label: "Work" }}>
       <header className={styles.header}>
         <h1 className={styles.name}>Sidecar Legal</h1>
-        <p className={styles.meta}>Product designer, 2025</p>
+        <p className={styles.meta}>Senior product designer, 2025</p>
       </header>
 
       <p className={styles.dash} aria-hidden="true">
@@ -138,6 +140,8 @@ export default function SidecarLegal() {
       <p className={styles.body}>
         Want to talk it through? <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>
       </p>
+
+      <MoreWork slug="sidecar-legal" />
     </NoteLayout>
   );
 }

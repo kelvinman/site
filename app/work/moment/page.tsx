@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import styles from "../../page.module.css";
 import { NoteLayout } from "../../notes/NoteLayout";
+import { MoreWork } from "../MoreWork";
 import { Clip } from "../decorx/Clip";
 import draft from "../decorx/decorx.module.css";
 import { Scattered } from "./Scattered";
@@ -8,7 +9,7 @@ import { LabelVariants } from "./LabelVariants";
 import { ShippedPhones } from "./ShippedPhones";
 import { WorldsDemo } from "./WorldsDemo";
 
-// A local draft from the Moment design files in Figma, my archive of Moment screenshots and
+// From the Moment design files in Figma, my archive of Moment screenshots and
 // recordings, the framing of Moment's investor deck (none of its company numbers) and my answers of
 // 27 Oct 2026. Behind the case study password; kept out of search.
 export const metadata: Metadata = {
@@ -23,12 +24,9 @@ const SECTIONS = [
   { id: "hard-parts", title: "The hard parts" },
   { id: "launch", title: "Launch night" },
   { id: "what-i-learned", title: "What I learned" },
+  { id: "more-work", title: "More work" },
 ];
 
-/** Something only Kelvin can fill in or decide. */
-function Gap({ children }: { children: React.ReactNode }) {
-  return <span className={draft.gap}>{children}</span>;
-}
 
 /** A still from the design files or an archived screenshot. */
 function Figure({ src, caption, width, height }: { src: string; caption: string; width: number; height: number }) {
@@ -58,10 +56,6 @@ function Numbers({ items }: { items: [string, string][] }) {
 export default function Moment() {
   return (
     <NoteLayout sections={SECTIONS} back={{ href: "/work", label: "Work" }}>
-      <p className={draft.draft}>
-        Local draft. The prose is a model&apos;s draft, not my words yet. Orange marks are what&apos;s left to decide.
-      </p>
-
       <header className={styles.header}>
         <h1 className={styles.name}>Moment</h1>
         <p className={styles.meta}>Senior product designer, 2022 to 2023</p>
@@ -179,29 +173,36 @@ export default function Moment() {
         March 2023. Patreon acquired Moment in October 2023.
       </p>
 
-      <p className={styles.body}>Built with Giel, another designer; Arjun Mehta, the CEO; Clayton Barnes; and an engineer.</p>
+      <p className={styles.body}>
+        Built with Giel, another designer; Jean Joskin, an engineer; Clayton Barnes, on the founding team and head of
+        product; and Arjun Mehta, the CEO.
+      </p>
 
       <p className={styles.body}>
         &ldquo;He understood our business needs&hellip; He was able to work efficiently in a fast-paced environment.&rdquo;
         Arjun Mehta, CEO of Moment.
       </p>
 
-      <Gap>
-        <strong>Fill in:</strong> Clayton&apos;s role (he interviewed you with Arjun in August 2022, but isn&apos;t a
-        designer) and the engineer&apos;s name.
-      </Gap>
-
       <h2 id="what-i-learned" className={styles.subhead}>
         What I learned
       </h2>
 
-      <Gap>
-        <strong>Your words:</strong> one or two lines. Even rough is fine.
-      </Gap>
+      <p className={styles.body}>
+        Working next to Giel taught me how to design faster and launch quickly without losing the craft. Giel and Jean
+        had worked together before, in Amsterdam, and they have such a good sense of design: how to make something
+        minimal that still looks great. They were passionate about it, and so was the whole team, Clayton and Arjun too.
+      </p>
+
+      <p className={styles.body}>
+        Working with creators was chaotic sometimes, but really fun. No one had tried this before, a 3D world with chat
+        and everything else packed into it, and that made it exciting.
+      </p>
 
       <p className={styles.body}>
         Want to walk through any of this? <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>
       </p>
+
+      <MoreWork slug="moment" />
     </NoteLayout>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import styles from "../../page.module.css";
 import { NoteLayout } from "../../notes/NoteLayout";
+import { MoreWork } from "../MoreWork";
 import { Clip } from "./Clip";
 import draft from "./decorx.module.css";
 import { FabricMapper } from "./FabricMapper";
@@ -10,7 +11,7 @@ import { TwoProducts } from "./TwoProducts";
 import { Workflow } from "./Workflow";
 import demos from "./demos.module.css";
 
-// A local draft built from "DecorX Case Study - Draft.md" in KelvinOS, the High Point deck and
+// Built from "DecorX Case Study - Draft.md" in KelvinOS, the High Point deck and
 // its recordings, with my answers of 26 Oct 2026 worked in. The prose is still a model's draft,
 // not mine yet. Mark has agreed to naming DecorX, its customers and usage numbers. Kept out of
 // search until it's published.
@@ -32,12 +33,9 @@ const SECTIONS = [
   { id: "showroom-app", title: "The showroom app" },
   { id: "how-i-worked", title: "How I worked" },
   { id: "what-i-learned", title: "What I learned" },
+  { id: "more-work", title: "More work" },
 ];
 
-/** Something only Kelvin can fill in or decide. */
-function Gap({ children }: { children: React.ReactNode }) {
-  return <span className={draft.gap}>{children}</span>;
-}
 
 /** A still, from the deck or the changelog. */
 function Figure({
@@ -81,11 +79,6 @@ function Numbers({ items }: { items: [string, string][] }) {
 export default function DecorX() {
   return (
     <NoteLayout sections={SECTIONS} back={{ href: "/work", label: "Work" }}>
-      <p className={draft.draft}>
-        Local draft. The prose is a model&apos;s draft, not my words yet. Orange
-        marks are what&apos;s left to decide.
-      </p>
-
       <header className={styles.header}>
         <h1 className={styles.name}>DecorX</h1>
         <p className={styles.meta}>Founding design engineer, 2024 to now</p>
@@ -171,11 +164,6 @@ export default function DecorX() {
         caption="Designer: a sketch in, product renders and room scenes out."
         height={1036}
       />
-
-      <Gap>
-        <strong>To do:</strong> swap this still for a screen recording of a real
-        Designer session.
-      </Gap>
 
       <h2 id="scenes" className={styles.subhead}>
         Scenes at scale
@@ -295,6 +283,8 @@ export default function DecorX() {
         Want to walk through any of this? <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>
       </p>
 
+
+      <MoreWork slug="decorx" />
     </NoteLayout>
   );
 }

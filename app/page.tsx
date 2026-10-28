@@ -45,6 +45,11 @@ export default function Home() {
         </p>
 
         <p className={styles.body}>
+          When I&apos;m not designing or building, I&apos;m making generative art, learning to loop on guitar, or at
+          a gallery somewhere in LA.
+        </p>
+
+        <p className={styles.body}>
           Find me on <Out href="https://github.com/kelvinman">GitHub</Out>,{" "}
           <Out href="https://linkedin.com/in/0xkelvin">LinkedIn</Out>,{" "}
           <Out href="https://x.com/0xkelvin">Twitter</Out>,{" "}
@@ -59,11 +64,8 @@ export default function Home() {
           <ul className={styles.work}>
             {WORK.map((entry) => (
               <li key={entry.name}>
-                <span className={styles.role}>
-                  {entry.role}
-                  <span className={styles.slash}> / </span>
-                </span>
                 <span className={styles.place}>{entry.href ? <Out href={entry.href}>{entry.name}</Out> : entry.name}</span>
+                <span className={styles.role}>{entry.role}</span>
                 <span className={styles.leader} aria-hidden="true" />
                 <span className={styles.years}>{entry.years}</span>
               </li>
