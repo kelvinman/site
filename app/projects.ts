@@ -6,6 +6,11 @@ export const PROJECTS = [
     summary: "A job board for founding designer roles at early-stage startups, and the people behind each one.",
   },
   {
+    name: "Defer",
+    href: "/defer/",
+    summary: "A generative piece about how much of your thinking you hand over, at the scale of a crowd. It runs in the browser.",
+  },
+  {
     name: "The Last Apostate",
     href: "https://kelvinman.github.io/the-last-apostate/",
     summary: "A browser game about how much of your thinking you hand over to AI, which I directed and shipped with AI.",

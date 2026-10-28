@@ -240,6 +240,21 @@ export const OWN: Project[] = [
       "A job board for founding designer roles at early-stage startups, and the people behind each one. I designed and built it, and it updates every week.",
   },
   {
+    slug: "defer",
+    name: "Defer",
+    href: "/defer/",
+    role: "Artist and developer",
+    years: "2026",
+    cover: {
+      src: "/work/cover-defer.webp",
+      alt: "Defer: ink-like trails of a crowd of walkers bending around one source",
+      width: 1080,
+      height: 640,
+    },
+    summary:
+      "A generative piece asking the same question as The Last Apostate at the scale of a crowd: walkers on a field either think for themselves or follow, and the more they follow, the stronger one source pulls. The concept, rules and core shader are mine; the scaffolding was built with AI.",
+  },
+  {
     slug: "the-last-apostate",
     name: "The Last Apostate",
     href: "https://github.com/kelvinman/the-last-apostate",
