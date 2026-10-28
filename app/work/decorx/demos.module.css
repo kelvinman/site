@@ -227,10 +227,12 @@
 
 /* Fabric Mapper: the photo, the print laid into the chosen segments, and the segments as
    click targets that can show their outlines. */
+/* Rounded like the case study's other images. */
 .mapper {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 6px;
   touch-action: none;
   cursor: grab;
   user-select: none;

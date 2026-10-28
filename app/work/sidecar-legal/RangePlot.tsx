@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import demo from "../../notes/demos/demos.module.css";
-import moment from "../moment/moment.module.css";
 import data from "./settlements.json";
 import styles from "./range.module.css";
 
@@ -79,9 +78,9 @@ export function RangePlot() {
           ))}
         </div>
       </div>
-      <div className={demo.controls}>
+      <div className={demo.toggle}>
         {data.groups.map((g, i) => (
-          <button key={g.name} type="button" className={moment.jump} aria-pressed={i === active} onClick={() => setActive(i)}>
+          <button key={g.name} type="button" aria-pressed={i === active} onClick={() => setActive(i)}>
             {g.name}
           </button>
         ))}

@@ -48,6 +48,11 @@ export function FabricMapper() {
   const [outlines, setOutlines] = useState(false);
   const drag = useRef<{ x: number; y: number; ox: number; oy: number; moved: boolean } | null>(null);
   const svg = useRef<SVGSVGElement>(null);
+  // The preset the chosen parts match exactly, if any; after clicking parts by hand, none is lit.
+  const current = PRESETS.find((preset) => {
+    const parts = indexesOf(preset.parts);
+    return parts.length === selected.size && parts.every((i) => selected.has(i));
+  })?.label;
 
   // Screen pixels to photo pixels, so a drag moves the print as far as the pointer moved.
   const scale = () => WIDTH / (svg.current?.getBoundingClientRect().width || WIDTH);
@@ -133,16 +138,18 @@ export function FabricMapper() {
       </svg>
 
       <div className={demo.controls}>
-        {PRESETS.map((preset) => (
-          <button
-            key={preset.label}
-            type="button"
-            className={demo.textButton}
-            onClick={() => setSelected(new Set(indexesOf(preset.parts)))}
-          >
-            {preset.label}
-          </button>
-        ))}
+        <div className={demo.toggle} role="group" aria-label="Parts">
+          {PRESETS.map((preset) => (
+            <button
+              key={preset.label}
+              type="button"
+              aria-pressed={preset.label === current}
+              onClick={() => setSelected(new Set(indexesOf(preset.parts)))}
+            >
+              {preset.label}
+            </button>
+          ))}
+        </div>
         <button
           type="button"
           role="switch"

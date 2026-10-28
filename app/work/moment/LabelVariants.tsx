@@ -26,9 +26,9 @@ export function LabelVariants() {
           />
         ))}
       </div>
-      <div className={demo.controls}>
+      <div className={demo.toggle}>
         {VARIANTS.map((name, i) => (
-          <button key={name} type="button" className={styles.jump} aria-pressed={i === active} onClick={() => setActive(i)}>
+          <button key={name} type="button" aria-pressed={i === active} onClick={() => setActive(i)}>
             {name}
           </button>
         ))}

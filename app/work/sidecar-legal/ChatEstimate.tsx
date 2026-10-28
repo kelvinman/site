@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import demo from "../../notes/demos/demos.module.css";
-import moment from "../moment/moment.module.css";
 import styles from "./chat.module.css";
 
 /**
@@ -132,7 +131,7 @@ export function ChatEstimate() {
         )}
       </div>
       <div className={demo.controls}>
-        <button type="button" className={moment.jump} onClick={reset} disabled={answers.length === 0}>
+        <button type="button" className={demo.quiet} onClick={reset} disabled={answers.length === 0}>
           Start over
         </button>
       </div>

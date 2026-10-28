@@ -36,6 +36,12 @@ export const ROLES = [
     what: "Designed a legal-tech startup's main app and helped build 2 of its sites in code, one a web app that estimates lawsuit payouts.",
   },
   {
+    years: "2025",
+    name: "Oppy",
+    role: "Product designer",
+    what: "Designed AI assistants for real estate businesses: the onboarding, the web app, and bulk outreach that drafts a personal message for each contact to review before it goes out.",
+  },
+  {
     years: "2022 – 25",
     name: "Mirascope",
     role: "Product designer",

@@ -115,6 +115,21 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    slug: "oppy",
+    name: "Oppy",
+    role: "Product designer",
+    years: "2025",
+    cover: {
+      src: "/work/cover-oppy.webp",
+      alt: "Oppy's onboarding on a phone: enter your website, meet your new assistant, then try it while it learns your business",
+      width: 1692,
+      height: 852,
+      bare: true,
+    },
+    summary:
+      "AI assistants for real estate businesses that answer leads by text and chat, book appointments and follow up. I designed the onboarding, the app and bulk outreach, where one message becomes a personal draft for each contact to review before it goes out.",
+  },
+  {
     slug: "mirascope",
     name: "Mirascope",
     href: "https://mirascope.com",
@@ -127,7 +142,7 @@ export const PROJECTS: Project[] = [
       height: 934,
     },
     summary:
-      "Mirascope, which started as SOTAI, brought me back for several projects over two and a half years.",
+      "Mirascope, which started as SOTAI, brought me back for three projects over two and a half years.",
     quote: {
       text: "Kelvin is an exceptional designer who worked closely with us on various projects for SOTAI… he went above and beyond to ensure that we were completely satisfied with the final product.",
       who: "William Bakst, co-founder of SOTAI, now Mirascope",

@@ -26,6 +26,72 @@
   }
 }
 
+/* A segmented toggle under a figure: one quiet track, the chosen segment lifted onto the page's
+   own background. Shared by the demos that switch between views. Narrow screens scroll it sideways
+   rather than wrap, so the track stays one piece. */
+.toggle {
+  display: inline-flex;
+  align-self: center;
+  max-width: 100%;
+  padding: 2px;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--muted) 14%, transparent);
+  scrollbar-width: none;
+}
+
+.toggle button {
+  flex: none;
+  padding: 3px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    background 160ms ease-out,
+    color 160ms ease-out;
+}
+
+.toggle button[aria-pressed="true"] {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle button {
+    transition: none;
+  }
+}
+
+/* A single quiet button under a figure, in the toggle's colours: a soft fill that steps up on hover,
+   and fades when there is nothing for it to do. */
+.quiet {
+  padding: 3px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--muted) 14%, transparent);
+  color: var(--foreground);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 160ms ease-out;
+}
+
+@media (hover: hover) {
+  .quiet:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--muted) 24%, transparent);
+  }
+}
+
+.quiet:disabled {
+  color: var(--muted);
+  opacity: 0.5;
+  cursor: default;
+}
+
 .controls {
   justify-content: center;
   width: 100%;

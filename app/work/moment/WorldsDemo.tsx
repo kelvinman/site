@@ -90,9 +90,9 @@ export function WorldsDemo() {
         ))}
       </div>
 
-      <div className={demo.controls}>
+      <div className={demo.toggle}>
         {ORDER.map((s) => (
-          <button key={s} type="button" className={styles.jump} aria-pressed={s === screen} onClick={() => setScreen(s)}>
+          <button key={s} type="button" aria-pressed={s === screen} onClick={() => setScreen(s)}>
             {SCREENS[s].name}
           </button>
         ))}
