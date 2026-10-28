@@ -46,8 +46,9 @@ export default function Home() {
 
         <p className={styles.body}>
           Find me on <Out href="https://github.com/kelvinman">GitHub</Out>,{" "}
-          <Out href="https://linkedin.com/in/0xkelvin">LinkedIn</Out> or{" "}
-          <Out href="https://x.com/0xkelvin">Twitter</Out>, or reach me at{" "}
+          <Out href="https://linkedin.com/in/0xkelvin">LinkedIn</Out>,{" "}
+          <Out href="https://x.com/0xkelvin">Twitter</Out> or{" "}
+          <Out href="https://www.instagram.com/0xkelvin/">Instagram</Out>, or reach me at{" "}
           <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>.
         </p>
 
