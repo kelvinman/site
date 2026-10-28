@@ -165,7 +165,7 @@ export function FabricMapper() {
       </div>
 
       <figcaption className={demo.caption}>
-        Click a part to add or remove it, drag to move the print. Real DecorX data, except the front rail, which I
+        Drag to move the print, and click a part to add or remove it. Real DecorX data, except the front rail, which I
         traced by hand.
       </figcaption>
     </figure>

@@ -27,7 +27,7 @@ const SECTIONS = [
   { id: "starting-over", title: "Two products, then one" },
   { id: "designer", title: "Designer" },
   { id: "scenes", title: "Scenes at scale" },
-  { id: "fabric", title: "Any fabric, any part" },
+  { id: "fabric", title: "Placing the print" },
   { id: "the-market", title: "The market" },
   { id: "taking-turns", title: "Taking turns" },
   { id: "showroom-app", title: "The showroom app" },
@@ -187,12 +187,13 @@ export default function DecorX() {
       </p>
 
       <h2 id="fabric" className={styles.subhead}>
-        Any fabric, any part
+        Placing the print
       </h2>
 
       <p className={styles.body}>
-        Fabric Mapper finds a sofa&apos;s parts, so the seat can take one fabric
-        and the pillows another. A real sofa, with its real segments:
+        Fabric Mapper lets you set how a fabric&apos;s print sits on a sofa
+        before anything is generated, so the result keeps that placement. A
+        real sofa, with its real segments:
       </p>
 
       <FabricMapper />
