@@ -3,7 +3,7 @@
 export const WORK = [
   { role: "Founding design engineer", name: "DecorX", years: "2024–", href: "https://www.decorx.com" },
   { role: "Founder", name: "SuperNice", years: "2022–", href: "https://studiosupernice.com" },
-  { role: "Senior product designer", name: "Left Field Labs", years: "2023–", href: "https://leftfieldlabs.com" },
+  { role: "Senior product designer", name: "Left Field Labs", years: "2023–25", href: "https://leftfieldlabs.com" },
   { role: "Senior product designer", name: "Sidecar Legal", years: "2025" },
   { role: "Senior product designer", name: "Mirascope", years: "2022–25", href: "https://mirascope.com" },
   { role: "Senior product designer", name: "Moment", years: "2022–23", href: "https://techcrunch.com/2023/10/17/patreon-acquires-livestream-ticketed-events-startup-moment/" },

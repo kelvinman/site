@@ -12,7 +12,7 @@ import { LilypadTraces } from "./LilypadTraces";
 // study password; kept out of search.
 export const metadata: Metadata = {
   title: "Mirascope · Kelvin Man",
-  description: "Three projects for an AI team, from no-code machine learning to tools for LLM developers.",
+  description: "Five projects for an AI team, from no-code machine learning to tools for LLM developers.",
   robots: { index: false, follow: false },
 };
 
@@ -73,9 +73,10 @@ export default function Mirascope() {
       </p>
 
       <p className={styles.body}>
-        Mirascope, which started as SOTAI, brought me back for three projects over two and a half years: Artifice, a
+        Mirascope, which started as SOTAI, brought me back for five projects over two and a half years: Artifice, a
         no-code platform for interpretable machine learning; the design library behind their products, through two
-        versions; and Lilypad, an open-source tool for versioning, tracing and annotating LLM calls.
+        versions; their website twice, as SOTAI and again as Mirascope, with a new logo; and Lilypad, an open-source
+        tool for versioning, tracing and annotating LLM calls.
       </p>
 
       <LilypadTraces />
@@ -83,7 +84,7 @@ export default function Mirascope() {
       <Numbers
         items={[
           ["2.5 years", "coming back"],
-          ["3", "projects"],
+          ["5", "projects"],
           ["Apr 2023", "Artifice on Show HN"],
         ]}
       />
@@ -135,7 +136,8 @@ export default function Mirascope() {
       <p className={styles.body}>
         <strong>Artifice</strong>, launched on{" "}
         <Out href="https://news.ycombinator.com/item?id=35742104">Hacker News</Out> in April 2023.{" "}
-        <strong>Two versions of the design library</strong> behind their products. And <strong>Lilypad</strong>,
+        <strong>Two versions of the design library</strong> behind their products. <strong>Two websites</strong>,
+        SOTAI&apos;s in 2023 and Mirascope&apos;s, with its logo, in 2024. And <strong>Lilypad</strong>,
         open source alongside <Out href="https://github.com/Mirascope/mirascope">Mirascope</Out>, the team&apos;s LLM
         toolkit, which has 1.5k stars on GitHub.
       </p>

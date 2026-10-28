@@ -8,7 +8,11 @@
   max-width: 560px;
   padding: 16px;
   border-radius: 18px;
-  background: #f5f5f4;
+  /* A shade darker than the page, with a hairline edge, so the demo reads as its own surface
+     on the site's off-white rather than blending into it. */
+  border: 1px solid rgb(28 28 28 / 0.08);
+  background: #efefed;
+  box-shadow: 0 1px 2px rgb(28 28 28 / 0.04), 0 12px 32px -12px rgb(28 28 28 / 0.08);
   color: #1c1c1c;
   font-family: var(--font-read);
   font-size: 14px;
@@ -375,4 +379,17 @@
   .trace {
     transition: none;
   }
+}
+
+/* The white cards sit slightly above the grey: a hairline and a soft shadow, the way Lilypad
+   lifts its cards, so they read as surfaces and not flat cut-outs. */
+.box,
+.criterion,
+.detail,
+.trace[aria-pressed="true"],
+.versions button[aria-pressed="true"] {
+  box-shadow:
+    0 0 0 1px rgb(28 28 28 / 0.05),
+    0 1px 2px rgb(28 28 28 / 0.06),
+    0 4px 12px -4px rgb(28 28 28 / 0.08);
 }

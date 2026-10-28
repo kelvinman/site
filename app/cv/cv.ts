@@ -14,12 +14,11 @@ export const ROLES = [
     current: true,
   },
   {
-    years: "2023 – now",
+    years: "2023 – 25",
     name: "Left Field Labs",
     role: "Senior product designer",
     what: "Designed interactive experiences for brand events and conferences, brought in project by project: an AR experience for Meta; a Snap Spectacles pitch, Hacking Reality; the Connection Wall for Microsoft Build, a networking app built to connect about 4,000 in-person attendees with 200,000 online, where people built avatar profiles, printed them as stickers and found each other; and playable experiences explaining GitHub Copilot and Salesforce's AI features at their conferences, including Dreamforce.",
     href: "https://leftfieldlabs.com",
-    current: true,
   },
   {
     years: "2022 – now",

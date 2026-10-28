@@ -74,9 +74,9 @@ export const PROJECTS: Project[] = [
     name: "Left Field Labs",
     href: "https://leftfieldlabs.com",
     role: "Senior product designer",
-    years: "2023–",
+    years: "2023–25",
     summary:
-      "Left Field Labs brings me in project by project to design interactive experiences for brand events and conferences, for teams at Meta, Microsoft, GitHub and Salesforce.",
+      "Left Field Labs brought me in project by project to design interactive experiences for brand events and conferences, for teams at Meta, Microsoft, GitHub and Salesforce.",
     parts: [
       {
         title: "The Connection Wall, Microsoft Build 2025",
@@ -148,7 +148,7 @@ export const PROJECTS: Project[] = [
       height: 934,
     },
     summary:
-      "Mirascope, which started as SOTAI, brought me back for three projects over two and a half years.",
+      "Mirascope, which started as SOTAI, brought me back for five projects over two and a half years.",
     quote: {
       text: "Kelvin is an exceptional designer who worked closely with us on various projects for SOTAI… he went above and beyond to ensure that we were completely satisfied with the final product.",
       who: "William Bakst, co-founder of SOTAI, now Mirascope",
@@ -160,6 +160,7 @@ export const PROJECTS: Project[] = [
         links: [{ label: "Show HN", href: "https://news.ycombinator.com/item?id=35742104" }],
       },
       { title: "Design library, 2022 and 2023", text: "Two versions of the library behind its products." },
+      { title: "Websites, 2023 and 2024", text: "SOTAI's website, then Mirascope's, with a new logo." },
       {
         title: "Lilypad, 2025",
         text: "An open-source tool for versioning, tracing and annotating LLM calls, alongside Mirascope (1.5k GitHub stars).",
