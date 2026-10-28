@@ -75,7 +75,7 @@ export default function SidecarLegal() {
         items={[
           ["12,000+", "real NYPD settlements"],
           ["3", "steps to an estimate"],
-          ["Aug to Oct", "2025, in the code"],
+          ["May to Oct", "2025, design into code"],
         ]}
       />
 
