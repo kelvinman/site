@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Mirascope · Kelvin Man",
   description: "Five projects for an AI team, from no-code machine learning to tools for LLM developers.",
   robots: { index: false, follow: false },
+  // The card sits outside /work/mirascope, so link previews can load it without the password.
+  openGraph: { title: "Mirascope · Kelvin Man", url: "/work/mirascope", siteName: "Kelvin Man", type: "article", images: "/og/work-mirascope.png" },
+  twitter: { card: "summary_large_image", images: "/og/work-mirascope.png" },
 };
 
 const SECTIONS = [
@@ -73,10 +76,10 @@ export default function Mirascope() {
       </p>
 
       <p className={styles.body}>
-        Mirascope, which started as SOTAI, brought me back for five projects over two and a half years: Artifice, a
-        no-code platform for interpretable machine learning; the design library behind their products, through two
-        versions; their website twice, as SOTAI and again as Mirascope, with a new logo; and Lilypad, an open-source
-        tool for versioning, tracing and annotating LLM calls.
+        Mirascope, which started as SOTAI, brought me back for five projects over two and a half years. I designed
+        Artifice, a no-code platform for interpretable machine learning, and two versions of the design library behind
+        their products. I designed their website twice, as SOTAI and again as Mirascope with a new logo. Most recently
+        I designed Lilypad, an open-source tool for versioning, tracing and annotating LLM calls.
       </p>
 
       <LilypadTraces />
@@ -112,8 +115,8 @@ export default function Mirascope() {
       <p className={styles.body}>
         Artifice let anyone build interpretable machine learning models without code: prepare the data, set the
         model&apos;s rules from what they already knew, train it, and see why it decides what it does. My part was
-        making a very technical product approachable, a way to demystify AI models for people who aren&apos;t data
-        scientists, and designing the library both products were built from.
+        making a very technical product approachable for people who aren&apos;t data scientists. I also designed the
+        library that Artifice and Lilypad were built from.
       </p>
 
       <h2 id="lilypad" className={styles.subhead}>
@@ -166,8 +169,8 @@ export default function Mirascope() {
       </h2>
 
       <p className={styles.body}>
-        How to design for a really complicated problem: simplify it until I truly understand it, and then make it
-        something other people can understand too.
+        I learned to design for a really complicated problem by simplifying it until I understood it, then making it
+        something other people could understand too.
       </p>
 
       <p className={styles.body}>

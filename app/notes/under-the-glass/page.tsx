@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const SECTIONS = [
   { id: "how-safari-decides", title: "How Safari decides" },
   { id: "the-recipe", title: "The recipe" },
-  { id: "things-that-bit-me", title: "Things that bit me" },
+  { id: "before-you-ship", title: "Before you ship" },
 ];
 
 export default function Note() {
@@ -100,7 +100,7 @@ useEffect(() => {
 }, [])`}
         />
 
-        <h2 id="things-that-bit-me" className={styles.subhead}>Things that bit me</h2>
+        <h2 id="before-you-ship" className={styles.subhead}>Before you ship</h2>
 
         <ul className={styles.bullets}>
           <li>
@@ -122,7 +122,7 @@ useEffect(() => {
         </ul>
 
         <p className={styles.meta}>
-          Tested in the iOS simulator in October 2026. Safari changes this between releases, so re-test before you trust it.
+          Tested in the iOS simulator in October 2026. Safari changes this between releases, so test it again on newer versions.
         </p>
     </NoteLayout>
   );

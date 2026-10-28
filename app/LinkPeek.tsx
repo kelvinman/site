@@ -6,7 +6,7 @@ import styles from "./LinkPeek.module.css";
 
 const PREVIEWS: Record<string, string> = previews;
 
-/** While the pointer is over a link that leaves the site, or one to a note, the linked page's share
+/** While the pointer is over a link that leaves the site, or one to a note or case study, the linked page's share
  * image follows it. One listener for the whole document, so any such link on any page gets it without a wrapper;
  * scripts/fetch-link-previews.mjs decides which links have an image. Only on devices with a real
  * pointer, and not when motion is reduced. Adapted from Founding Designers' job list. */

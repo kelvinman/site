@@ -42,11 +42,11 @@ export const PROJECTS: Project[] = [
       height: 1036,
     },
     summary:
-      "DecorX, an AI imagery platform for furniture brands, began as two products: one for interior designers that I designed, and one for retailers that I started as a prototype in January 2026. In 9 months the two became one platform, built on the retailer product, now used by Wayfair, Nebraska Furniture Mart and Kathy Kuo Home. I designed and built its core, set how a team of 6 across the US and China builds on it, and plan strategy and priorities with the CEO.",
+      "DecorX, an AI imagery platform for furniture retailers, manufacturers and interior designers, began as two products: one for interior designers that I designed, and one for retailers that I started as a prototype in January 2026. In 9 months the two became one platform, built on the retailer product, now used by Wayfair, Nebraska Furniture Mart and Kathy Kuo Home. I designed and built its core, set how a team of 6 across the US and China builds on it, and plan strategy and priorities with the CEO.",
     parts: [
       {
         title: "The platform",
-        text: "Started from an empty repo as a prototype for retailers, and grown in 9 months into the one platform both products run on. I wrote about 70% of the 1,600 commits, and designed and built the design system, data model, billing and infrastructure.",
+        text: "I started it in January 2026 as a prototype for retailers, and in 9 months it became the one platform both products run on. I wrote about 70% of the 1,600 commits, and designed and built the design system, data model, billing and infrastructure.",
       },
       {
         title: "Designer and Product Studio",
@@ -131,7 +131,7 @@ export const PROJECTS: Project[] = [
       bare: true,
     },
     summary:
-      "AI assistants for real estate businesses that answer leads by text and chat, book appointments and follow up. I designed the onboarding, the app and bulk outreach, where one message becomes a personal draft for each contact to review before it goes out.",
+      "I designed Oppy, AI assistants for real estate businesses that answer leads by text and chat, book appointments and follow up. I designed its onboarding, its app and bulk outreach, where one message becomes a personal draft for each contact to review before it goes out.",
   },
   {
     slug: "mirascope",
@@ -172,11 +172,15 @@ export const PROJECTS: Project[] = [
     slug: "moment",
     name: "Moment",
     caseStudy: true,
-    line: "One home for a creator's community, before Patreon bought it.",
+    line: "A space for each creator's community, before Patreon bought it.",
     role: "Senior product designer",
     years: "2022–23",
     summary:
       "I designed the Worlds web and mobile apps: fan communities with boards, chat, shared spaces, merch and tickets. 5 creator worlds went live, including Paris Hilton and the Jonas Brothers. A separate 3D team built the spaces themselves. I shared the verified badges I drew for it on Figma Community, where 18.1k people have used them. Patreon acquired Moment in October 2023.",
+    quote: {
+      text: "He understood our business needs… He was able to work efficiently in a fast-paced environment… I highly recommend Kelvin to any startup in need of a talented and dedicated designer.",
+      who: "Arjun Mehta, CEO of Moment",
+    },
     cover: {
       src: "/work/cover-moment.webp",
       alt: "Murder With My Husband World on iOS: home, board, chats, the 3D space and people",
@@ -219,7 +223,7 @@ export const PROJECTS: Project[] = [
     role: "Senior product designer",
     years: "2022",
     summary:
-      "An NFT trading dashboard sponsored by BanklessDAO: rarity ranks as soon as a collection revealed, an appraisal to cut through the data, and buying without leaving the dashboard. Its presale sold out in 3 minutes.",
+      "An NFT trading dashboard sponsored by BanklessDAO. It showed rarity ranks as soon as a collection revealed, gave each item an appraisal, and let traders buy without leaving the dashboard. Its presale sold out in 3 minutes.",
   },
 ];
 

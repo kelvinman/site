@@ -136,7 +136,7 @@ export function ChatEstimate() {
         </button>
       </div>
       <figcaption className={demo.caption}>
-        The Hi-Fi flow rebuilt to tap through. The range is the design&apos;s sample; the cases are real settlements from the city&apos;s data, shortened to initials.
+        The final design, rebuilt so you can tap through it. The range is the design&apos;s sample; the cases are real settlements from the city&apos;s data, shortened to initials.
       </figcaption>
     </figure>
   );

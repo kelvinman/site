@@ -29,7 +29,7 @@ export function Scattered() {
           <span>chat, board, 3D space, live events and a shop, with one identity</span>
         </span>
       </div>
-      <figcaption className={demo.caption}>Where a creator&apos;s community lived, and where Worlds brought it.</figcaption>
+      <figcaption className={demo.caption}>Before Worlds, a community was split across four places. Worlds put it in one.</figcaption>
     </figure>
   );
 }

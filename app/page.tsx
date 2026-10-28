@@ -71,7 +71,9 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <p className={styles.summary}>More work I can walk through on a call.</p>
+          <p className={styles.summary}>
+            More in <Link href="/work">case studies</Link>.
+          </p>
         </section>
 
         <section className={styles.section} aria-labelledby="projects">

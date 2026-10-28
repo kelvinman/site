@@ -98,11 +98,22 @@ async function noteCard(src, out) {
 }
 await Promise.all(notes.map(({ slug, src }) => noteCard(src, new URL(`notes-${slug}.jpg`, DIR).pathname)));
 
+// Case studies use their share card from public/og/, cropped to the hover card's shape.
+const work = readdirSync(new URL("og/", PUBLIC))
+  .map((file) => file.match(/^work-(.+)\.png$/)?.[1])
+  .filter(Boolean);
+await Promise.all(
+  work.map((slug) =>
+    sharp(new URL(`og/work-${slug}.png`, PUBLIC).pathname).resize(W, H, { fit: "cover", position: "top" }).jpeg({ quality: 80 }).toFile(new URL(`work-${slug}.jpg`, DIR).pathname),
+  ),
+);
+
 const manifest = Object.fromEntries([
   ...[...hrefs]
     .sort()
     .filter((href) => existsSync(fileOf(href)))
     .map((href) => [href, `/peek/${slugOf(href)}.jpg`]),
   ...notes.map(({ slug }) => [`/notes/${slug}`, `/peek/notes-${slug}.jpg`]),
+  ...work.map((slug) => [`/work/${slug}`, `/peek/work-${slug}.jpg`]),
 ]);
 writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");

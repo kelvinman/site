@@ -234,12 +234,7 @@
   height: auto;
   border-radius: 6px;
   touch-action: none;
-  cursor: grab;
   user-select: none;
-}
-
-.mapper:active {
-  cursor: grabbing;
 }
 
 .fabric {
@@ -266,7 +261,7 @@
   stroke-dasharray: 6 5;
 }
 
-.segment:hover {
+.mapper[data-stage="placing"] .segment:hover {
   stroke: var(--accent);
 }
 
@@ -366,4 +361,64 @@
 .credits dd {
   font-family: var(--font-read);
   color: var(--muted);
+}
+
+/* Fabric Mapper. The scan sweeps across the photo and each part's outline appears as it passes.
+   A picked part's print fades in; on generate, the rest resolve from a blur, nearest first. */
+.fabric {
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+.fabric[data-shown] {
+  opacity: 1;
+}
+
+/* Parts wait blurred, so a generated one resolves as it fades in. A picked one has no filter
+   transition, so it simply fades in sharp. */
+.fabric:not([data-shown]) {
+  filter: blur(10px);
+}
+
+.fabric[data-generated] {
+  transition:
+    opacity 600ms ease-out,
+    filter 800ms ease-out;
+}
+
+.scan {
+  animation: scan linear forwards;
+}
+
+@keyframes scan {
+  to {
+    transform: translateX(1648px);
+  }
+}
+
+.mapper[data-stage="placing"] .segment {
+  cursor: pointer;
+}
+
+.mapper[data-stage="placing"] .segment[data-active] {
+  cursor: grab;
+  stroke: var(--accent);
+  stroke-dasharray: none;
+}
+
+.mapper[data-stage="placing"] .segment[data-active]:active {
+  cursor: grabbing;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fabric,
+  .fabric[data-generated],
+  .segment {
+    transition-duration: 0ms;
+    transition-delay: 0ms !important;
+  }
+
+  .scan {
+    display: none;
+  }
 }

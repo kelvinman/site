@@ -198,3 +198,10 @@
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+
+/* A still image in a note, at the text column's width. */
+.still {
+  display: block;
+  width: 100%;
+  height: auto;
+}

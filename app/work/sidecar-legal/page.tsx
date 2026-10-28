@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Sidecar Legal · Kelvin Man",
   description: "Designing a payout estimator for people with a case against the NYPD.",
   robots: { index: false, follow: false },
+  // The card sits outside /work/sidecar-legal, so link previews can load it without the password.
+  openGraph: { title: "Sidecar Legal · Kelvin Man", url: "/work/sidecar-legal", siteName: "Kelvin Man", type: "article", images: "/og/work-sidecar-legal.png" },
+  twitter: { card: "summary_large_image", images: "/og/work-sidecar-legal.png" },
 };
 
 const SECTIONS = [
@@ -68,7 +71,7 @@ export default function SidecarLegal() {
 
       <Figure
         src="/work/cover-sidecar.webp"
-        caption="The home page, from the running app: describe your case, or browse the settlements."
+        caption="The home page, where you describe your case or browse the settlements."
         width={1400}
         height={856}
       />
@@ -87,9 +90,7 @@ export default function SidecarLegal() {
 
       <p className={styles.body}>
         People hurt by the police ask one thing first: is my case worth pursuing, and for roughly how much? They&apos;re
-        also wary of legal advice from an AI. Working from Sidecar&apos;s product requirements, I pulled out three things
-        the product had to get right: plain language with honest disclaimers, the real cases behind any number, and a
-        clear way to a lawyer.
+        also wary of legal advice from an AI. Working from Sidecar&apos;s product requirements, I pulled out three things the product had to get right. It had to speak plainly with honest disclaimers, show the real cases behind any number, and make it easy to reach a lawyer.
       </p>
 
       <h2 id="the-journey" className={styles.subhead}>
@@ -97,8 +98,8 @@ export default function SidecarLegal() {
       </h2>
 
       <p className={styles.body}>
-        Before any screens, I mapped the journey stage by stage: what someone thinks, what could lose them, and what the
-        design does about it.
+        Before any screens, I mapped each stage of the journey, with what someone thinks, what could lose them, and what
+        the design does about it.
       </p>
 
       <Journey />
@@ -127,9 +128,9 @@ export default function SidecarLegal() {
       </h2>
 
       <p className={styles.body}>
-        I set up the component library in React Aria and Storybook, then rebuilt the interface in Next.js: the case
-        library and case pages, a PDF viewer for the court documents, the estimate summary, and a pass for mobile. Later
-        I polished the Sidecar landing page the same way.
+        I set up the component library in React Aria and Storybook, then built the interface in Next.js. I built the
+        case library and case pages, a PDF viewer for the court documents and the estimate summary, and made it all
+        work on mobile. Later I polished the Sidecar landing page the same way.
       </p>
 
       <p className={styles.body}>

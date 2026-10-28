@@ -14,8 +14,11 @@ import { WorldsDemo } from "./WorldsDemo";
 // 27 Oct 2026. Behind the case study password; kept out of search.
 export const metadata: Metadata = {
   title: "Moment · Kelvin Man",
-  description: "Designing Worlds, a home for creators' communities.",
+  description: "Designing Worlds, a space for each creator's community.",
   robots: { index: false, follow: false },
+  // The card sits outside /work/moment, so link previews can load it without the password.
+  openGraph: { title: "Moment · Kelvin Man", url: "/work/moment", siteName: "Kelvin Man", type: "article", images: "/og/work-moment.png" },
+  twitter: { card: "summary_large_image", images: "/og/work-moment.png" },
 };
 
 const SECTIONS = [
@@ -66,8 +69,8 @@ export default function Moment() {
       </p>
 
       <p className={styles.body}>
-        Worlds gave each creator a home for their community: chat, a board, a 3D space, live events and a shop, in one
-        place on web and mobile. I designed its apps.
+        I designed Worlds for web and mobile. Each creator got a space for their community, with chat, a board, a 3D
+        world, live events and a shop.
       </p>
 
       <Figure src="app-screens.webp" caption="Murder With My Husband World on iOS: home, board, chats, the 3D space, people." width={1600} height={617} />

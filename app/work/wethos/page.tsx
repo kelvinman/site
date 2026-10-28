@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Wethos · Kelvin Man",
   description: "Templates that cut proposal writing from hours to one, and the design system behind them.",
   robots: { index: false, follow: false },
+  // The card sits outside /work/wethos, so link previews can load it without the password.
+  openGraph: { title: "Wethos · Kelvin Man", url: "/work/wethos", siteName: "Kelvin Man", type: "article", images: "/og/work-wethos.png" },
+  twitter: { card: "summary_large_image", images: "/og/work-wethos.png" },
 };
 
 const SECTIONS = [
@@ -103,8 +106,9 @@ export default function Wethos() {
 
       <p className={styles.body}>
         Pricing was the hardest part of a proposal for most people. Wethos already had a modular way to put a project
-        together and price it, with levers for time and effort. Templates sit on top of that: whole projects, a motion
-        graphic or a paid social campaign, scoped and priced by people in the industry who do that work.
+        together and price it, with levers for time and effort. Templates were built on that system. Each one is a whole
+        project, such as a motion graphic or a paid social campaign, scoped and priced by people in the industry who do
+        that work.
       </p>
 
       <p className={styles.body}>
@@ -140,8 +144,8 @@ export default function Wethos() {
       </h2>
 
       <p className={styles.body}>
-        As much about running a business as about design. Talking to customers and building for them, I learned how
-        people price a project, break it down, put a proposal together and win work.
+        I learned as much about running a business as about design. Talking to customers and building for them, I saw
+        how people price a project, break it down, put a proposal together and win work.
       </p>
 
       <p className={styles.body}>

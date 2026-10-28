@@ -18,7 +18,7 @@ export default {
 
     if (url.pathname === "/unlock" && request.method === "POST") return unlock(request, env, url);
     if (isCaseStudy(url.pathname) && !(await hasAccess(request, env))) {
-      return lockedPage(url.pathname, false);
+      return lockedPage(url.pathname, false, await shareTags(request, env, url.pathname));
     }
     return env.ASSETS.fetch(request);
   },
@@ -68,8 +68,18 @@ async function unlock(request, env, url) {
   });
 }
 
+/**
+ * The case study's own link preview tags (og: and twitter:), copied from its exported page, so a
+ * link shared in a message shows its card even though the page itself needs the password.
+ */
+async function shareTags(request, env, path) {
+  const res = await env.ASSETS.fetch(new URL(path.split("/").slice(0, 3).join("/"), request.url));
+  if (!res.ok) return "";
+  return ((await res.text()).match(/<meta (?:property="og:|name="twitter:)[^>]*>/g) || []).join("\n");
+}
+
 /** A small page in the site's colours asking for the password. */
-function lockedPage(next, wrong) {
+function lockedPage(next, wrong, tags = "") {
   const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -77,6 +87,7 @@ function lockedPage(next, wrong) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Case study · Kelvin Man</title>
+${tags}
 <style>
 :root { --background: #f8f7f4; --foreground: #1f1b18; --muted: #77706a; --accent: #b0502c; color-scheme: light dark; }
 @media (prefers-color-scheme: dark) { :root { --background: #1c1a18; --foreground: #f3f1ee; --muted: #a39d96; --accent: #e48a62; } }
@@ -107,7 +118,8 @@ ${wrong ? '<p class="error" role="alert">That password didn\'t work.</p>' : ""}
 </body>
 </html>`;
   return new Response(html, {
-    status: 401,
+    // 200 rather than 401 for the first view, since link previews skip pages that refuse them.
+    status: wrong ? 401 : 200,
     headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow" },
   });
 }

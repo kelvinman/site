@@ -18,8 +18,11 @@ import demos from "./demos.module.css";
 export const metadata: Metadata = {
   title: "DecorX · Kelvin Man",
   description:
-    "Designing and building an AI imagery platform for furniture brands.",
+    "Designing and building an AI imagery platform for furniture retailers, manufacturers and interior designers.",
   robots: { index: false, follow: false },
+  // The card sits outside /work/decorx, so link previews can load it without the password.
+  openGraph: { title: "DecorX · Kelvin Man", url: "/work/decorx", siteName: "Kelvin Man", type: "article", images: "/og/work-decorx.png" },
+  twitter: { card: "summary_large_image", images: "/og/work-decorx.png" },
 };
 
 const SECTIONS = [
@@ -89,9 +92,9 @@ export default function DecorX() {
       </p>
 
       <p className={styles.body}>
-        An AI imagery platform for furniture brands. I built the platform it
-        runs on, from an empty repo to the product Wayfair, Nebraska Furniture
-        Mart and Kathy Kuo Home use, in 9 months.
+        I designed and built the core of DecorX, an AI imagery platform for furniture retailers, manufacturers and
+        interior designers. In 9 months I took it from a prototype to the product Wayfair, Nebraska Furniture Mart and
+        Kathy Kuo Home use.
       </p>
 
       <Clip
@@ -101,7 +104,7 @@ export default function DecorX() {
 
       <Numbers
         items={[
-          ["9 months", "from empty repo"],
+          ["9 months", "from prototype to platform"],
           ["70%", "of 1,600 commits"],
           ["438", "projects in a week"],
         ]}
@@ -112,14 +115,14 @@ export default function DecorX() {
       </h2>
 
       <p className={styles.body}>
-        Furniture brands need images of every product, in every fabric, in rooms
-        that look like their brand. General AI tools don&apos;t know the catalog
-        or the brand.
+        Furniture retailers and brands need images of every product, in every
+        fabric, in rooms that look like their brand. General AI tools don&apos;t
+        know the catalog or the brand.
       </p>
 
       <p className={styles.body}>
-        DecorX starts from a style kit: a brand&apos;s look, captured from a few
-        reference images.
+        Every DecorX project starts from a style kit, which captures a
+        brand&apos;s look from a few reference images.
       </p>
 
       <Clip
@@ -138,16 +141,17 @@ export default function DecorX() {
       </h2>
 
       <p className={styles.body}>
-        DecorX began as two products: Canvas, built by our team in China from my
-        designs, and Portal, a prototype I started in January 2026.
+        DecorX began as two products. Our team in China built Canvas, for
+        interior designers, from my designs. I started Portal, for retailers, as
+        a prototype in January 2026.
       </p>
 
       <TwoProducts />
 
       <p className={styles.body}>
         Customers wanted both, and two links confused them. Rather than merge
-        two builds, we moved everyone onto Portal, and the same team builds on
-        it now.
+        two builds, we moved customers onto Portal, and the team in China builds
+        on it now.
       </p>
 
       <h2 id="designer" className={styles.subhead}>
@@ -181,9 +185,8 @@ export default function DecorX() {
       />
 
       <p className={styles.body}>
-        For work that has to be right first time, an agent reviews each image
-        and only the best comes back. It costs four times the credits, so
-        it&apos;s off by default.
+        For work that has to be right first time, you can turn on evaluation. DecorX makes several versions of the
+        image, judges them and makes more if none is good enough, and only the best comes back.
       </p>
 
       <h2 id="fabric" className={styles.subhead}>
@@ -191,9 +194,8 @@ export default function DecorX() {
       </h2>
 
       <p className={styles.body}>
-        Fabric Mapper lets you set how a fabric&apos;s print sits on a sofa
-        before anything is generated, so the result keeps that placement. A
-        real sofa, with its real segments:
+        Fabric Mapper works on any furniture that comes in different fabrics and finishes. You place the swatch on one
+        part before anything is generated, and DecorX applies that placement to the rest. Try it on a sofa:
       </p>
 
       <FabricMapper />
@@ -203,8 +205,9 @@ export default function DecorX() {
       </h2>
 
       <p className={styles.body}>
-        At High Point Market, every buyer&apos;s picks became a project with
-        their own style kit and room scenes, in about 5 minutes.
+        At High Point Market, reps logged each buyer&apos;s picks, and DecorX
+        turned them into a project with the buyer&apos;s own style kit and room
+        scenes in about 5 minutes.
       </p>
 
       <Numbers
@@ -216,9 +219,9 @@ export default function DecorX() {
       />
 
       <p className={styles.body}>
-        What didn&apos;t land: reps skipped the share page and sent the images
-        in their own email threads. Next time I&apos;d build the follow-up
-        around that.
+        One part didn&apos;t work. Reps skipped the share page and sent the images in their own email threads with
+        buyers. That thread is where a rep&apos;s relationship with a buyer lives, so the next version should work
+        inside it.
       </p>
 
       <h2 id="taking-turns" className={styles.subhead}>
@@ -248,7 +251,8 @@ export default function DecorX() {
       </h2>
 
       <p className={styles.body}>
-        Every change, from the team or an agent, ships the same way:
+        Every change ships the same way, whether an engineer or an AI coding
+        agent wrote it.
       </p>
 
       <Workflow />
@@ -270,7 +274,7 @@ export default function DecorX() {
 
       <ul className={styles.bullets}>
         <li>
-          <strong>It&apos;s bigger than pixels.</strong> Sales, docs, the changelog, code review and CI all ship the product.
+          <strong>Design is more than screens.</strong> Sales, docs, the changelog, code review and CI are all part of shipping the product.
         </li>
         <li>
           <strong>Close the gap between idea and shipping.</strong> Share a real prototype, not a mockup.
