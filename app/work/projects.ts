@@ -227,7 +227,7 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-/** Things I made on my own, after the client work. */
+/** Things I made on my own, after the client work, strongest first. Same order as PROJECTS in app/projects.ts. */
 export const OWN: Project[] = [
   {
     slug: "founding-designers",
@@ -245,19 +245,19 @@ export const OWN: Project[] = [
       "A job board for founding designer roles at early-stage startups, and the people behind each one. I designed and built it, and it updates every week.",
   },
   {
-    slug: "defer",
-    name: "Defer",
-    href: "/defer/",
-    role: "Artist and developer",
+    slug: "understudy",
+    name: "Understudy",
+    href: "https://github.com/kelvinman/understudy",
+    role: "Designer and developer",
     years: "2026",
     cover: {
-      src: "/work/cover-defer.webp",
-      alt: "Defer: ink-like trails of a crowd of walkers bending around one source",
-      width: 1080,
-      height: 640,
+      src: "/work/cover-understudy.webp",
+      alt: "Understudy: a review page built with the theme, with a list of copy changes beside the selected one and its Approve and Request changes buttons",
+      width: 1280,
+      height: 760,
     },
     summary:
-      "A generative piece asking the same question as The Last Apostate at the scale of a crowd: walkers on a field either think for themselves or follow, and the more they follow, the stronger one source pulls. The concept, rules and core shader are mine; the scaffolding was built with AI.",
+      "An open-source theme that makes Claude artifacts look like part of the Claude desktop app. I measured its colors from the app in light and dark, and set the dark values lower because the artifact pane draws dark colors lighter. Claude wrote most of the CSS and example pages as I directed.",
   },
   {
     slug: "the-last-apostate",
@@ -273,6 +273,21 @@ export const OWN: Project[] = [
     },
     summary: "A browser game about how much of your thinking you hand over to AI, which I directed and shipped with AI.",
     links: [{ label: "The note", href: "/notes/the-thinking-i-kept" }],
+  },
+  {
+    slug: "defer",
+    name: "Defer",
+    href: "/defer/",
+    role: "Artist and developer",
+    years: "2026",
+    cover: {
+      src: "/work/cover-defer.webp",
+      alt: "Defer: ink-like trails of a crowd of walkers bending around one source",
+      width: 1080,
+      height: 640,
+    },
+    summary:
+      "A generative piece asking the same question as The Last Apostate at the scale of a crowd: walkers on a field either think for themselves or follow, and the more they follow, the stronger one source pulls. The concept, rules and core shader are mine; the scaffolding was built with AI.",
   },
   {
     slug: "verified-icons",
