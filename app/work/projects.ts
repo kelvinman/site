@@ -24,6 +24,8 @@ export type Project = {
   line?: string;
   /** Someone who worked with me there, in their own words. Trim with an ellipsis, never reword. */
   quote?: { text: string; who: string };
+  /** For things I made on my own: the one line in the home page's Projects list, and its link when it differs from href. */
+  home?: { summary: string; href?: string };
 };
 
 export const PROJECTS: Project[] = [
@@ -227,7 +229,7 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-/** Things I made on my own, after the client work, strongest first. Same order as PROJECTS in app/projects.ts. */
+/** Things I made on my own, after the client work, strongest first. The home page's Projects list reads from here too. */
 export const OWN: Project[] = [
   {
     slug: "founding-designers",
@@ -243,6 +245,7 @@ export const OWN: Project[] = [
     },
     summary:
       "A job board for founding designer roles at early-stage startups, and the people behind each one. I designed and built it, and it updates every week.",
+    home: { summary: "A job board for founding designer roles at early-stage startups, and the people behind each one." },
   },
   {
     slug: "understudy",
@@ -258,6 +261,7 @@ export const OWN: Project[] = [
     },
     summary:
       "An open-source theme that makes Claude artifacts look like part of the Claude desktop app. I measured its colors from the app in light and dark, and set the dark values lower because the artifact pane draws dark colors lighter. Claude wrote most of the CSS and example pages as I directed.",
+    home: { summary: "A theme that makes Claude artifacts look like part of the Claude desktop app. I measured its colors from the app, in light and dark." },
   },
   {
     slug: "the-last-apostate",
@@ -273,6 +277,7 @@ export const OWN: Project[] = [
     },
     summary: "A browser game about how much of your thinking you hand over to AI, which I directed and shipped with AI.",
     links: [{ label: "The note", href: "/notes/the-thinking-i-kept" }],
+    home: { summary: "A browser game about how much of your thinking you hand over to AI, which I directed and shipped with AI.", href: "https://kelvinman.github.io/the-last-apostate/" },
   },
   {
     slug: "defer",
@@ -288,6 +293,7 @@ export const OWN: Project[] = [
     },
     summary:
       "A generative piece asking the same question as The Last Apostate at the scale of a crowd: walkers on a field either think for themselves or follow, and the more they follow, the stronger one source pulls. The concept, rules and core shader are mine; the scaffolding was built with AI.",
+    home: { summary: "A generative piece about how much of your thinking you hand over, at the scale of a crowd. It runs in the browser." },
   },
   {
     slug: "verified-icons",
@@ -302,5 +308,6 @@ export const OWN: Project[] = [
       height: 788,
     },
     summary: "Verified badges I drew for Moment and shared on Figma Community, where 18.1k people have used them.",
+    home: { summary: "Verified badges I drew for Moment and shared on Figma Community, used by 18.1k people." },
   },
 ];

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { NOTES } from "./notes/notes";
-import { PROJECTS } from "./projects";
 import { WORK } from "./work";
+import { OWN } from "./work/projects";
 
 /** Opens in a new tab, for links that leave the site. */
 function Out({ href, children }: { href: string; children: React.ReactNode }) {
@@ -81,12 +81,16 @@ export default function Home() {
             Projects
           </h2>
           <ul className={styles.notes}>
-            {PROJECTS.map((project) => (
-              <li key={project.name}>
-                <Out href={project.href}>{project.name}</Out>
-                <span className={styles.summary}>{project.summary}</span>
-              </li>
-            ))}
+            {OWN.flatMap((project) =>
+              project.home && project.href ? (
+                <li key={project.slug}>
+                  <Out href={project.home.href ?? project.href}>{project.name}</Out>
+                  <span className={styles.summary}>{project.home.summary}</span>
+                </li>
+              ) : (
+                []
+              ),
+            )}
           </ul>
         </section>
 
