@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import styles from "../../page.module.css";
 import { NoteHeader } from "../NoteHeader";
 import { NoteLayout } from "../NoteLayout";
+import { MentionedIn } from "../MentionedIn";
 import { CodeBlock } from "../CodeBlock";
 import { SafariPhone } from "../demos/SafariPhone";
 
@@ -124,6 +125,8 @@ useEffect(() => {
         <p className={styles.meta}>
           Tested in the iOS simulator in October 2026. Safari changes this between releases, so test it again on newer versions.
         </p>
+
+        <MentionedIn slug="under-the-glass" />
     </NoteLayout>
   );
 }

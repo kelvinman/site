@@ -5,6 +5,7 @@
   "https://github.com": "/peek/github-com.jpg",
   "https://github.com/Mirascope/mirascope": "/peek/github-com-mirascope-mirascope.jpg",
   "https://github.com/kelvinman/the-last-apostate": "/peek/github-com-kelvinman-the-last-apostate.jpg",
+  "https://github.com/kelvinman/understudy": "/peek/github-com-kelvinman-understudy.jpg",
   "https://kelvinman.github.io/the-last-apostate/": "/peek/kelvinman-github-io-the-last-apostate.jpg",
   "https://leftfieldlabs.com": "/peek/leftfieldlabs-com.jpg",
   "https://meta.com": "/peek/meta-com.jpg",
@@ -25,5 +26,16 @@
   "/work/mirascope": "/peek/work-mirascope.jpg",
   "/work/moment": "/peek/work-moment.jpg",
   "/work/sidecar-legal": "/peek/work-sidecar-legal.jpg",
-  "/work/wethos": "/peek/work-wethos.jpg"
+  "/work/wethos": "/peek/work-wethos.jpg",
+  "/work#decorx": "/peek/entry-decorx.jpg",
+  "/work#sidecar-legal": "/peek/entry-sidecar-legal.jpg",
+  "/work#oppy": "/peek/entry-oppy.jpg",
+  "/work#mirascope": "/peek/entry-mirascope.jpg",
+  "/work#moment": "/peek/entry-moment.jpg",
+  "/work#wethos": "/peek/entry-wethos.jpg",
+  "/work#founding-designers": "/peek/entry-founding-designers.jpg",
+  "/work#understudy": "/peek/entry-understudy.jpg",
+  "/work#the-last-apostate": "/peek/entry-the-last-apostate.jpg",
+  "/work#defer": "/peek/entry-defer.jpg",
+  "/work#verified-icons": "/peek/entry-verified-icons.jpg"
 }

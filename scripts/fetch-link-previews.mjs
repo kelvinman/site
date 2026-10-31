@@ -108,6 +108,18 @@ await Promise.all(
   ),
 );
 
+// A note links to a project at its entry on /work (app/Mention.tsx), so that link uses the entry's cover.
+const entries = readFileSync(new URL("work/projects.ts", APP), "utf8")
+  .split(/\n    slug: "/)
+  .slice(1)
+  .map((chunk) => ({ slug: chunk.slice(0, chunk.indexOf('"')), cover: chunk.match(/\n    cover: \{\s*src: "\/([^"]+)"/)?.[1] }))
+  .filter(({ cover }) => cover && existsSync(new URL(cover, PUBLIC)));
+await Promise.all(
+  entries.map(({ slug, cover }) =>
+    sharp(new URL(cover, PUBLIC).pathname).resize(W, H, { fit: "cover" }).jpeg({ quality: 78 }).toFile(new URL(`entry-${slug}.jpg`, DIR).pathname),
+  ),
+);
+
 const manifest = Object.fromEntries([
   ...[...hrefs]
     .sort()
@@ -115,5 +127,6 @@ const manifest = Object.fromEntries([
     .map((href) => [href, `/peek/${slugOf(href)}.jpg`]),
   ...notes.map(({ slug }) => [`/notes/${slug}`, `/peek/notes-${slug}.jpg`]),
   ...work.map((slug) => [`/work/${slug}`, `/peek/work-${slug}.jpg`]),
+  ...entries.map(({ slug }) => [`/work#${slug}`, `/peek/entry-${slug}.jpg`]),
 ]);
 writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
