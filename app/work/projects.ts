@@ -276,7 +276,6 @@ export const OWN: Project[] = [
       height: 800,
     },
     summary: "A browser game about how much of your thinking you hand over to AI, which I directed and shipped with AI.",
-    links: [{ label: "The note", href: "/notes/the-thinking-i-kept" }],
     home: { summary: "A browser game about how much of your thinking you hand over to AI, which I directed and shipped with AI.", href: "https://kelvinman.github.io/the-last-apostate/" },
   },
   {

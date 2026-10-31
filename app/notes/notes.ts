@@ -1,12 +1,14 @@
 /** Every note on the site, newest first. Each one has its own page under app/notes/. `peek` is an
- * image from inside the note, in public/, shown when the pointer is over a link to it. */
-export const NOTES = [
+ * image from inside the note, in public/, shown when the pointer is over a link to it. `about` is the
+ * project a note is about, which links back to it from /work without a link in the note's own text. */
+export const NOTES: { slug: string; title: string; date: string; summary: string; peek: string; about?: string }[] = [
   {
     slug: "the-thinking-i-kept",
     title: "The thinking I kept",
     date: "2026-10-25",
     summary: "On making The Last Apostate, a game about how much of your thinking you've handed over.",
     peek: "/notes/the-last-apostate-cycle.jpg",
+    about: "the-last-apostate",
   },
   {
     slug: "under-the-glass",

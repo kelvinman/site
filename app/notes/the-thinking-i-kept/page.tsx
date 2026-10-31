@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import styles from "../../page.module.css";
 import { NoteHeader } from "../NoteHeader";
 import { NoteLayout } from "../NoteLayout";
+import { MentionedIn } from "../MentionedIn";
 import { EyeFromRules } from "../demos/EyeFromRules";
 import { GameWindow } from "../demos/GameWindow";
 import { WhoMadeWhat } from "../demos/WhoMadeWhat";
@@ -80,6 +81,8 @@ export default function Note() {
           <Out href="https://kelvinman.github.io/the-last-apostate/">Play The Last Apostate</Out> ·{" "}
           <Out href="https://github.com/kelvinman/the-last-apostate">Read the source</Out>
         </p>
+
+        <MentionedIn slug="the-thinking-i-kept" />
     </NoteLayout>
   );
 }

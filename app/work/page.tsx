@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import home from "../page.module.css";
+import { mentionsOf } from "../mentions";
 import { NoteLayout } from "../notes/NoteLayout";
 import { OWN, PROJECTS, type Cover, type Link as Out, type Project } from "./projects";
 import styles from "./work.module.css";
@@ -58,6 +59,11 @@ function CoverImage({ cover, href }: { cover: Cover; href?: string }) {
 }
 
 function Entry({ project }: { project: Project }) {
+  // Notes that mention this entry link to it, so it links back to them after its own links.
+  const links = [
+    ...(project.links ?? []),
+    ...mentionsOf(project.slug).map((note) => ({ label: note.title, href: `/notes/${note.slug}` })),
+  ];
   return (
     <article id={project.slug} className={styles.project}>
       <div className={styles.head}>
@@ -106,7 +112,7 @@ function Entry({ project }: { project: Project }) {
         </blockquote>
       )}
 
-      {project.links && <Links links={project.links} />}
+      {links.length > 0 && <Links links={links} />}
 
       {project.caseStudy && (
         <p className={styles.links}>
