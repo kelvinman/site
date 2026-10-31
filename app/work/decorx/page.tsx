@@ -116,8 +116,9 @@ export default function DecorX() {
 
       <p className={styles.body}>
         Furniture retailers and brands need images of every product, in every
-        fabric, in rooms that look like their brand. General AI tools don&apos;t
-        know the catalog or the brand.
+        fabric, in rooms that look like their brand. Photo shoots and 3D
+        renders cost hundreds to thousands of dollars for each image. General
+        AI tools don&apos;t know the catalog or the brand.
       </p>
 
       <p className={styles.body}>
