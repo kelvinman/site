@@ -1,0 +1,278 @@
+(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var e=[`hold`,`tidal`,`wander`,`overlap`,`audience`];function t(e,t,s){return e===`tidal`?r(t):e===`wander`?i(t):e===`overlap`?a(t):e===`audience`?o(t,s):n(t)}function n(e){let t=0;return{update(n){t+=n;let r=Math.min(1,t/e);return{pull:r,drains:[[.5,.5,r]],status:``}}}}function r(e){let t=0;return{update(n){t+=n/e;let r=.5+.38*Math.sin(t*2.1-1.57)+.22*Math.sin(t*3.7+2)+.12*Math.sin(t*6.3+4.1),i=Math.min(1,Math.max(0,r));return{pull:i,drains:[[.5,.5,i]],status:``}}}}function i(e){let t=`drain`,n=0,r=0,i=1,a=[.5,.5],o=.12;return{update(s){if(t===`drain`)n=Math.min(1,n+s/e),n>=1&&(t=`hold`,r=e*.25);else if(t===`hold`)r-=s,r<=0&&(t=`release`);else if(n=Math.max(o,n-s/(e*2)),n<=o){let e;do e=[.15+Math.random()*.7,.15+Math.random()*.7];while(Math.hypot(e[0]-a[0],e[1]-a[1])<.3);a=e,t=`drain`,i++}return{pull:n,drains:[[a[0],a[1],n]],status:`drain ${i}, ${t}`}}}}function a(e){let t=(e,t)=>({x:e,y:t,strength:0,phase:`drain`,timer:0}),n=[t(.5,.5)],r=1;return{update(i){for(let t of n)t.phase===`drain`?(t.strength=Math.min(1,t.strength+i/e),t.strength>=1&&(t.phase=`hold`,t.timer=e*.25)):t.phase===`hold`?(t.timer-=i,t.timer<=0&&(t.phase=`release`)):t.strength=Math.max(0,t.strength-i/(e*2));let a=n[n.length-1];if(a.phase===`release`&&a.strength<.5){let e,i;do e=Math.random(),i=Math.random();while(Math.hypot(e-a.x,i-a.y)<.3);n.push(t(e,i)),r++}return n=n.filter(e=>e.phase!==`release`||e.strength>0),{pull:Math.max(.12,...n.map(e=>e.strength)),drains:n.map(e=>[e.x,e.y,e.strength]),status:`drain ${r}, ${n.length} open`}}}}function o(e,t){let n=0,r=0,i=-1/0,a=0;return addEventListener(`pointermove`,()=>i=performance.now()),t&&s(e=>a=e),{setPeople(e){r=e},update(o){let s=+(performance.now()-i<3e3),c=a>.015?Math.min(5,Math.ceil(a*60)):0,l=Math.max(r,s,c),u=1-Math.exp(-.6*l),d=u>n?1/e:1/(e*2);return n+=Math.sign(u-n)*Math.min(Math.abs(u-n),d*o),{pull:n,drains:[[.5,.5,n]],status:`${l} watching${t?`, motion ${a.toFixed(3)}`:``}`}}}}async function s(e){let t=await navigator.mediaDevices.getUserMedia({video:{width:160,height:120}}),n=document.createElement(`video`);n.srcObject=t,n.muted=!0,await n.play();let r=document.createElement(`canvas`);r.width=32,r.height=24;let i=r.getContext(`2d`,{willReadFrequently:!0}),a=null,o=0;setInterval(()=>{i.drawImage(n,0,0,r.width,r.height);let t=i.getImageData(0,0,r.width,r.height).data;if(a){let n=0;for(let e=0;e<t.length;e+=4)n+=Math.abs(t[e+1]-a[e+1]);o+=(n/(t.length/4)/255-o)*.3,e(o)}a=t},200)}function c(e,t,n){let r=(t,n)=>{let r=e.createShader(t);if(e.shaderSource(r,n),e.compileShader(r),!e.getShaderParameter(r,e.COMPILE_STATUS))throw Error(`Shader compile failed:\n${e.getShaderInfoLog(r)}`);return r},i=e.createProgram();if(e.attachShader(i,r(e.VERTEX_SHADER,t)),e.attachShader(i,r(e.FRAGMENT_SHADER,n)),e.linkProgram(i),!e.getProgramParameter(i,e.LINK_STATUS))throw Error(`Program link failed:\n${e.getProgramInfoLog(i)}`);return i}function l(e,t,n,r,i=null){let a=e.createTexture();e.bindTexture(e.TEXTURE_2D,a),r===`agents`||r===`memory`?(e.texImage2D(e.TEXTURE_2D,0,e.RGBA32F,t,n,0,e.RGBA,e.FLOAT,i),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_MIN_FILTER,e.NEAREST),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_MAG_FILTER,e.NEAREST),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_WRAP_S,e.CLAMP_TO_EDGE),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_WRAP_T,e.CLAMP_TO_EDGE)):(e.texImage2D(e.TEXTURE_2D,0,e.RGBA16F,t,n,0,e.RGBA,e.HALF_FLOAT,i),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_MIN_FILTER,e.LINEAR),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_MAG_FILTER,e.LINEAR),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_WRAP_S,e.REPEAT),e.texParameteri(e.TEXTURE_2D,e.TEXTURE_WRAP_T,e.REPEAT));let o=e.createFramebuffer();if(e.bindFramebuffer(e.FRAMEBUFFER,o),e.framebufferTexture2D(e.FRAMEBUFFER,e.COLOR_ATTACHMENT0,e.TEXTURE_2D,a,0),e.checkFramebufferStatus(e.FRAMEBUFFER)!==e.FRAMEBUFFER_COMPLETE)throw Error(`Framebuffer for ${r} is not complete`);return e.clearColor(0,0,0,0),i||e.clear(e.COLOR_BUFFER_BIT),e.bindFramebuffer(e.FRAMEBUFFER,null),{tex:a,fbo:o,width:t,height:n}}function u(e,t){e.deleteTexture(t.tex),e.deleteFramebuffer(t.fbo)}var d=class{read;write;constructor(e,t){this.read=e,this.write=t}swap(){[this.read,this.write]=[this.write,this.read]}};function f(e,t,n,r,i){e.activeTexture(e.TEXTURE0+i),e.bindTexture(e.TEXTURE_2D,r),e.uniform1i(e.getUniformLocation(t,n),i)}var p=`#version 300 es
+out vec2 v_uv;
+void main() {
+vec2 p = vec2((gl_VertexID << 1) & 2, gl_VertexID & 2);
+v_uv = p;
+gl_Position = vec4(p * 2.0 - 1.0, 0.0, 1.0);
+}
+`,ee=`#version 300 es
+precision highp float;
+uniform sampler2D u_agents;
+uniform sampler2D u_trail;
+uniform vec2 u_resolution;
+uniform float u_frame;
+uniform float u_pull;
+uniform float u_speed;
+uniform float u_wander;
+uniform float u_sensorAngle;
+uniform float u_sensorDistance;
+uniform float u_turnSpeed;
+out vec4 outAgent;
+float hash(vec2 p) {
+vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+p3 += dot(p3, p3.yzx + 33.33);
+return fract((p3.x + p3.y) * p3.z);
+}
+float rand(float seed) {
+return hash(gl_FragCoord.xy + vec2(mod(u_frame, 1024.0) * 17.0, seed * 131.0));
+}
+void main() {
+vec4 agent = texelFetch(u_agents, ivec2(gl_FragCoord.xy), 0);
+vec2 pos = agent.xy;
+float heading = agent.z;
+float stubbornness = abs(agent.w);
+bool following = agent.w < 0.0;
+heading += (rand(1.0) - 0.5) * u_wander;
+vec2 dir = vec2(cos(heading), sin(heading));
+pos = fract(pos + dir * u_speed / u_resolution);
+outAgent = vec4(pos, heading, following ? -stubbornness : stubbornness);
+}
+`,te=`#version 300 es
+precision highp float;
+uniform sampler2D u_agents;
+uniform sampler2D u_trail;
+uniform vec2 u_resolution;
+uniform float u_frame;
+uniform float u_pull;
+uniform float u_speed;
+uniform float u_wander;
+uniform float u_sensorAngle;
+uniform float u_sensorDistance;
+uniform float u_turnSpeed;
+uniform vec3 u_drains[4];
+uniform int u_drainCount;
+uniform float u_sourceTurn;
+uniform float u_reach;
+uniform float u_followWobble;
+uniform float u_spiral;
+uniform float u_eye;
+out vec4 outAgent;
+float hash(vec2 p) {
+vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+p3 += dot(p3, p3.yzx + 33.33);
+return fract((p3.x + p3.y) * p3.z);
+}
+float rand(float seed) {
+return hash(gl_FragCoord.xy + vec2(mod(u_frame, 1024.0) * 17.0, seed * 131.0));
+}
+float sense(vec2 pos, float angle) {
+vec2 dir = vec2(cos(angle), sin(angle));
+vec2 point = pos + dir * u_sensorDistance / u_resolution;
+return texture(u_trail, point).r;
+}
+void main() {
+vec4 agent = texelFetch(u_agents, ivec2(gl_FragCoord.xy), 0);
+vec2 pos = agent.xy;
+float heading = agent.z;
+float stubbornness = abs(agent.w);
+bool following = agent.w < 0.0;
+float dice = rand(2.0);
+if (!following) {
+float gap = u_pull - stubbornness;
+if (gap > 0.0 && dice < gap * 0.02) following = true;
+} else {
+float leave = 0.0002 + stubbornness * (1.0 - u_pull) * 0.01;
+if (dice < leave) following = false;
+}
+if (following) {
+float left = sense(pos, heading + u_sensorAngle);
+float centre = sense(pos, heading);
+float right = sense(pos, heading - u_sensorAngle);
+if (centre > left && centre > right) {
+} else if (centre < left && centre < right) {
+heading += (rand(4.0) < 0.5 ? 1.0 : -1.0) * u_turnSpeed;
+} else if (left > right) {
+heading += u_turnSpeed;
+} else {
+heading -= u_turnSpeed;
+}
+for (int i = 0; i < 4; i++) {
+if (i >= u_drainCount) break;
+vec2 d = u_drains[i].xy - pos;
+d -= round(d);
+float seam = 1.0 - smoothstep(0.35, 0.5, max(abs(d.x), abs(d.y)));
+d *= u_resolution;
+float dist = length(d);
+float toward = atan(d.y, d.x) + u_spiral * (1.0 - smoothstep(u_eye, u_eye * 4.0, dist));
+float diff = atan(sin(toward - heading), cos(toward - heading));
+float weight = u_drains[i].z / (1.0 + dist / u_reach) * seam;
+heading += clamp(diff, -1.0, 1.0) * u_sourceTurn * weight;
+}
+heading += (rand(5.0) - 0.5) * u_followWobble;
+} else {
+heading += (rand(1.0) - 0.5) * u_wander;
+}
+vec2 dir = vec2(cos(heading), sin(heading));
+pos = fract(pos + dir * u_speed / u_resolution);
+outAgent = vec4(pos, heading, following ? -stubbornness : stubbornness);
+}
+`,ne=`#version 300 es
+uniform sampler2D u_agents;
+flat out float v_following;
+void main() {
+int width = textureSize(u_agents, 0).x;
+ivec2 cell = ivec2(gl_VertexID % width, gl_VertexID / width);
+vec4 agent = texelFetch(u_agents, cell, 0);
+v_following = agent.w < 0.0 ? 1.0 : 0.0;
+gl_Position = vec4(agent.xy * 2.0 - 1.0, 0.0, 1.0);
+gl_PointSize = 1.0;
+}
+`,re=`#version 300 es
+precision highp float;
+uniform vec2 u_follow;
+uniform vec2 u_think;
+flat in float v_following;
+out vec4 outColor;
+void main() {
+outColor = vec4(v_following > 0.5 ? u_follow : u_think, 0.0, 0.0);
+}
+`,ie=`#version 300 es
+precision highp float;
+uniform sampler2D u_trail;
+uniform vec4 u_diffuse;
+uniform vec4 u_decay;
+out vec4 outColor;
+void main() {
+ivec2 size = textureSize(u_trail, 0);
+ivec2 cell = ivec2(gl_FragCoord.xy);
+vec4 sum = vec4(0.0);
+for (int dy = -1; dy <= 1; dy++) {
+for (int dx = -1; dx <= 1; dx++) {
+sum += texelFetch(u_trail, (cell + ivec2(dx, dy) + size) % size, 0);
+}
+}
+vec4 here = texelFetch(u_trail, cell, 0);
+outColor = mix(here, sum / 9.0, u_diffuse) * u_decay;
+}
+`,ae=`#version 300 es
+precision highp float;
+uniform sampler2D u_trail;
+uniform sampler2D u_patina;
+uniform float u_exposure;
+uniform float u_thinkExposure;
+uniform float u_patinaExposure;
+uniform int u_palette;
+in vec2 v_uv;
+out vec4 outColor;
+float hash(vec2 p) {
+vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+p3 += dot(p3, p3.yzx + 33.33);
+return fract((p3.x + p3.y) * p3.z);
+}
+float noise(vec2 p) {
+vec2 i = floor(p);
+vec2 f = fract(p);
+f = f * f * (3.0 - 2.0 * f);
+return mix(mix(hash(i), hash(i + vec2(1, 0)), f.x), mix(hash(i + vec2(0, 1)), hash(i + vec2(1, 1)), f.x), f.y);
+}
+float fibre(vec2 px) {
+float f = 0.0;
+for (int i = 0; i < 3; i++) {
+float a = float(i) * 2.1 + 0.4;
+mat2 r = mat2(cos(a), -sin(a), sin(a), cos(a));
+f += noise((r * px) * vec2(0.012, 0.35));
+}
+return f / 3.0 * 0.7 + noise(px * 0.01) * 0.3;
+}
+float bleed(vec2 uv) {
+vec2 texel = 1.0 / vec2(textureSize(u_trail, 0));
+float sum = 0.0;
+for (int i = 0; i < 12; i++) {
+float a = float(i) * 0.5236;
+vec2 d = vec2(cos(a), sin(a)) * texel;
+sum += texture(u_trail, uv + d * 4.0).r + texture(u_trail, uv + d * 10.0).r;
+}
+return sum / 24.0;
+}
+void main() {
+vec4 t = texture(u_trail, v_uv);
+vec4 p = texture(u_patina, v_uv);
+float follow = 1.0 - exp(-t.r * u_exposure);
+float think = 1.0 - exp(-t.g * u_thinkExposure);
+float wornFollow = 1.0 - exp(-p.r * u_patinaExposure);
+float wornThink = 1.0 - exp(-p.g * u_patinaExposure);
+vec3 color;
+if (u_palette == 1) {
+color = vec3(0.030, 0.026, 0.024);
+color = mix(color, vec3(0.13, 0.11, 0.10), wornThink);
+color = mix(color, vec3(0.32, 0.20, 0.11), wornFollow);
+color = mix(color, vec3(0.20, 0.18, 0.17), think);
+vec3 river = follow < 0.5
+? mix(vec3(0.45, 0.27, 0.13), vec3(0.78, 0.58, 0.32), follow * 2.0)
+: mix(vec3(0.78, 0.58, 0.32), vec3(0.96, 0.92, 0.84), follow * 2.0 - 1.0);
+color = mix(color, river, smoothstep(0.0, 0.35, follow));
+} else if (u_palette == 2) {
+color = vec3(0.91, 0.88, 0.81);
+color = mix(color, vec3(0.80, 0.76, 0.69), wornThink);
+color = mix(color, vec3(0.62, 0.46, 0.30), wornFollow);
+color = mix(color, vec3(0.66, 0.64, 0.60), think);
+color = mix(color, vec3(0.07, 0.06, 0.06), follow);
+} else if (u_palette == 3) {
+vec2 px = gl_FragCoord.xy;
+float grain = fibre(px);
+float laid = 1.0 - exp(-sqrt(p.r) * u_patinaExposure * 1.5);
+float laidAlone = 1.0 - exp(-p.g * u_patinaExposure * 0.6);
+vec3 paper = vec3(0.935, 0.915, 0.865) * (0.96 + 0.06 * grain);
+paper *= mix(vec3(1.0), vec3(0.93, 0.88, 0.78), smoothstep(0.1, 0.6, laid) * 0.35);
+float dry = smoothstep(0.2, 0.65, laid + (grain - 0.5) * 0.5);
+float stroke = laid * mix(dry, 1.0, smoothstep(0.5, 0.85, laid));
+float wet = (1.0 - exp(-bleed(v_uv) * u_exposure * 1.2)) * smoothstep(0.3, 0.75, grain) * 0.2;
+float ink = clamp(stroke * 0.9 + laidAlone * 0.12 + wet + think * 0.04, 0.0, 0.92);
+vec3 sumi = vec3(0.07, 0.065, 0.07);
+color = mix(paper, sumi, ink);
+} else {
+vec3 ink = vec3(0.035, 0.035, 0.043);
+vec3 umber = vec3(0.30, 0.22, 0.15);
+vec3 ash = vec3(0.15, 0.155, 0.165);
+vec3 slate = vec3(0.26, 0.27, 0.29);
+vec3 bone = vec3(0.93, 0.90, 0.84);
+color = ink;
+color = mix(color, ash, wornThink);
+color = mix(color, umber, wornFollow);
+color = mix(color, slate, think);
+color = mix(color, bone, follow);
+}
+outColor = vec4(color, 1.0);
+}
+`,oe=`#version 300 es
+precision highp float;
+uniform vec3 u_sources[32];
+uniform int u_count;
+uniform vec2 u_resolution;
+uniform float u_radius;
+in vec2 v_uv;
+out vec4 outColor;
+void main() {
+float sum = 0.0;
+for (int i = 0; i < 32; i++) {
+if (i >= u_count) break;
+vec2 d = (v_uv - u_sources[i].xy) * u_resolution;
+d -= u_resolution * round(d / u_resolution);
+sum += u_sources[i].z * exp(-dot(d, d) / (2.0 * u_radius * u_radius));
+}
+outColor = vec4(sum, 0.0, 0.0, 0.0);
+}
+`,se=`#version 300 es
+precision highp float;
+uniform sampler2D u_patina;
+uniform sampler2D u_trail;
+uniform float u_gain;
+uniform float u_decay;
+out vec4 outColor;
+void main() {
+ivec2 cell = ivec2(gl_FragCoord.xy);
+vec4 patina = texelFetch(u_patina, cell, 0);
+vec4 trail = texelFetch(u_trail, cell, 0);
+outColor = patina * u_decay + log(1.0 + trail) * u_gain;
+}
+`,m=new URLSearchParams(location.search),h=(e,t)=>m.has(e)?Number(m.get(e)):t,ce=[`rivers`,`sources`,`thinkers`].includes(m.get(`mode`)??``)?m.get(`mode`):`thinkers`,le={agents:1024,speed:1,wander:.6,sensorAngle:.4,sensorDistance:14,turnSpeed:.25,deposit:.05,diffuse:.3,decay:.9,exposure:.35,thinkRed:.05,thinkGreen:0,thinkDecay:.9,thinkExposure:0,localSources:0,sourceStrength:0,sourceRadius:6,drain:0,sourceTurn:0,spiral:1.7,eye:50,reach:500,followWobble:.12,patinaGain:6e-4,patinaDecay:.99998,patinaExposure:.6},ue={rivers:{},sources:{localSources:14,sourceStrength:.2,sourceRadius:40,drain:60},thinkers:{wander:.08,thinkRed:0,thinkGreen:.02,thinkDecay:.99,thinkExposure:5,drain:15,sourceTurn:.08}},g=[`space`,`bronze`,`etching`,`ink`],_=g.includes(m.get(`palette`))?m.get(`palette`):`space`,de={ink:{patinaDecay:.99986}},fe={...le,...ue[ce],...de[_]},v=Object.fromEntries(Object.entries(fe).map(([e,t])=>[e,h(e,t)])),y=document.getElementById(`c`),b=document.getElementById(`hud`);addEventListener(`error`,e=>{b.hidden=!1,b.style.color=`#e07a5f`,b.textContent=String(e.message)});var x=y.getContext(`webgl2`,{antialias:!1,alpha:!1});if(!x)throw Error(`WebGL2 is not available`);if(!x.getExtension(`EXT_color_buffer_float`))throw Error(`EXT_color_buffer_float is required`);var S={agents:c(x,p,m.has(`mine`)?ee:te),deposit:c(x,ne,re),diffuse:c(x,p,ie),display:c(x,p,ae),sources:c(x,p,oe),patina:c(x,p,se)},pe=x.createVertexArray();x.bindVertexArray(pe);function C(){if(m.has(`w`)&&m.has(`h`))return{width:h(`w`,0),height:h(`h`,0)};let e=window.devicePixelRatio||1,t=h(`maxpx`,0)*1e6,n=t>0?Math.min(1,Math.sqrt(t/(innerWidth*e*innerHeight*e))):1;return{width:Math.max(1,Math.round(innerWidth*e*n)),height:Math.max(1,Math.round(innerHeight*e*n))}}function me(e){let t=new Float32Array(e*e*4);for(let n=0;n<e*e;n++)t[n*4+0]=Math.random(),t[n*4+1]=Math.random(),t[n*4+2]=Math.random()*Math.PI*2,t[n*4+3]=.001+Math.random()*.999;return t}if(!m.has(`agents`)){let{width:e,height:t}=C();v.agents=Math.min(1600,Math.max(1024,Math.round(Math.sqrt(e*t*.4))))}var w=v.agents*v.agents,T,E,D,O=[];function he(){O=Array.from({length:Math.min(31,v.localSources)},()=>[Math.random(),Math.random()])}function k(){let e=me(v.agents);T=new d(l(x,v.agents,v.agents,`agents`,e),l(x,v.agents,v.agents,`agents`,e))}function A(){E&&[E.read,E.write,D.read,D.write].forEach(e=>u(x,e));let{width:e,height:t}=C();y.width=e,y.height=t,E=new d(l(x,e,t,`field`),l(x,e,t,`field`)),D=new d(l(x,e,t,`memory`),l(x,e,t,`memory`))}k(),A(),he();function j(e){x.bindFramebuffer(x.FRAMEBUFFER,e?e.fbo:null),x.viewport(0,0,e?e.width:y.width,e?e.height:y.height)}var M=(e,t,n)=>x.uniform1f(x.getUniformLocation(e,t),n),N=1/120,P=4,F=0,I=h(`pull`,0),L=[[.5,.5,0]],R=``,z=e.includes(m.get(`cycle`))?m.get(`cycle`):`overlap`,B=()=>t(z,v.drain||60,m.has(`camera`)),V=B(),H=(v.drain>0||m.has(`cycle`))&&!m.has(`pull`),U=!1,W=!1;function G(){if(H||(L=[[.5,.5,I]]),H){let e=V.update(N);I=e.pull,L=e.drains,R=e.status}let e=S.agents;x.useProgram(e),j(T.write),f(x,e,`u_agents`,T.read.tex,0),f(x,e,`u_trail`,E.read.tex,1),x.uniform2f(x.getUniformLocation(e,`u_resolution`),E.read.width,E.read.height),M(e,`u_frame`,F),M(e,`u_pull`,I),M(e,`u_speed`,v.speed),M(e,`u_wander`,v.wander),M(e,`u_sensorAngle`,v.sensorAngle),M(e,`u_sensorDistance`,v.sensorDistance),M(e,`u_turnSpeed`,v.turnSpeed),x.uniform3fv(x.getUniformLocation(e,`u_drains`),L.slice(0,4).flat()),x.uniform1i(x.getUniformLocation(e,`u_drainCount`),Math.min(4,L.length)),M(e,`u_reach`,L.length>1||m.has(`reach`)?v.reach:1e9),M(e,`u_sourceTurn`,v.sourceTurn),M(e,`u_spiral`,v.spiral),M(e,`u_eye`,v.eye),M(e,`u_followWobble`,v.followWobble),x.drawArrays(x.TRIANGLES,0,3),T.swap();let t=S.deposit;if(x.useProgram(t),j(E.read),f(x,t,`u_agents`,T.read.tex,0),x.uniform2f(x.getUniformLocation(t,`u_follow`),v.deposit,0),x.uniform2f(x.getUniformLocation(t,`u_think`),v.thinkRed,v.thinkGreen),x.enable(x.BLEND),x.blendFunc(x.ONE,x.ONE),x.drawArrays(x.POINTS,0,w),v.sourceStrength>0){let e=S.sources;x.useProgram(e);let t=O.map(([e,t])=>[e,t,(1-I)*v.sourceStrength]);t.push([.5,.5,I*v.sourceStrength*2]),x.uniform3fv(x.getUniformLocation(e,`u_sources`),t.flat()),x.uniform1i(x.getUniformLocation(e,`u_count`),t.length),x.uniform2f(x.getUniformLocation(e,`u_resolution`),E.read.width,E.read.height),M(e,`u_radius`,v.sourceRadius),x.drawArrays(x.TRIANGLES,0,3)}x.disable(x.BLEND);let n=S.diffuse;if(x.useProgram(n),j(E.write),f(x,n,`u_trail`,E.read.tex,0),x.uniform4f(x.getUniformLocation(n,`u_diffuse`),v.diffuse,0,0,0),x.uniform4f(x.getUniformLocation(n,`u_decay`),v.decay,v.thinkDecay,0,0),x.drawArrays(x.TRIANGLES,0,3),E.swap(),F%P===0){let e=S.patina;x.useProgram(e),j(D.write),f(x,e,`u_patina`,D.read.tex,0),f(x,e,`u_trail`,E.read.tex,1),M(e,`u_gain`,v.patinaGain*P),M(e,`u_decay`,v.patinaDecay**+P),x.drawArrays(x.TRIANGLES,0,3),D.swap()}F++}function ge(){let e=S.display;x.useProgram(e),j(null),f(x,e,`u_trail`,E.read.tex,0),f(x,e,`u_patina`,D.read.tex,1);let t=q>0?Math.min(1,F*N/q):1,n=1+(be-1)*(1-t)*(1-t);M(e,`u_exposure`,v.exposure*n),M(e,`u_thinkExposure`,v.thinkExposure*n),M(e,`u_patinaExposure`,v.patinaExposure*n),x.uniform1i(x.getUniformLocation(e,`u_palette`),g.indexOf(_)),x.drawArrays(x.TRIANGLES,0,3)}function _e(){y.toBlob(e=>{if(!e)return;let t=document.createElement(`a`);t.href=URL.createObjectURL(e),t.download=`defer-${new Date().toISOString().replace(/[:.]/g,`-`)}.png`,t.click(),URL.revokeObjectURL(t.href)},`image/png`)}var K=null;function ve(){if(K){K.stop();return}let e=MediaRecorder.isTypeSupported(`video/mp4`)?`video/mp4`:`video/webm`,t=[];K=new MediaRecorder(y.captureStream(60),{mimeType:e,videoBitsPerSecond:4e7}),K.ondataavailable=e=>t.push(e.data),K.onstop=()=>{K=null;let n=new Blob(t,{type:e}),r=`defer-${new Date().toISOString().replace(/[:.]/g,`-`)}.${e===`video/mp4`?`mp4`:`webm`}`;{let e=document.createElement(`a`);e.href=URL.createObjectURL(n),e.download=r,e.click()}},K.start()}var q=h(`ff`,0),J=h(`ffsteps`,40),Y=8,X=h(`preroll`,0),ye=h(`prerollsteps`,80),be=h(`ffink`,1);X>0&&(y.style.opacity=`0`,y.style.transition=`opacity 0.8s ease-out`);var Z=performance.now(),Q=60,$=0;function xe(e){let t=Math.min(.1,(e-Z)/1e3);Q+=(1/Math.max(.001,t)-Q)*.05,Z=e;let n=F*N<X;if(X>0&&!n&&y.style.opacity===`0`&&(y.style.opacity=`1`),!U&&n){Y=t<1/20?Math.min(ye,Y+8):Math.max(2,Y>>1);for(let e=0;e<Y;e++)G();$=0}else if(!U&&F*N<q){Y=Math.min(Y,J),Y=t<1/50?Math.min(J,Y+1):Math.max(2,Y>>1);for(let e=0;e<Y;e++)G();$=0}else if(!U){$+=t;for(let e=0;$>=N&&e<4;e++)G(),$-=N;$=Math.min($,N)}ge(),W&&(W=!1,_e()),b.textContent=`${K?`recording  `:``}${ce}  ${w.toLocaleString()} walkers  ${y.width}x${y.height}  ${Q.toFixed(0)} fps\n${z}${R?` (${R})`:``}  pull ${I.toFixed(2)}  [ ] to change   space pause   s save png   v record   r reset   h hide`,requestAnimationFrame(xe)}requestAnimationFrame(xe),addEventListener(`keydown`,e=>{e.key===` `&&(U=!U),e.key===`s`&&(W=!0),e.key===`v`&&ve(),e.key===`r`&&(k(),A(),he(),F=0,V=B()),e.key===`h`&&(b.hidden=!b.hidden),/^[0-9]$/.test(e.key)&&V.setPeople?.(Number(e.key)),(e.key===`[`||e.key===`]`)&&(H=!1),e.key===`[`&&(I=Math.max(0,I-.05)),e.key===`]`&&(I=Math.min(1,I+.05))});var Se=0;addEventListener(`resize`,()=>{m.has(`w`)||(clearTimeout(Se),Se=window.setTimeout(A,200))});
