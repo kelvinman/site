@@ -9,13 +9,15 @@
       // Version 24 of Defer, as published: the ink palette, like the stills I shared, and a
       // time-lapse opening (?ff, in simulated seconds) so the ink is already building on arrival.
       // The early ink is drawn darker (?ffink) and eases back by the end of the time-lapse, so the
-      // first seconds are not blank paper (journal 40).
+      // first seconds are not blank paper (journal 40). A big sharp window draws at most 2.2
+      // megapixels, stretched to fit (?maxpx, journal 41), so it is as quick and dense as a small one.
       // Anything set in the address wins, so ?palette=space&ff=0 shows the dark version at real pace.
       var q = new URLSearchParams(location.search);
       var changed = false;
       if (!q.has("palette")) { q.set("palette", "ink"); changed = true; }
       if (!q.has("ff")) { q.set("ff", "40"); changed = true; }
       if (!q.has("ffink")) { q.set("ffink", "2.5"); changed = true; }
+      if (!q.has("maxpx")) { q.set("maxpx", "2.2"); changed = true; }
       if (changed) history.replaceState(null, "", location.pathname + "?" + q.toString() + location.hash);
     </script>
     <style>
@@ -37,7 +39,7 @@
       @keyframes fade { to { opacity: 0.08; } }
       @media (prefers-reduced-motion: reduce) { #caption { animation: none; } }
     </style>
-    <script type="module" crossorigin src="./assets/main-CRGJLuV3.js"></script>
+    <script type="module" crossorigin src="./assets/main-DWpqu_K-.js"></script>
   </head>
   <body>
     <canvas id="c"></canvas>
