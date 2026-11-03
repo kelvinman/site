@@ -24,8 +24,11 @@ function readKey() {
 /** A new key in the Keychain and on the Worker. Every mentor password made before stops working. */
 function setup() {
   const key = randomBytes(32).toString("hex");
+  // From the repo, so wrangler finds wrangler.jsonc whichever folder this was run from.
+  const repo = new URL("..", import.meta.url).pathname;
+  execFileSync("npx", ["wrangler", "secret", "put", "MENTOR_KEY"], { cwd: repo, input: key, stdio: ["pipe", "inherit", "inherit"] });
+  // Only after the Worker has it, so the two never disagree.
   execFileSync("security", ["add-generic-password", "-U", "-a", "site", "-s", SERVICE, "-w", key]);
-  execFileSync("npx", ["wrangler", "secret", "put", "MENTOR_KEY"], { input: key, stdio: ["pipe", "inherit", "inherit"] });
   console.log("New mentor key saved to the Keychain and the Worker. Older mentor passwords no longer work.");
 }
 
