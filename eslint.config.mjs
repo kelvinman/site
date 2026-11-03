@@ -12,6 +12,12 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Local build output from other hosts
+    ".vercel/**",
+    ".netlify/**",
+    ".wrangler/**",
+    // Prebuilt bundles shipped as static files
+    "public/**/assets/**",
   ]),
 ]);
 
