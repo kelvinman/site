@@ -1,10 +1,13 @@
 // Sends the bare domain to www so the site has one address, keeps case studies behind a shared
-// password, then serves the static export.
+// password or a mentor's own expiring one, then serves the static export.
 
 // Case studies hold client work, so they need the password. The /work index stays public.
 const CASE_STUDIES = ["/work/decorx", "/work/mirascope", "/work/moment", "/work/sidecar-legal", "/work/wethos"];
 const COOKIE = "case_studies";
 const MONTH = 60 * 60 * 24 * 30;
+// A mentor's password, made by scripts/mentor-password.mjs. It reads like any password: 16 letters and
+// digits holding a random part, the last day (UTC, masked) and a signature by MENTOR_KEY.
+const LETTERS = "0123456789abcdefghjkmnpqrstvwxyz";
 
 export default {
   async fetch(request, env) {
@@ -31,9 +34,43 @@ function isCaseStudy(path) {
 
 /** The cookie is a signature of the current password, so changing the password locks everyone out again. */
 async function token(password) {
-  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
-  const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode("kelvinman case studies"));
-  return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  return hmac(password, "kelvinman case studies");
+}
+
+async function hmac(secret, message) {
+  return hex(await hmacBytes(secret, message));
+}
+
+async function hmacBytes(secret, message) {
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  return new Uint8Array(await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(message)));
+}
+
+function hex(bytes) {
+  return [...bytes].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+/** A typed mentor password as its 16 letters, forgiving case, dashes, spaces and look-alikes. */
+function mentorLetters(password) {
+  const text = password.toLowerCase().replace(/[\s-]/g, "").replace(/o/g, "0").replace(/[il]/g, "1");
+  return /^[0-9a-hjkmnp-tv-z]{16}$/.test(text) ? text : "";
+}
+
+/**
+ * Seconds left on a mentor's password, or 0 when it is wrong or over. Nothing is stored: the
+ * signature proves the date came from the script, and changing MENTOR_KEY ends them all.
+ */
+async function mentorSecondsLeft(letters, env) {
+  if (!env.MENTOR_KEY || !letters) return 0;
+  let bits = 0n;
+  for (const c of letters) bits = (bits << 5n) | BigInt(LETTERS.indexOf(c));
+  const bytes = Array.from({ length: 10 }, (_, i) => Number((bits >> BigInt(8 * (9 - i))) & 255n));
+  const nonce = hex(bytes.slice(0, 3));
+  const mask = await hmacBytes(env.MENTOR_KEY, `mask ${nonce}`);
+  const day = ((bytes[3] ^ mask[0]) << 8) | (bytes[4] ^ mask[1]);
+  const expected = hex((await hmacBytes(env.MENTOR_KEY, `mentor ${nonce} ${day}`)).slice(0, 5));
+  if (!same(hex(bytes.slice(5)), expected)) return 0;
+  return Math.max(0, Math.floor(((day + 1) * 864e5 - Date.now()) / 1000));
 }
 
 /** Compares without stopping at the first difference, so timing says nothing about the secret. */
@@ -45,11 +82,14 @@ function same(a, b) {
 }
 
 async function hasAccess(request, env) {
-  // Without a password configured, stay locked rather than open.
-  if (!env.CASE_STUDY_PASSWORD) return false;
   const cookie = (request.headers.get("Cookie") || "").split(/;\s*/).find((c) => c.startsWith(`${COOKIE}=`));
   if (!cookie) return false;
-  return same(cookie.slice(COOKIE.length + 1), await token(env.CASE_STUDY_PASSWORD));
+  const value = cookie.slice(COOKIE.length + 1);
+  // A mentor's cookie holds their password, so it is checked, and runs out, the same way.
+  if (value.startsWith("m.")) return (await mentorSecondsLeft(mentorLetters(value.slice(2)), env)) > 0;
+  // Without a password configured, stay locked rather than open.
+  if (!env.CASE_STUDY_PASSWORD) return false;
+  return same(value, await token(env.CASE_STUDY_PASSWORD));
 }
 
 async function unlock(request, env, url) {
@@ -58,12 +98,23 @@ async function unlock(request, env, url) {
   // Only send people back to a case study, never to another site.
   const next = String(form.get("next") || "");
   const target = isCaseStudy(next) ? next : "/work";
-  if (!env.CASE_STUDY_PASSWORD || !same(password, env.CASE_STUDY_PASSWORD)) return lockedPage(target, true);
+  let value, maxAge;
+  const letters = mentorLetters(password);
+  const mentorLeft = await mentorSecondsLeft(letters, env);
+  if (mentorLeft > 0) {
+    value = `m.${letters}`;
+    maxAge = Math.min(mentorLeft, MONTH);
+  } else if (env.CASE_STUDY_PASSWORD && same(password, env.CASE_STUDY_PASSWORD)) {
+    value = await token(env.CASE_STUDY_PASSWORD);
+    maxAge = MONTH;
+  } else {
+    return lockedPage(target, true);
+  }
   return new Response(null, {
     status: 303,
     headers: {
       Location: new URL(target, url).toString(),
-      "Set-Cookie": `${COOKIE}=${await token(env.CASE_STUDY_PASSWORD)}; Path=/work; Max-Age=${MONTH}; HttpOnly; Secure; SameSite=Lax`,
+      "Set-Cookie": `${COOKIE}=${value}; Path=/work; Max-Age=${maxAge}; HttpOnly; Secure; SameSite=Lax`,
     },
   });
 }
