@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/fetch-link-previews.mjs",
+    "prebuild": "eslint && node scripts/fetch-link-previews.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
