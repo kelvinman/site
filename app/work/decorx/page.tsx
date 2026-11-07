@@ -99,7 +99,7 @@ export default function DecorX() {
 
       <Clip
         name="showroom-loop"
-        caption="The loop on the showroom TVs at High Point Market, October 2026."
+        caption="The loop I made for the showroom TVs at High Point Market, October 2026."
       />
 
       <Numbers
