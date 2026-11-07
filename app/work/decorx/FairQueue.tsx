@@ -5,15 +5,15 @@ import demo from "../../notes/demos/demos.module.css";
 import styles from "./demos.module.css";
 
 /**
- * Why DecorX's job queue takes turns. Three brands send generation jobs at once, one of them a
- * big backlog, and two workers pick them up a round at a time. First come, first served makes
- * the small brands wait behind the big one; taking turns keeps every brand moving. A simulation
+ * Why DecorX's job queue gives each customer a share. Three customers send generation jobs at once, one of them a
+ * big backlog, and two servers pick them up a round at a time. First come, first served makes
+ * the small customers wait behind the big one; sharing by customer keeps every customer moving. A simulation
  * of the idea, not the real queue.
  */
 const BRANDS = [
-  { name: "Brand A", jobs: 18 },
-  { name: "Brand B", jobs: 3 },
-  { name: "Brand C", jobs: 2 },
+  { name: "Customer A", jobs: 18 },
+  { name: "Customer B", jobs: 3 },
+  { name: "Customer C", jobs: 2 },
 ];
 const WORKERS = 2;
 const ROUND_MS = 380;
@@ -125,7 +125,7 @@ export function FairQueue() {
           <span className={demo.track}>
             <span className={demo.knob} />
           </span>
-          Take turns
+          Share by customer
         </button>
         <button type="button" className={demo.textButton} onClick={play}>
           {round < 0 ? "Play" : "Replay"}
@@ -134,7 +134,7 @@ export function FairQueue() {
 
       <figcaption className={demo.caption} aria-live="polite">
         {fair
-          ? `Taking turns: every brand with work waiting gets the next free worker. B and C are done by round ${small(turns)} instead of ${small(served)}, and A finishes ${turns[0] - served[0]} rounds later.`
+          ? `Shared by customer: every customer with work waiting gets its share of the servers. B and C are done by round ${small(turns)} instead of ${small(served)}, and A finishes ${turns[0] - served[0]} rounds later.`
           : `First come, first served: A's backlog arrived first, so B and C wait behind all of it and aren't done until round ${small(served)}.`}
       </figcaption>
     </figure>

@@ -43,7 +43,7 @@ const SCREENS: Record<Screen, { name: string; caption: string; spots: Spot[] }> 
   world: {
     name: "Space",
     caption: "Space: the same world in 3D, with its chat one tap away.",
-    spots: [{ to: "groups", label: "Open the world's chats", x: 21.6, y: 84, w: 10, h: 4 }, ...TABS],
+    spots: [{ to: "groups", label: "Open the world's chats", x: 25.9, y: 84.4, w: 9, h: 4 }, ...TABS],
   },
   people: {
     name: "People",

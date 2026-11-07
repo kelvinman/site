@@ -3,6 +3,7 @@ import styles from "../../page.module.css";
 import { NoteLayout } from "../../notes/NoteLayout";
 import { MoreWork } from "../MoreWork";
 import draft from "../decorx/decorx.module.css";
+import work from "../work.module.css";
 import { LilypadJudge } from "./LilypadJudge";
 import { LilypadTraces } from "./LilypadTraces";
 
@@ -98,14 +99,13 @@ export default function Mirascope() {
 
       <p className={styles.body}>
         Two founders out of Google AI, building tools for people who aren&apos;t data scientists. When I joined, they had a
-        live product, a prototype and few customers yet. It worked, but it spoke the language of the engineers who built
-        it.
+        live product, a prototype and few customers yet. It worked, but it was written for people who already knew machine
+        learning.
       </p>
 
       <p className={styles.body}>
-        I was still very much a designer then, not technical, and it took me a long time to understand what the product
-        did. That turned out to be the job: once I could follow it, I could reshape it so that someone who wasn&apos;t
-        an engineer could follow it too.
+        It took me a while to understand what the product did. That turned out to be the job: once I could follow it, I
+        could reshape it so that someone who wasn&apos;t an engineer could follow it too.
       </p>
 
       <h2 id="artifice" className={styles.subhead}>
@@ -137,6 +137,10 @@ export default function Mirascope() {
       </h2>
 
       <p className={styles.body}>
+        I worked with them project by project, whenever they had something new to design.
+      </p>
+
+      <p className={styles.body}>
         <strong>Artifice</strong>, launched on{" "}
         <Out href="https://news.ycombinator.com/item?id=35742104">Hacker News</Out> in April 2023.{" "}
         <strong>Two versions of the design library</strong> behind their products. <strong>Two websites</strong>,
@@ -158,19 +162,27 @@ export default function Mirascope() {
         height={816}
       />
 
-      <p className={styles.body}>
-        Project by project, whenever they had something new to shape. &ldquo;Kelvin is an exceptional designer who
-        worked closely with us on various projects for SOTAI&hellip; he went above and beyond to ensure that we were
-        completely satisfied with the final product.&rdquo; William Bakst, co-founder.
-      </p>
+      <blockquote className={`${styles.body} ${work.quote}`}>
+        <p>
+          &ldquo;Kelvin is an exceptional designer who worked closely with us on various projects for SOTAI&hellip; he
+          went above and beyond to ensure that we were completely satisfied with the final product.&rdquo;
+        </p>
+        <footer>William Bakst, co-founder</footer>
+      </blockquote>
 
       <h2 id="what-i-learned" className={styles.subhead}>
         What I learned
       </h2>
 
       <p className={styles.body}>
-        I learned to design for a really complicated problem by simplifying it until I understood it, then making it
-        something other people could understand too.
+        Designing Lilypad taught me how to tell whether an AI product is getting better. Lilypad records every model
+        call, marks each answer good or bad, and compares one version with the last.
+      </p>
+
+      <p className={styles.body}>
+        I took that loop to <a href="/work/decorx">DecorX</a>. Our image generation already had an automatic judge, but nothing to compare
+        against. Now there&apos;s a fixed set of test images and a score we track, so we can tell whether a new model
+        is actually better.
       </p>
 
       <p className={styles.body}>

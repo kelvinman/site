@@ -32,7 +32,7 @@ const SECTIONS = [
   { id: "scenes", title: "Scenes at scale" },
   { id: "fabric", title: "Placing the print" },
   { id: "the-market", title: "The market" },
-  { id: "taking-turns", title: "Taking turns" },
+  { id: "everyone-gets-a-share", title: "Everyone gets a share" },
   { id: "showroom-app", title: "The showroom app" },
   { id: "how-i-worked", title: "How I worked" },
   { id: "what-i-learned", title: "What I learned" },
@@ -206,14 +206,21 @@ export default function DecorX() {
       </h2>
 
       <p className={styles.body}>
-        At High Point Market, reps logged each buyer&apos;s picks, and DecorX
-        turned them into a project with the buyer&apos;s own style kit and room
-        scenes in about 5 minutes.
+        High Point Market is the biggest furniture trade show in the US, held twice a year in North Carolina.
+        Furniture brands open showrooms there, and buyers from stores walk through to choose what to stock. In
+        October 2026, sales reps for ART and Caracole logged each buyer&apos;s picks in their showrooms. DecorX
+        turned those picks into a project with the buyer&apos;s own style kit and room scenes in about 5 minutes.
       </p>
+
+      <Figure
+        src="high-point-fabrics.webp"
+        caption="Fabric swatches in a showroom at High Point Market, October 2026."
+        height={1199}
+      />
 
       <Numbers
         items={[
-          ["39", "reps"],
+          ["39", "sales reps"],
           ["94%", "got a style kit"],
           ["13,800", "picks matched"],
         ]}
@@ -225,13 +232,14 @@ export default function DecorX() {
         inside it.
       </p>
 
-      <h2 id="taking-turns" className={styles.subhead}>
-        Taking turns
+      <h2 id="everyone-gets-a-share" className={styles.subhead}>
+        Everyone gets a share
       </h2>
 
       <p className={styles.body}>
-        When one brand sends a huge batch, first come, first served makes
-        everyone else wait. So the queue takes turns.
+        Image requests used to share one line, so when one customer sent a huge batch, every other customer waited
+        behind it. Now each customer gets their own share, up to 5 requests running at a time, so one
+        customer&apos;s batch never holds up anyone else.
       </p>
 
       <FairQueue />
@@ -241,8 +249,8 @@ export default function DecorX() {
       </h2>
 
       <p className={styles.body}>
-        A QR code on the showroom TV opens a chat. Type your store&apos;s name,
-        and DecorX finds your rooms online and builds you a style kit and picks.
+        Buyers walking through the ART and Caracole showrooms at High Point could scan a QR code on the TV to open
+        a chat. Type your store&apos;s name, and DecorX finds your rooms online and builds you a style kit and picks.
       </p>
 
       <ShowroomPhone />

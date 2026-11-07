@@ -3,6 +3,10 @@ import styles from "../../page.module.css";
 import { NoteLayout } from "../../notes/NoteLayout";
 import { MoreWork } from "../MoreWork";
 import draft from "../decorx/decorx.module.css";
+import { TemplateDemo } from "./TemplateDemo";
+import work from "../work.module.css";
+import wethos from "./wethos.module.css";
+import { DesignSystem } from "./DesignSystem";
 
 // From the Wethos entry on /work and in the CV, the customer story behind the Templates number, Al
 // Huizenga's and Craig's kudos in my Notion hype doc, and my answers of 28 Oct 2026. The one screen
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
 
 const SECTIONS = [
   { id: "the-problem", title: "The problem" },
+  { id: "scoping", title: "Scoping" },
   { id: "templates", title: "Templates" },
   { id: "design-system", title: "The design system" },
   { id: "working-with-engineering", title: "With engineering" },
@@ -79,9 +84,9 @@ export default function Wethos() {
 
       <Numbers
         items={[
-          ["5–7 h → 1", "to write a proposal"],
+          ["1 hour", "to write a proposal, down from 5 to 7"],
           ["2 years", "full time"],
-          ["Aug 2021", "Templates designed"],
+          ["Aug 2021", "templates designed"],
         ]}
       />
 
@@ -100,6 +105,56 @@ export default function Wethos() {
         talked to customers all the time, in interviews, surveys and customer stories, and they said the same.
       </p>
 
+      <figure className={draft.figure}>
+        <div className={wethos.paper}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
+          <img
+            src="/work/wethos/early-proposal.webp"
+            alt="The first page of a proposal I wrote in 2020, with the client's details hidden"
+            width={1200}
+            height={1500}
+            loading="lazy"
+          />
+        </div>
+        <figcaption className={draft.caption}>
+          One of my own proposals from 2020, before Wethos: the context, the phases and the timeline, all written by
+          hand. The client&apos;s details are hidden.
+        </figcaption>
+      </figure>
+
+      <h2 id="scoping" className={styles.subhead}>
+        Scoping
+      </h2>
+
+      <p className={styles.body}>
+        Every project on Wethos starts as a scope: the phases, the services in each, who does them and what they cost.
+        Wethos already scoped projects this way, priced in points and dollars. I redesigned the scope builder so it
+        would work on a phone too. The team chose to build a web app rather than a native one, so one design had to
+        work on both. The rule I set was one way to do one thing, with the desktop matching mobile as much as possible.
+      </p>
+
+      <figure className={draft.figure}>
+        <div className={wethos.pair}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
+          <img
+            src="/work/wethos/scope-web.webp"
+            alt="The scope builder on web: planned budget, phase breakdown, the scope by phase and the services library"
+            width={1280}
+            height={720}
+            loading="lazy"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
+          <img
+            src="/work/wethos/scope-mobile.webp"
+            alt="The same scope on a phone"
+            width={320}
+            height={568}
+            loading="lazy"
+          />
+        </div>
+        <figcaption className={draft.caption}>The redesigned scope builder, on web and on a phone.</figcaption>
+      </figure>
+
       <h2 id="templates" className={styles.subhead}>
         Templates
       </h2>
@@ -116,6 +171,8 @@ export default function Wethos() {
         a sense of what to charge for that kind of project. A library like that didn&apos;t exist before.
       </p>
 
+      <TemplateDemo />
+
       <h2 id="design-system" className={styles.subhead}>
         The design system
       </h2>
@@ -124,20 +181,29 @@ export default function Wethos() {
         I led the design system: the Figma library we designed the product from and handed to engineering.
       </p>
 
+      <DesignSystem />
+
       <h2 id="working-with-engineering" className={styles.subhead}>
         With engineering
       </h2>
 
-      <p className={styles.body}>
-        &ldquo;&hellip;for bringing the &lsquo;building contracts&rsquo; designs to the tech team early and often, and
-        iterating to get to a model that&apos;s clear and simple and feasible.&rdquo; Al Huizenga, Director of Product
-        Management.
-      </p>
+      <blockquote className={`${styles.body} ${work.quote}`}>
+        <p>
+          &ldquo;&hellip;for bringing the &lsquo;building contracts&rsquo; designs to the tech team early and often, and
+          iterating to get to a model that&apos;s clear and simple and feasible.&rdquo;
+        </p>
+        <footer>Al Huizenga, Director of Product Management</footer>
+      </blockquote>
 
-      <p className={styles.body}>
-        &ldquo;&hellip;its been great getting to know you guys and the flow between design and dev at Wethos!&rdquo;
-        Craig, December 2021.
-      </p>
+      <blockquote className={`${styles.body} ${work.quote}`}>
+        <p>&ldquo;&hellip;its been great getting to know you guys and the flow between design and dev at Wethos!&rdquo;</p>
+        <footer>
+          <a href="https://www.linkedin.com/in/craig-s-walker/" target="_blank" rel="noopener noreferrer">
+            Craig Walker
+          </a>
+          , December 2021
+        </footer>
+      </blockquote>
 
       <h2 id="what-i-learned" className={styles.subhead}>
         What I learned
@@ -150,7 +216,11 @@ export default function Wethos() {
 
       <p className={styles.body}>
         Watching so many people build their own agencies on Wethos is what showed me I could do it myself. In June 2022
-        I left to start SuperNice.
+        I left to start{" "}
+        <a href="https://studiosupernice.com" target="_blank" rel="noopener noreferrer">
+          SuperNice
+        </a>
+        .
       </p>
 
       <p className={styles.body}>

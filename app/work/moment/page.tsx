@@ -4,6 +4,8 @@ import { NoteLayout } from "../../notes/NoteLayout";
 import { MoreWork } from "../MoreWork";
 import { Clip } from "../decorx/Clip";
 import draft from "../decorx/decorx.module.css";
+import demos from "../decorx/demos.module.css";
+import work from "../work.module.css";
 import { Scattered } from "./Scattered";
 import { LabelVariants } from "./LabelVariants";
 import { ShippedPhones } from "./ShippedPhones";
@@ -70,7 +72,11 @@ export default function Moment() {
 
       <p className={styles.body}>
         I designed Worlds for web and mobile. Each creator got a space for their community, with chat, a board, a 3D
-        world, live events and a shop.
+        world, live events and a shop.{" "}
+        <a href="https://news.patreon.com/articles/patreon-acquires-moment" target="_blank" rel="noopener noreferrer">
+          Patreon acquired Moment
+        </a>{" "}
+        in October 2023.
       </p>
 
       <Figure src="app-screens.webp" caption="Murder With My Husband World on iOS: home, board, chats, the 3D space, people." width={1600} height={617} />
@@ -171,34 +177,46 @@ export default function Moment() {
         caption="Fans inside Murder With My Husband World, chatting as they walk around."
       />
 
-      <p className={styles.body}>
-        &ldquo;I think it&apos;s amazing that I can meet one of my favorite YouTubers in a game that they made.&rdquo; A fan,
-        March 2023. Patreon acquired Moment in October 2023.
-      </p>
+      <blockquote className={`${styles.body} ${work.quote}`}>
+        <p>&ldquo;I think it&apos;s amazing that I can meet one of my favorite YouTubers in a game that they made.&rdquo;</p>
+        <footer>A fan, March 2023</footer>
+      </blockquote>
 
-      <p className={styles.body}>
-        Built with Giel, another designer; Jean Joskin, an engineer; Clayton Barnes, on the founding team and head of
-        product; and Arjun Mehta, the CEO.
-      </p>
+      <blockquote className={`${styles.body} ${work.quote}`}>
+        <p>&ldquo;He understood our business needs&hellip; He was able to work efficiently in a fast-paced environment.&rdquo;</p>
+        <footer>Arjun Mehta, CEO of Moment</footer>
+      </blockquote>
 
-      <p className={styles.body}>
-        &ldquo;He understood our business needs&hellip; He was able to work efficiently in a fast-paced environment.&rdquo;
-        Arjun Mehta, CEO of Moment.
-      </p>
+      <p className={styles.label}>Built with</p>
+
+      <dl className={demos.credits}>
+        <dt>Giel</dt>
+        <dd>design</dd>
+        <dt>Jean</dt>
+        <dd>engineering</dd>
+        <dt>Clayton</dt>
+        <dd>head of product, on the founding team</dd>
+        <dt>Arjun</dt>
+        <dd>CEO</dd>
+      </dl>
+
 
       <h2 id="what-i-learned" className={styles.subhead}>
         What I learned
       </h2>
 
       <p className={styles.body}>
-        Working next to Giel taught me how to design faster and launch quickly without losing the craft. Giel and Jean
-        had worked together before, in Amsterdam, and they have such a good sense of design: how to make something
-        minimal that still looks great. They were passionate about it, and so was the whole team, Clayton and Arjun too.
+        When nothing like it exists yet, a mockup only gets you so far. I learned to get ideas into the real thing
+        early, since the labels only came right once we saw them in the 3D world.
       </p>
 
       <p className={styles.body}>
-        Working with creators was chaotic sometimes, but really fun. No one had tried this before, a 3D world with chat
-        and everything else packed into it, and that made it exciting.
+        Working next to Giel taught me restraint: knowing what to leave out so the rest can look great. I still design
+        that way. Thank you,{" "}
+        <a href="https://gielcobben.com/" target="_blank" rel="noopener noreferrer">
+          Giel
+        </a>
+        .
       </p>
 
       <p className={styles.body}>

@@ -98,8 +98,9 @@ export default function SidecarLegal() {
       </h2>
 
       <p className={styles.body}>
-        Before any screens, I mapped each stage of the journey, with what someone thinks, what could lose them, and what
-        the design does about it.
+        Before designing any screens, I went through the journey stage by stage. At each one, I wrote down what the
+        person is thinking and what might put them off. Then I decided how the design would answer each of those
+        doubts.
       </p>
 
       <Journey />

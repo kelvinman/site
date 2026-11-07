@@ -81,14 +81,15 @@
   background: none;
   cursor: pointer;
   /* Invisible until hovered or focused; the row of screen names below is the guide on touch. */
-  box-shadow: inset 0 0 0 2px transparent;
+  box-shadow: 0 0 0 2px transparent;
   transition: box-shadow 120ms ease-out;
 }
 
+/* A white ring, the same as the spotlight on the hard parts phone below. */
 .spot:hover,
 .spot:focus-visible {
   outline: none;
-  box-shadow: inset 0 0 0 2px var(--accent);
+  box-shadow: 0 0 0 2px #fff;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -175,7 +176,6 @@
   width: 260px;
   aspect-ratio: 560 / 1138;
   background: url(/work/moment/phone-frame.webp) center / 100% 100% no-repeat;
-  filter: drop-shadow(0 24px 32px rgb(0 0 0 / 0.35));
 }
 
 .device {
@@ -242,6 +242,27 @@
   background: #fff;
 }
 
+.control {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px transparent;
+  transition: box-shadow 120ms ease-out;
+}
+
+/* The same white ring as the screens demo, before a control is picked. */
+.control:hover {
+  box-shadow: 0 0 0 2px #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control {
+    transition: none;
+  }
+}
+
 /* The spotlight sits in one layer the shape of the glass, so its shade stops at the glass's
    rounded corners. */
 .screenOverlay {
@@ -252,13 +273,11 @@
   pointer-events: none;
 }
 
-/* A ring round the chosen control, with the rest of the screen shaded, gliding from one control to
-   the next. */
+/* A white ring round the chosen control, gliding from one control to the next. No shade, so the
+   screen always shows. */
 .spotlight {
   position: absolute;
-  box-shadow:
-    0 0 0 2px #fff,
-    0 0 0 100vmax rgb(0 0 0 / 0.5);
+  box-shadow: 0 0 0 2px #fff;
   transition:
     left 380ms cubic-bezier(0.2, 0.8, 0.2, 1),
     top 380ms cubic-bezier(0.2, 0.8, 0.2, 1),

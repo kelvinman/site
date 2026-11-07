@@ -44,12 +44,14 @@ function StatusIcons() {
 /** The 3D space on mobile web, from a screenshot of jessiivee.world.co in 2023, on the same iPhone as
  *  the iOS screens above it. The header sits under the status bar and the chat bar above the home
  *  bar, and the 3D view fills the screen between them, as the app did on a taller phone. A toggle
- *  under it picks out each control with a spotlight, and the caption says what it does, the same
- *  way the Worlds demo above it works. */
+ *  under it, or a click on a control itself, rings it in white, and the caption says what it does. The
+ *  screen is never shaded, and it works by clicks, like the Worlds demo above it. */
 export function ShippedPhones() {
+  // One control is always picked, like a tab in the screens demo above; a white ring marks it.
   const [active, setActive] = useState(0);
   const [boxes, setBoxes] = useState<Box[]>([]);
   const device = useRef<HTMLDivElement>(null);
+
   const areas = useRef<Partial<Record<Area, HTMLDivElement | null>>>({});
 
   // Where each control lands on screen, in pixels from the screen's top left. The 3D view is
@@ -121,7 +123,7 @@ export function ShippedPhones() {
             ))}
             <span className={styles.homeBar} aria-hidden="true" />
 
-            {/* A spotlight on the chosen control, its shade stopping at the glass. */}
+            {/* A white ring on the chosen control, clipped to the glass. */}
             <div className={styles.screenOverlay}>
               {spot && (
                 <span
@@ -136,6 +138,23 @@ export function ShippedPhones() {
                 />
               )}
             </div>
+
+            {/* The controls themselves can be clicked, as on the screens demo above. */}
+            {PARTS.map((part, i) => {
+              const box = boxes[i];
+              if (!box) return null;
+              return (
+                <button
+                  key={part.name}
+                  type="button"
+                  className={styles.control}
+                  aria-label={part.name}
+                  tabIndex={-1}
+                  style={{ left: box.left, top: box.top, width: box.width, height: box.height, borderRadius: box.radius }}
+                  onClick={() => setActive(i)}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
@@ -146,8 +165,6 @@ export function ShippedPhones() {
             key={part.name}
             type="button"
             aria-pressed={active === i}
-            onPointerEnter={(e) => e.pointerType === "mouse" && setActive(i)}
-            onFocus={() => setActive(i)}
             onClick={() => setActive(i)}
           >
             {part.name}
