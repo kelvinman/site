@@ -7,7 +7,7 @@ import styles from "./wethos.module.css";
 /**
  * Pages from the Wethos design system I led, one at a time in a fixed frame, with a toggle under it,
  * so the set can grow without the case study getting longer. Color and Type are from the Foundations
- * file; Buttons, Cards and Modals from the Components file, laid out for this page from their
+ * file; Buttons and Cards from the Components file, laid out for this page from their
  * Figma components (6 Nov 2026). The illustrations were a licensed pack, so they are left out.
  */
 const PAGES = [
@@ -38,13 +38,6 @@ const PAGES = [
     width: 1600,
     height: 905,
     caption: "Debit cards for Wethos banking: physical and virtual, number hidden or shown, and inactive.",
-  },
-  {
-    name: "Modals",
-    src: "/work/wethos/ds-modals.webp",
-    width: 1600,
-    height: 1000,
-    caption: "The deliverable modals: add, edit and default settings, ending in four pricing levers and a recommended price.",
   },
 ];
 
