@@ -130,13 +130,14 @@
   line-height: 19px;
 }
 
-/* A section of the home page: a small muted label, then its list. */
+/* A section of the home page: a small muted label, then its list. Sections sit 64px apart, the same
+   break as a new section in a case study or note. */
 .section {
   display: flex;
   flex-direction: column;
   gap: 12px;
   width: 100%;
-  margin-top: 16px;
+  margin-top: 48px;
 }
 
 .label {
