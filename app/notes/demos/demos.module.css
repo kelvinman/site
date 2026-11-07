@@ -13,16 +13,16 @@
    text column's edge. */
 .caption {
   max-width: 440px;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 19px;
   color: var(--muted);
   text-align: center;
 }
 
 @media (max-width: 600px) {
   .caption {
-    font-size: 13px;
-    line-height: 19px;
+    font-size: 14px;
+    line-height: 20px;
   }
 }
 
@@ -48,7 +48,7 @@
   background: none;
   color: var(--muted);
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   transition:
     background 160ms ease-out,
