@@ -214,7 +214,7 @@ export default function DecorX() {
 
       <Figure
         src="high-point-fabrics.webp"
-        caption="Fabric swatches in a showroom at High Point Market, October 2026."
+        caption="Fabric swatches in the Rowe Furniture showroom at High Point Market, October 2026."
         height={1199}
       />
 
