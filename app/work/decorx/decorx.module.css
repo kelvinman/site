@@ -39,12 +39,15 @@
   color: var(--muted);
 }
 
+/* An image and its caption, with the same room above and below as the demos, so a figure reads
+   as its own moment rather than crowding the paragraphs around it. */
 .figure {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 12px;
   width: 100%;
+  margin: 16px 0 32px;
 }
 
 .figure img {
