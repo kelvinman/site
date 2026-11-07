@@ -210,8 +210,7 @@ export default function Wethos() {
       </p>
 
       <p className={styles.body}>
-        Watching so many people build their own agencies on Wethos is what showed me I could do it myself. In June 2022
-        I left to start{" "}
+        Watching so many people build their own agencies on Wethos is what showed me I could do it myself. After Wethos, in June 2022, I started{" "}
         <a href="https://studiosupernice.com" target="_blank" rel="noopener noreferrer">
           SuperNice
         </a>
