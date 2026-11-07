@@ -93,8 +93,8 @@
 .shot {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 24px;
+  margin: 18px 0 34px;
 }
 
 .shot img {
@@ -111,9 +111,10 @@
   color: var(--muted);
 }
 
-/* One cover per role, right under its title, so scanning the page is scanning the work. */
+/* One cover per role, right under its title, so scanning the page is scanning the work. It has the
+   case studies' figure spacing: with the 14px gap, 32px above and 48px below. */
 .cover {
-  margin-top: 2px;
+  margin: 18px 0 34px;
 }
 
 /* An image inside a part gets room from the text above it and the link below. */

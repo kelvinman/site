@@ -114,3 +114,16 @@ h2[id] {
     animation: none !important;
   }
 }
+
+/* Space around figures, kept the same everywhere. A figure normally has room above and below it,
+   but next to a section heading or another figure those would add up: a heading after a figure
+   would sit further away than one after text, and two figures in a row would drift apart. So a
+   figure gives up its bottom margin before a heading. Two figures in a row keep extra room between
+   them, 64px, so each reads as its own image rather than a stack. */
+figure[class]:has(+ h2) {
+  margin-bottom: 0;
+}
+
+figure[class] + figure[class] {
+  margin-top: 16px;
+}

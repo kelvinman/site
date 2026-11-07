@@ -88,7 +88,8 @@
   font: inherit;
   font-weight: 600;
   color: var(--foreground);
-  margin-top: 24px;
+  /* A clear break between sections, more than the space around a figure. */
+  margin-top: 48px;
 }
 
 .bullets {

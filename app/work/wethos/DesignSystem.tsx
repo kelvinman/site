@@ -43,7 +43,8 @@ const PAGES = [
 
 export function DesignSystem() {
   const [active, setActive] = useState(0);
-  const page = PAGES[active];
+  // Falls back to the first page if the chosen one no longer exists.
+  const page = PAGES[active] ?? PAGES[0];
 
   return (
     <figure className={demo.demo}>
