@@ -197,12 +197,7 @@ export default function Wethos() {
 
       <blockquote className={`${styles.body} ${work.quote}`}>
         <p>&ldquo;&hellip;its been great getting to know you guys and the flow between design and dev at Wethos!&rdquo;</p>
-        <footer>
-          <a href="https://www.linkedin.com/in/craig-s-walker/" target="_blank" rel="noopener noreferrer">
-            Craig Walker
-          </a>
-          , December 2021
-        </footer>
+        <footer>Craig Walker, Front-End Developer</footer>
       </blockquote>
 
       <h2 id="what-i-learned" className={styles.subhead}>
