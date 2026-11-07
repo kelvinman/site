@@ -136,7 +136,7 @@ export default function Work() {
 
       <p className={home.body}>
         Most of this came through <a href="https://studiosupernice.com">SuperNice</a>, the product studio I run,
-        usually as the only design and front-end person on the team.
+        usually as the only designer on the team, and often the one building it too.
       </p>
 
       {PROJECTS.map((project) => (
