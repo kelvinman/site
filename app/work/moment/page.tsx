@@ -219,9 +219,6 @@ export default function Moment() {
         .
       </p>
 
-      <p className={styles.body}>
-        Want to walk through any of this? <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>
-      </p>
 
       <MoreWork slug="moment" />
     </NoteLayout>

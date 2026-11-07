@@ -3,7 +3,8 @@ import styles from "../page.module.css";
 import { PROJECTS } from "./projects";
 import more from "./more.module.css";
 
-/** The other case studies, at the end of each one, starting with the next in the /work order and
+/** The close of every case study: the line inviting a reader to get in touch, written once here, then
+ *  the other case studies, starting with the next in the /work order and
  *  coming round to the one before, so a reader can go straight on. Each is named with its one line
  *  from projects.ts. Its heading has the id "more-work", for the contents list beside the page. */
 export function MoreWork({ slug }: { slug: string }) {
@@ -13,6 +14,10 @@ export function MoreWork({ slug }: { slug: string }) {
 
   return (
     <>
+      <p className={styles.body}>
+        Want to walk through any of this? <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>
+      </p>
+
       <h2 id="more-work" className={styles.subhead}>
         More work
       </h2>

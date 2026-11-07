@@ -139,10 +139,6 @@ export default function SidecarLegal() {
         engineering.
       </p>
 
-      <p className={styles.body}>
-        Want to talk it through? <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>
-      </p>
-
       <MoreWork slug="sidecar-legal" />
     </NoteLayout>
   );

@@ -293,9 +293,6 @@ export default function DecorX() {
         </li>
       </ul>
 
-      <p className={styles.body}>
-        Want to walk through any of this? <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>
-      </p>
 
 
       <MoreWork slug="decorx" />
