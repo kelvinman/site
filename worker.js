@@ -1,4 +1,4 @@
-// Sends the bare domain to www so the site has one address, keeps case studies behind a shared
+// Sends the bare domain and plain http to https://www so the site has one address, keeps case studies behind a shared
 // password or a mentor's own expiring one, then serves the static export.
 
 // Case studies hold client work, so they need the password. The /work index stays public.
@@ -12,7 +12,8 @@ const LETTERS = "0123456789abcdefghjkmnpqrstvwxyz";
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.hostname === env.BARE_HOST) {
+    // The bare domain, and plain http on www, both go to https://www, so Google sees one copy of each page.
+    if (url.hostname === env.BARE_HOST || (url.hostname === env.CANONICAL_HOST && url.protocol === "http:")) {
       url.protocol = "https:";
       url.hostname = env.CANONICAL_HOST;
       url.port = "";

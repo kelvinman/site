@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { NOTES } from "./notes/notes";
 import { WORK } from "./work";
 import { OWN } from "./work/projects";
+
+// Names the one address Google should use for the home page.
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 /** Opens in a new tab, for links that leave the site. */
 function Out({ href, children }: { href: string; children: React.ReactNode }) {

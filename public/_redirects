@@ -1,2 +1,6 @@
 # Notes are listed on the home page, so /notes sends people there.
 /notes  /  301
+
+# Pages from the old site that Google still asks for. The home page does both jobs now.
+/about    /  301
+/contact  /  301

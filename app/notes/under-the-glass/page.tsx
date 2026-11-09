@@ -9,6 +9,7 @@ import { SafariPhone } from "../demos/SafariPhone";
 export const metadata: Metadata = {
   title: "Under the glass · Kelvin Man",
   description: "How to make a full-screen hero show through the status bar and the floating toolbar in iOS Safari 26.",
+  alternates: { canonical: "/notes/under-the-glass" },
   openGraph: { title: "Under the glass", description: "How to make a full-screen hero show through the status bar and the floating toolbar in iOS Safari 26.", url: "/notes/under-the-glass", siteName: "Kelvin Man", type: "article" },
 };
 
