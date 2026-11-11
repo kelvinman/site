@@ -45,8 +45,8 @@ const SECTIONS = [
 
 /**
  * The edit view. 2025: his Edit Image Loom of 16 May 2025, at 2:43 and 4:31, cropped to the design. 2026: the
- * changelog's screenshots of 28 May 2026: Designer with room cleaning and virtual staging, and the Batch edit view
- * with close-ups from detected objects. Both dark, at his call; the Compare view (Oct 2026) came out as too new.
+ * changelog's screenshots of 28 May 2026: Designer with room cleaning and virtual staging, and a product close-up
+ * made from a detected object. Both dark, at his call; the Compare view (Oct 2026) came out as too new.
  */
 const EDITOR: Still[] = [
   {
@@ -81,9 +81,9 @@ const EDITOR: Still[] = [
     src: "editor-2026-closeup.webp",
     width: 1600,
     height: 942,
-    alt: "A dining room in DecorX's dark edit view, with the objects it found in the image listed beside it and 2K and 4K close-up options",
+    alt: "A close-up of a leather armchair in DecorX's dark edit view, with the objects found in the room listed beside it",
     title: "Close-ups, 2026",
-    text: "Pick an object DecorX found in the image, such as a chair or a rug, and make a close-up of it at 2K or 4K.",
+    text: "Pick an object DecorX found in a room, such as a chair, and it makes a close-up of that product at 2K or 4K.",
   },
 ];
 
