@@ -7,11 +7,13 @@ import styles from "./demos.module.css";
 export type Still = {
   /** The toggle's label, such as a date. */
   label: string;
-  /** File in public/work/decorx. */
-  src: string;
-  width: number;
-  height: number;
-  alt: string;
+  /** File in public/work/decorx, with its size and alt text. */
+  src?: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+  /** A rebuilt screen shown in place of an image. */
+  view?: React.ReactNode;
   title: string;
   text: string;
 };
@@ -19,7 +21,7 @@ export type Still = {
 /**
  * A row of stills you step through with a toggle: one image at a time in a fixed frame, with a short title
  * and sentence under it. Arrow keys move between steps. The images sit stacked so switching never waits on a
- * load; under reduced motion they swap without a fade.
+ * load; a step can also be a rebuilt screen instead of an image. Under reduced motion they swap without a fade.
  */
 export function Stills({ items, caption, label }: { items: Still[]; caption: string; label: string }) {
   const [shown, setShown] = useState(0);
@@ -36,10 +38,15 @@ export function Stills({ items, caption, label }: { items: Still[]; caption: str
   return (
     <figure className={demo.demo}>
       <div className={styles.stills}>
-        {items.map((s, i) => (
+        {items.map((s, i) =>
+          s.view ? (
+            <div key={s.label} data-shown={i === shown || undefined} aria-hidden={i !== shown} inert={i !== shown}>
+              {s.view}
+            </div>
+          ) : (
           // eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized
           <img
-            key={s.src}
+            key={s.label}
             src={`/work/decorx/${s.src}`}
             alt={s.alt}
             width={s.width}
@@ -48,12 +55,13 @@ export function Stills({ items, caption, label }: { items: Still[]; caption: str
             data-shown={i === shown || undefined}
             aria-hidden={i !== shown}
           />
-        ))}
+          ),
+        )}
       </div>
 
       <div className={demo.toggle} role="group" aria-label={label} onKeyDown={onKey}>
         {items.map((s, i) => (
-          <button key={s.src} type="button" aria-pressed={i === shown} onClick={() => setShown(i)}>
+          <button key={s.label} type="button" aria-pressed={i === shown} onClick={() => setShown(i)}>
             {s.label}
           </button>
         ))}

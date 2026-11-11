@@ -6,6 +6,7 @@ import { Clip } from "./Clip";
 import draft from "./decorx.module.css";
 import { FabricMapper } from "./FabricMapper";
 import { FairQueue } from "./FairQueue";
+import { AttributesScreen, EditScreen } from "./PortalScreens";
 import { ShowroomPhone } from "./ShowroomPhone";
 import { Stills, type Still } from "./Stills";
 import { TwoProducts } from "./TwoProducts";
@@ -44,8 +45,8 @@ const SECTIONS = [
 
 
 /**
- * The versions before the platform, from his walkthrough Looms (Loom Notes.md, DecorX). The 2025 Portal: his
- * Portal Loom of 23 May 2025, at 15:11 (the customer's name in the sidebar covered with plain sidebar) and 10:35.
+ * The versions before the platform, from his walkthrough Looms (Loom Notes.md, DecorX). The 2025 Portal: rebuilt
+ * in HTML (PortalScreens.tsx) at his call on 11 Nov 2026, as the Loom frames were blurry and the file's export is off.
  * It was a different product that shared the name (his account, 11 Nov 2026, DecorX/History.md). Jan 2026: Smart
  * Image Generation, 15 Jan 2026, at 7:45, two days into kelvinman/canvas (first commit 13 Jan 2026), which became
  * decorx-ai/canvas. He dropped the Sep 2024 and Jan 2025 stills on 11 Nov 2026 ("really bad").
@@ -53,21 +54,15 @@ const SECTIONS = [
 const HISTORY: Still[] = [
   {
     label: "Attributes",
-    src: "history-2025-attributes.webp",
-    width: 1086,
-    height: 724,
-    alt: "The 2025 Portal's Attributes Generation page, with six imports by date and their status",
+    view: <AttributesScreen />,
     title: "The first Portal, 2025",
     text: "Brands imported products from a spreadsheet, and DecorX wrote the attributes behind search, filters and SEO. Today's Portal reused the name for a new product.",
   },
   {
     label: "Editing",
-    src: "history-2025-portal-edit.webp",
-    width: 996,
-    height: 664,
-    alt: "The 2025 Portal's edit view: a history column, the generated room, and tools to erase, replace and reframe",
+    view: <EditScreen />,
     title: "Editing with a history, 2025",
-    text: "Every edit added a version to the history beside the image, so you could go back to any of them.",
+    text: "Every edit added a version to the history beside the image, so you could go back to any of them. Try Re-generate.",
   },
   {
     label: "Prototype",
@@ -232,7 +227,7 @@ export default function DecorX() {
       <Stills
         items={HISTORY}
         label="Version"
-        caption="Stills from my walkthrough videos. The first two are designs in Figma, and the last one's gallery shows placeholder images."
+        caption="The first two are my 2025 designs, rebuilt from Figma with stand-in dates and photos. The last is a still from my walkthrough video, and its gallery shows placeholder images."
       />
 
       <h2 id="starting-over" className={styles.subhead}>

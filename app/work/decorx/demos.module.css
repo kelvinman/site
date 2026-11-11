@@ -432,22 +432,25 @@
   width: 100%;
 }
 
-.stills img {
+.stills > * {
   grid-area: 1 / 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
   opacity: 0;
   transition: opacity 240ms ease-out;
 }
 
-.stills img[data-shown] {
+.stills > *[data-shown] {
   opacity: 1;
 }
 
+.stills img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .stills img {
+  .stills > * {
     transition: none;
   }
 }
