@@ -91,13 +91,16 @@ function Figure({
   src,
   caption,
   height = 900,
+  screen = false,
 }: {
   src: string;
   caption: string;
   height?: number;
+  /** A screenshot, which gets a hairline edge so it doesn't blend into the page. */
+  screen?: boolean;
 }) {
   return (
-    <figure className={draft.figure}>
+    <figure className={draft.figure} data-screen={screen || undefined}>
       {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
       <img
         src={`/work/decorx/${src}`}
@@ -199,6 +202,7 @@ export default function DecorX() {
         src="history-2026-pipeline.webp"
         caption="Two days in, the prototype wired a floor plan, its rooms and product sets into a step that generates each room. The gallery shows placeholder images."
         height={1016}
+        screen
       />
 
       <h2 id="starting-over" className={styles.subhead}>
