@@ -269,3 +269,165 @@
     display: block;
   }
 }
+
+/* The invoice itself: a sheet of paper in its own light look in both themes, like the proposal
+   page higher up, with the scope to add services from under it. */
+.invoiceDemo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 28px 20px 20px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--muted) 12%, transparent);
+}
+
+.sheet {
+  width: 100%;
+  max-width: 440px;
+  padding: 28px 28px 24px;
+  border-radius: 4px;
+  background: #fff;
+  color: #1c1a2b;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12);
+  font-family: var(--font-read);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sheetHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.sheetTitle {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sheetNumber,
+.sheetMeta dt,
+.lines th,
+.line td span,
+.emptyLine td,
+.totals {
+  color: #6e6b80;
+}
+
+.sheetMeta {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0 24px;
+}
+
+.sheetMeta dt {
+  font-size: 11px;
+}
+
+.sheetMeta dd {
+  margin: 2px 0 0;
+}
+
+.lines {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lines th {
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e6e5ee;
+  font-size: 11px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.lines th:last-child,
+.lines td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.lines td {
+  padding: 9px 0;
+  border-bottom: 1px solid #f0eff5;
+  vertical-align: baseline;
+}
+
+.line td span {
+  display: block;
+  margin-top: 1px;
+  font-size: 11px;
+}
+
+.line td:first-child {
+  padding-right: 12px;
+}
+
+.line {
+  animation: lineIn 180ms ease-out;
+}
+
+@keyframes lineIn {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+}
+
+.totals {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+  margin-left: auto;
+  max-width: 220px;
+}
+
+.totals div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.due {
+  padding-top: 8px;
+  border-top: 1px solid #e6e5ee;
+  color: #1c1a2b;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.invoiceDemo .picker {
+  max-width: 440px;
+}
+
+@media (max-width: 600px) {
+  .invoiceDemo {
+    padding: 16px 12px 12px;
+  }
+
+  .sheet {
+    padding: 20px 18px 18px;
+  }
+
+  .sheetMeta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sheetMeta div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    animation: none;
+  }
+}
+
+.lines .emptyLine td {
+  text-align: left;
+  white-space: normal;
+}

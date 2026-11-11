@@ -8,16 +8,17 @@ export type Page = { name: string; src: string; width: number; height: number; c
 
 /**
  * Pages shown one at a time in a frame of fixed shape, with a toggle under it, so a set can grow
- * without the case study getting longer. Used for the design system and the website.
+ * without the case study getting longer. Used for the design system and the website. The frame is
+ * 16:10 unless a set passes its own shape, so its images can fill it edge to edge.
  */
-export function PageViewer({ pages, label }: { pages: Page[]; label: string }) {
+export function PageViewer({ pages, label, aspect }: { pages: Page[]; label: string; aspect?: string }) {
   const [active, setActive] = useState(0);
   // Falls back to the first page if the chosen one no longer exists.
   const page = pages[active] ?? pages[0];
 
   return (
     <figure className={demo.demo}>
-      <div className={styles.dsFrame}>
+      <div className={styles.dsFrame} style={aspect ? { aspectRatio: aspect } : undefined}>
         {pages.map((p, i) => (
           // eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized
           <img
