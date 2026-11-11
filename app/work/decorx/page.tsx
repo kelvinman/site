@@ -45,14 +45,15 @@ const SECTIONS = [
 
 /**
  * The edit view. 2025: his Edit Image Loom of 16 May 2025, at 2:43 and 4:31, cropped to the design. 2026: the
- * changelog's Designer screenshot (room cleaning and virtual staging, May 2026) and the Compare view (30 Oct 2026).
+ * changelog's screenshots of 28 May 2026: Designer with room cleaning and virtual staging, and the Batch edit view
+ * with close-ups from detected objects. Both dark, at his call; the Compare view (Oct 2026) came out as too new.
  */
 const EDITOR: Still[] = [
   {
     label: "Erase",
     src: "editor-2025-erase.webp",
-    width: 994,
-    height: 662,
+    width: 986,
+    height: 654,
     alt: "The 2025 edit view with two paintings on the wall painted over in purple, a brush size slider and an Erase button",
     title: "Erase, 2025",
     text: "Paint over what should go, and DecorX fills the space.",
@@ -60,8 +61,8 @@ const EDITOR: Still[] = [
   {
     label: "Ratio",
     src: "editor-2025-aspect.webp",
-    width: 984,
-    height: 656,
+    width: 976,
+    height: 646,
     alt: "The 2025 edit view with a grid of six aspect ratios over the image",
     title: "Aspect ratio, 2025",
     text: "Pick a new shape from six ratios, from square to 9:16.",
@@ -70,19 +71,19 @@ const EDITOR: Still[] = [
     label: "Staging",
     src: "editor-2026-staging.webp",
     width: 1600,
-    height: 954,
+    height: 942,
     alt: "A dining room in DecorX's editor, with Room Cleaning above it and a Virtual Staging panel of rooms beside it",
     title: "Staging and room cleaning, 2026",
     text: "Stage products into a photo of a room, or clean the room of its furniture first.",
   },
   {
-    label: "Compare",
-    src: "editor-2026-compare.webp",
-    width: 1430,
-    height: 894,
-    alt: "A generated dining room beside the product photo of the table in it, with the edit tools on the right",
-    title: "Compare, 2026",
-    text: "Check an edit against the real product photo before keeping it.",
+    label: "Close-ups",
+    src: "editor-2026-closeup.webp",
+    width: 1600,
+    height: 942,
+    alt: "A dining room in DecorX's dark edit view, with the objects it found in the image listed beside it and 2K and 4K close-up options",
+    title: "Close-ups, 2026",
+    text: "Pick an object DecorX found in the image, such as a chair or a rug, and make a close-up of it at 2K or 4K.",
   },
 ];
 
@@ -201,7 +202,7 @@ export default function DecorX() {
       <Figure
         src="history-2026-pipeline.webp"
         caption="Two days in, the prototype wired a floor plan, its rooms and product sets into a step that generates each room. The gallery shows placeholder images."
-        height={1016}
+        height={1013}
         screen
       />
 
@@ -250,7 +251,7 @@ export default function DecorX() {
       <Stills
         items={EDITOR}
         label="Edit tool"
-        caption="Two stills from my May 2025 design in Figma, and two from DecorX's changelog."
+        caption="Two stills from my May 2025 design in Figma, and two from DecorX's changelog in May 2026."
       />
 
       <p className={styles.body}>
