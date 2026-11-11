@@ -4,10 +4,10 @@ import { NoteLayout } from "../../notes/NoteLayout";
 import { MoreWork } from "../MoreWork";
 import { Clip } from "./Clip";
 import draft from "./decorx.module.css";
+import { EditGrid, type Shot } from "./EditGrid";
 import { FabricMapper } from "./FabricMapper";
 import { FairQueue } from "./FairQueue";
 import { ShowroomPhone } from "./ShowroomPhone";
-import { Stills, type Still } from "./Stills";
 import { TwoProducts } from "./TwoProducts";
 import { Plans, Workflow } from "./Workflow";
 import demos from "./demos.module.css";
@@ -43,49 +43,11 @@ const SECTIONS = [
 ];
 
 
-/**
- * The edit view. 2025: his Edit Image Loom of 16 May 2025, at 2:43 and 4:31, cropped to the design. 2026: the
- * changelog's screenshots of 28 May 2026: Designer with room cleaning and virtual staging, and a product close-up
- * made from a detected object. Both dark, at his call; the Compare view (Oct 2026) came out as too new.
- */
-const EDITOR: Still[] = [
-  {
-    label: "Erase",
-    src: "editor-2025-erase.webp",
-    width: 986,
-    height: 654,
-    alt: "The 2025 edit view with two paintings on the wall painted over in purple, a brush size slider and an Erase button",
-    title: "Erase, 2025",
-    text: "Paint over what should go, and DecorX fills the space.",
-  },
-  {
-    label: "Ratio",
-    src: "editor-2025-aspect.webp",
-    width: 976,
-    height: 646,
-    alt: "The 2025 edit view with a grid of six aspect ratios over the image",
-    title: "Aspect ratio, 2025",
-    text: "Pick a new shape from six ratios, from square to 9:16.",
-  },
-  {
-    label: "Staging",
-    src: "editor-2026-staging.webp",
-    width: 1600,
-    height: 942,
-    alt: "A dining room in DecorX's editor, with Room Cleaning above it and a Virtual Staging panel of rooms beside it",
-    title: "Staging and room cleaning, 2026",
-    text: "Stage products into a photo of a room, or clean the room of its furniture first.",
-  },
-  {
-    label: "Close-ups",
-    src: "editor-2026-closeup.webp",
-    width: 1600,
-    height: 942,
-    alt: "A close-up of a leather armchair in DecorX's dark edit view, with the objects found in the room listed beside it",
-    title: "Close-ups, 2026",
-    text: "Pick an object DecorX found in a room, such as a chair, and it makes a close-up of that product at 2K or 4K.",
-  },
-];
+/* "Editing an image", his pick on 11 Nov 2026 (a clip and two stills): only 2026 screens, from DecorX's changelog of
+   28 May 2026. The 2025 stills came out as weak. The video is the changelog's GIF, with the screen recorder's logo
+   covered. */
+const STAGING: Shot = { src: "editor-2026-staging.webp", width: 1600, height: 942, alt: "A dining room in DecorX's editor, with Room Cleaning above it and a Virtual Staging panel of rooms beside it", label: "Virtual staging" };
+const CLOSEUP: Shot = { src: "editor-2026-closeup.webp", width: 1600, height: 942, alt: "A close-up of a leather armchair in DecorX's edit view, with the objects found in the room listed beside it", label: "A product close-up" };
 
 /** A still, from the deck or the changelog. */
 function Figure({
@@ -245,14 +207,14 @@ export default function DecorX() {
 
       <p className={styles.body}>
         Most generated images are nearly right, so editing them matters as much as making them. I designed the
-        first edit view in May 2025. Each tool had its own key, and the toolbar could sit left, centre or right.
+        first edit view in May 2025. Each tool had its own key, and the toolbar could sit left, centre or right. By May
+        2026, the edit view could stage products into a room, make close-ups and turn an image into a short video.
       </p>
 
-      <Stills
-        items={EDITOR}
-        label="Edit tool"
-        caption="Two stills from my May 2025 design in Figma, and two from DecorX's changelog in May 2026."
-      />
+      <div className={demos.lead}>
+        <Clip name="editor-2026-video" ratio="796 / 472" caption="A finished room turned into a 5-second video." />
+      </div>
+      <EditGrid shots={[STAGING, CLOSEUP]} caption="All three from DecorX's changelog, May 2026." />
 
       <p className={styles.body}>
         The onboarding videos I recorded give customers one rule. Edit when an image is mostly working, and
