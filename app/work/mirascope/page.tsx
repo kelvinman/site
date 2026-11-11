@@ -165,7 +165,7 @@ export default function Mirascope() {
         src="sotai-website.webp"
         caption="SOTAI's home page, which I designed in early 2023, in a mockup made for the studio's portfolio."
         width={1224}
-        height={821}
+        height={918}
       />
 
       <p className={styles.body}>
