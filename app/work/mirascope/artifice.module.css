@@ -34,7 +34,8 @@
   justify-content: center;
   width: 100%;
   max-width: 560px;
-  padding: 20px;
+  /* Tight on three sides so the card fills the grey; a little more below, under the counts. */
+  padding: 10px 10px 20px;
   border-radius: 18px;
   border: 1px solid rgb(28 28 28 / 0.08);
   background: #f0f0f0;
@@ -50,9 +51,8 @@
   flex-direction: column;
   gap: 18px;
   width: 100%;
-  max-width: 420px;
   padding: 18px 20px 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #fff;
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
 }
