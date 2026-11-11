@@ -303,3 +303,273 @@
   outline: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
   outline-offset: -1px;
 }
+
+/* Phone captures in the iPhone frame: the glass is the same box as .device, clipped to the
+   frame's rounded corners, with each capture filling it and crossfading like the World screens. */
+.glass {
+  position: absolute;
+  top: 2.9%;
+  left: 5.89%;
+  width: 88.21%;
+  height: 94.73%;
+  overflow: hidden;
+  /* The glass's corner, as a share of its width and of its height (it is 494 by 1078). */
+  border-radius: 13.4% / 6.15%;
+  background: #000;
+}
+
+.glass .screen {
+  object-fit: cover;
+}
+
+/* The bottom sheets, on the app's black, each resting on the stage's floor. The stage is the
+   tallest sheet's shape, so switching never moves the page. */
+.sheetStage {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 600 / 790;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #000;
+}
+
+.sheet {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+}
+
+.sheet[data-active] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet {
+    transition: none;
+  }
+}
+
+/* Membership: the product in its own light look, whatever the page's theme. Inter-like system
+   type, white cards on a pale grey, Apple's system blue for buttons. */
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  border-radius: 16px;
+  background: #f2f2f4;
+  color: #111;
+  font-family: system-ui, -apple-system, "Inter", sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.cardRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cardHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardHead b {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.cardHead span,
+.gate span:not(.button) {
+  color: #6b6b70;
+}
+
+.liveArt {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.liveArt img {
+  width: 72%;
+  height: auto;
+}
+
+.badge,
+.memberTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 6px;
+  border-radius: 5px;
+  background: #007aff;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 17px;
+  text-transform: uppercase;
+}
+
+.badge {
+  position: absolute;
+  top: 4px;
+  left: 14%;
+}
+
+.lock {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+}
+
+/* The same height on both sides, so switching never moves the page. */
+.gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 118px;
+  gap: 2px;
+  text-align: center;
+}
+
+.gate > .lock {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 4px;
+}
+
+.gate b {
+  font-weight: 600;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  align-self: stretch;
+  margin-top: 8px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  background: #007aff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.tee {
+  overflow: hidden;
+  border-radius: 10px;
+  background: #ececec;
+}
+
+.tee img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: blur(9px);
+  transform: scale(1.08);
+  transition: filter 240ms ease-out;
+}
+
+.tee[data-open] img {
+  filter: none;
+}
+
+.merchName {
+  margin-top: 8px;
+  padding: 7px 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.chatHead {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  list-style: none;
+}
+
+.chat li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.chat i {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+}
+
+.bar {
+  flex: 0 1 auto;
+  min-width: 16px;
+  height: 8px;
+  border-radius: 4px;
+  background: #e2e2e6;
+}
+
+.youName {
+  font-weight: 600;
+}
+
+.you {
+  animation: arrive 240ms ease-out;
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tee img {
+    transition: none;
+  }
+
+  .you {
+    animation: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .cardRow {
+    grid-template-columns: 1fr;
+  }
+
+  .tee {
+    max-width: 200px;
+    align-self: center;
+    width: 100%;
+  }
+}

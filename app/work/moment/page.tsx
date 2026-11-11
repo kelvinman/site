@@ -10,10 +10,67 @@ import { Scattered } from "./Scattered";
 import { LabelVariants } from "./LabelVariants";
 import { ShippedPhones } from "./ShippedPhones";
 import { WorldsDemo } from "./WorldsDemo";
+import { PhoneScreens, type PhoneScreen } from "./PhoneScreens";
+import { MembershipDemo } from "./MembershipDemo";
+import { SheetsDemo } from "./SheetsDemo";
 
 // From the Moment design files in Figma, my archive of Moment screenshots and
 // recordings, the framing of Moment's investor deck (none of its company numbers) and my answers of
 // 27 Oct 2026. Behind the case study password; kept out of search.
+// Added 11 Nov 2026: phone captures from Jessii Vee World (24 to 29 Mar 2023) and the membership
+// designs for Kurtis Conner World (Mar 2023), both from the archive; Arjun's line from Slack (about
+// 6 Mar 2023); the App Store screenshots, Smart App Banner and bottom sheets exported from the
+// Figma files App Assets and Moment App; Apple's approval email for Worlds (20 Mar 2023, Pacific).
+
+/** Following, notifications and their settings, captured on an iPhone in March 2023. */
+const SOCIAL: PhoneScreen[] = [
+  {
+    key: "following",
+    label: "Following",
+    src: "/work/moment/social-following.webp",
+    alt: "People: the accounts a fan follows, the creators with verified badges",
+    caption: "People: everyone a fan follows, with the creators' verified badges.",
+  },
+  {
+    key: "notifications",
+    label: "Notifications",
+    src: "/work/moment/social-notifications.webp",
+    alt: "Notifications: new followers with Follow buttons, and the creators' appearances",
+    caption: "Notifications: new followers, with a button to follow back, and the creators' appearances.",
+  },
+  {
+    key: "profile",
+    label: "Profile",
+    src: "/work/moment/social-profile.webp",
+    alt: "A profile: an avatar in its outfit, a Following button, and follower counts",
+    caption: "A profile: the avatar in its outfit, with a Following button.",
+  },
+  {
+    key: "settings",
+    label: "Settings",
+    src: "/work/moment/social-settings.webp",
+    alt: "Notification settings: switches for follows, party invites and chat messages",
+    caption: "Settings: follows, party invites and chat messages, each on its own switch.",
+  },
+];
+
+/** The Smart App Banner design in its light and dark versions. */
+const BANNER: PhoneScreen[] = [
+  {
+    key: "light",
+    label: "Light",
+    src: "/work/moment/banner-light.webp",
+    alt: "A World's page in Safari, light, with an Open in the Worlds app banner and a Get the Worlds app sheet",
+    caption: "Light mode, with Apple's system blue.",
+  },
+  {
+    key: "dark",
+    label: "Dark",
+    src: "/work/moment/banner-dark.webp",
+    alt: "The same page and sheet in dark mode",
+    caption: "Dark mode, where the same blue turns brighter.",
+  },
+];
 export const metadata: Metadata = {
   title: "Moment · Kelvin Man",
   description: "Designing Worlds, a space for each creator's community.",
@@ -26,8 +83,12 @@ export const metadata: Metadata = {
 const SECTIONS = [
   { id: "the-problem", title: "The problem" },
   { id: "one-place", title: "One place" },
+  { id: "friends", title: "Friends and parties" },
+  { id: "membership", title: "Membership" },
   { id: "hard-parts", title: "The hard parts" },
+  { id: "design-system", title: "The design system" },
   { id: "launch", title: "Launch night" },
+  { id: "app-store", title: "On the App Store" },
   { id: "what-i-learned", title: "What I learned" },
   { id: "more-work", title: "More work" },
 ];
@@ -116,6 +177,48 @@ export default function Moment() {
 
       <WorldsDemo />
 
+      <h2 id="friends" className={styles.subhead}>
+        Friends and parties
+      </h2>
+
+      <p className={styles.body}>
+        Fans followed each other and the creator. Notifications told them who followed them, when the creator made an
+        appearance, and when a friend invited them to a party. Fans chose which of these reached their phone. Tap
+        through it:
+      </p>
+
+      <PhoneScreens screens={SOCIAL} label="Screens" note="Captured on an iPhone in Jessii Vee World, March 2023." />
+
+      <h2 id="membership" className={styles.subhead}>
+        Membership
+      </h2>
+
+      <p className={styles.body}>
+        Creators needed a way to earn from their World. Giel and I designed memberships, where paying fans got into
+        members-only events, merch and chats.
+      </p>
+
+      <Figure
+        src="membership-tiers.webp"
+        caption="Three tiers for Kurtis Conner World, from our membership designs in March 2023."
+        width={1600}
+        height={969}
+      />
+
+      <p className={styles.body}>
+        A fan who hadn&apos;t joined still saw what membership opened, behind a lock:
+      </p>
+
+      <MembershipDemo />
+
+      <blockquote className={`${styles.body} ${work.quote}`}>
+        <p>
+          &ldquo;Nice work on the membership design&hellip; people are super excited about it both externally and
+          internally.&rdquo;
+        </p>
+        <footer>Arjun Mehta, co-founder of Moment, in Slack, March 2023</footer>
+      </blockquote>
+
       <h2 id="hard-parts" className={styles.subhead}>
         The hard parts
       </h2>
@@ -161,6 +264,17 @@ export default function Moment() {
         <a href="https://www.figma.com/community/file/1157094402778889516/verified-icons">Verified Icons</a> on Figma
         Community, where 18.1k people have used them.
       </p>
+
+      <h2 id="design-system" className={styles.subhead}>
+        The design system
+      </h2>
+
+      <p className={styles.body}>
+        In the design system, colors came in light and dark pairs. Patterns that repeated became shared
+        components, like the bottom sheet, which had a version for each job:
+      </p>
+
+      <SheetsDemo />
 
       <h2 id="launch" className={styles.subhead}>
         Launch night
@@ -209,6 +323,32 @@ export default function Moment() {
         <dt>Arjun</dt>
         <dd>CEO</dd>
       </dl>
+
+      <h2 id="app-store" className={styles.subhead}>
+        On the App Store
+      </h2>
+
+      <p className={styles.body}>
+        Apple approved the Worlds app for the App Store in March 2023. It brought each World&apos;s Board, Chats and
+        Space to the iPhone.
+      </p>
+
+      <Figure
+        src="app-store.webp"
+        caption="Screenshots for the Worlds app's App Store page."
+        width={1560}
+        height={1127}
+      />
+
+      <p className={styles.body}>
+        On a phone&apos;s browser, a banner and a sheet pointed fans to the app:
+      </p>
+
+      <PhoneScreens
+        screens={BANNER}
+        label="Appearance"
+        note="The member and online counts were placeholders, blurred here."
+      />
 
 
       <h2 id="what-i-learned" className={styles.subhead}>
