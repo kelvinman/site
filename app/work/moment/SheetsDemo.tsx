@@ -100,17 +100,23 @@ export function SheetsDemo() {
               <span className={styles.dim} />
             </div>
             {SHEETS.map((s) => (
-              // eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized
-              <img
-                key={s.key}
-                src={`/work/moment/sheet-${s.key}-a.webp`}
-                alt={s.key === active ? `The ${s.label} sheet over Jessii Vee World's board` : ""}
-                width={600}
-                height={s.height}
-                loading="lazy"
-                className={styles.riser}
-                data-active={s.key === active || undefined}
-              />
+              <div key={s.key} className={styles.riser} data-active={s.key === active || undefined}>
+                {/* The blur iOS puts behind a sheet. The exports carry the sheets' see-through fill
+                    (90%, and 70% on Actions) but not the blur, so it is drawn here, in the sheet's
+                    shape: 52 of 600 in from each side, 76 down, 28 up from the bottom. */}
+                <span
+                  className={styles.material}
+                  style={{ top: `${(76 / s.height) * 100}%`, bottom: `${(28 / s.height) * 100}%` }}
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
+                <img
+                  src={`/work/moment/sheet-${s.key}-a.webp`}
+                  alt={s.key === active ? `The ${s.label} sheet over Jessii Vee World's board` : ""}
+                  width={600}
+                  height={s.height}
+                  loading="lazy"
+                />
+              </div>
             ))}
           </div>
 

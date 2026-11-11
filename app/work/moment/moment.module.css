@@ -391,7 +391,6 @@
   left: -10.5%;
   bottom: -4.3cqw;
   width: 121%;
-  height: auto;
   opacity: 0;
   transform: translateY(12%);
   transition:
@@ -402,6 +401,23 @@
 .riser[data-active] {
   opacity: 1;
   transform: none;
+}
+
+.riser img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The sheet's material: what is behind it, blurred, in the sheet's shape. */
+.material {
+  position: absolute;
+  left: 8.67%;
+  right: 8.67%;
+  border-radius: 4.84cqw 4.84cqw 0 0;
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
 }
 
 /* The sheet's parts named to the left of the phone. The figure makes room for the names, and the
