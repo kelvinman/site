@@ -44,47 +44,38 @@ const SECTIONS = [
 
 
 /**
- * The versions before the platform, from his walkthrough Looms (Loom Notes.md, DecorX): Caracole (INT), 11 Sep
- * 2024, at 5:00; LLM Inpainting Flow, 14 Jan 2025, at 6:15; Portal, 23 May 2025, at 0:30, cropped above the
- * signed-in customer's name; Smart Image Generation, 15 Jan 2026, at 7:45, two days into kelvinman/canvas (first
- * commit 13 Jan 2026), which became decorx-ai/canvas. The 2025 Portal was a different product that shared the
- * name (his account, 11 Nov 2026, DecorX/History.md).
+ * The versions before the platform, from his walkthrough Looms (Loom Notes.md, DecorX). The 2025 Portal: his
+ * Portal Loom of 23 May 2025, at 15:11 (the customer's name in the sidebar covered with plain sidebar) and 10:35.
+ * It was a different product that shared the name (his account, 11 Nov 2026, DecorX/History.md). Jan 2026: Smart
+ * Image Generation, 15 Jan 2026, at 7:45, two days into kelvinman/canvas (first commit 13 Jan 2026), which became
+ * decorx-ai/canvas. He dropped the Sep 2024 and Jan 2025 stills on 11 Nov 2026 ("really bad").
  */
 const HISTORY: Still[] = [
   {
-    label: "Sep 2024",
-    src: "history-2024-visualizer.webp",
-    width: 846,
-    height: 584,
-    alt: "Caracole's trade site with a Visualizations tab of six room images",
-    title: "A visualizer inside a brand's site",
-    text: "Shoppers on Caracole's trade site uploaded a photo of a room and placed a product in it. A chat bubble, powered by DecorX, took on the brand's colour.",
+    label: "Attributes",
+    src: "history-2025-attributes.webp",
+    width: 1086,
+    height: 724,
+    alt: "The 2025 Portal's Attributes Generation page, with six imports by date and their status",
+    title: "The first Portal, 2025",
+    text: "Brands imported products from a spreadsheet, and DecorX wrote the attributes behind search, filters and SEO. Today's Portal reused the name for a new product.",
   },
   {
-    label: "Jan 2025",
-    src: "history-2025-copilot.webp",
-    width: 844,
-    height: 606,
-    alt: "Three chat windows: picking the furniture to replace, then choosing a room type from suggested replies",
-    title: "The same flow, inside a chat",
-    text: "Every step became a message, with suggested replies styled as buttons. Keeping it all in one chat meant a brand could add it to its own site.",
+    label: "Editing",
+    src: "history-2025-portal-edit.webp",
+    width: 996,
+    height: 664,
+    alt: "The 2025 Portal's edit view: a history column, the generated room, and tools to erase, replace and reframe",
+    title: "Editing with a history, 2025",
+    text: "Every edit added a version to the history beside the image, so you could go back to any of them.",
   },
   {
-    label: "Mar 2025",
-    src: "history-2025-portal.webp",
-    width: 998,
-    height: 614,
-    alt: "The 2025 Portal: Magic Background, Background Removal and Attributes Generation, with a project of four room images",
-    title: "The first Portal, for brands",
-    text: "A tool for brands to put products on new backgrounds, remove backgrounds and fill in product details from a spreadsheet. Today's Portal reused the name for a new product.",
-  },
-  {
-    label: "Jan 2026",
+    label: "Prototype",
     src: "history-2026-pipeline.webp",
-    width: 1442,
+    width: 1374,
     height: 916,
     alt: "Nodes on a canvas: product sets and a floor plan with five rooms, wired into Generate Rooms and a gallery",
-    title: "The first prototype in code",
+    title: "The first prototype in code, January 2026",
     text: "Two days in, it wired a floor plan, its rooms and product sets into a step that generates each room. That prototype became the platform DecorX runs on now.",
   },
 ];
@@ -116,7 +107,7 @@ const EDITOR: Still[] = [
     label: "Staging",
     src: "editor-2026-staging.webp",
     width: 1600,
-    height: 954,
+    height: 1066,
     alt: "A dining room in DecorX's editor, with Room Cleaning above it and a Virtual Staging panel of rooms beside it",
     title: "Staging and room cleaning, 2026",
     text: "Stage products into a photo of a room, or clean the room of its furniture first.",
@@ -125,7 +116,7 @@ const EDITOR: Still[] = [
     label: "Compare",
     src: "editor-2026-compare.webp",
     width: 1430,
-    height: 894,
+    height: 952,
     alt: "A generated dining room beside the product photo of the table in it, with the edit tools on the right",
     title: "Compare, 2026",
     text: "Check an edit against the real product photo before keeping it.",
@@ -241,7 +232,7 @@ export default function DecorX() {
       <Stills
         items={HISTORY}
         label="Version"
-        caption="Stills from my walkthrough videos. The first three are designs in Figma, and the last one's gallery shows placeholder images."
+        caption="Stills from my walkthrough videos. The first two are designs in Figma, and the last one's gallery shows placeholder images."
       />
 
       <h2 id="starting-over" className={styles.subhead}>
