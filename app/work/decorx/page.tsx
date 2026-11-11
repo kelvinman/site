@@ -6,7 +6,6 @@ import { Clip } from "./Clip";
 import draft from "./decorx.module.css";
 import { FabricMapper } from "./FabricMapper";
 import { FairQueue } from "./FairQueue";
-import { AttributesScreen, EditScreen } from "./PortalScreens";
 import { ShowroomPhone } from "./ShowroomPhone";
 import { Stills, type Still } from "./Stills";
 import { TwoProducts } from "./TwoProducts";
@@ -43,37 +42,6 @@ const SECTIONS = [
   { id: "more-work", title: "More work" },
 ];
 
-
-/**
- * The versions before the platform, from his walkthrough Looms (Loom Notes.md, DecorX). The 2025 Portal: rebuilt
- * in HTML (PortalScreens.tsx) at his call on 11 Nov 2026, as the Loom frames were blurry and the file's export is off.
- * It was a different product that shared the name (his account, 11 Nov 2026, DecorX/History.md). Jan 2026: Smart
- * Image Generation, 15 Jan 2026, at 7:45, two days into kelvinman/canvas (first commit 13 Jan 2026), which became
- * decorx-ai/canvas. He dropped the Sep 2024 and Jan 2025 stills on 11 Nov 2026 ("really bad").
- */
-const HISTORY: Still[] = [
-  {
-    label: "Attributes",
-    view: <AttributesScreen />,
-    title: "The first Portal, 2025",
-    text: "Brands imported products from a spreadsheet, and DecorX wrote the attributes behind search, filters and SEO. Today's Portal reused the name for a new product.",
-  },
-  {
-    label: "Editing",
-    view: <EditScreen />,
-    title: "Editing with a history, 2025",
-    text: "Every edit added a version to the history beside the image, so you could go back to any of them. Try Re-generate.",
-  },
-  {
-    label: "Prototype",
-    src: "history-2026-pipeline.webp",
-    width: 1442,
-    height: 916,
-    alt: "Nodes on a canvas: product sets and a floor plan with five rooms, wired into Generate Rooms and a gallery",
-    title: "The first prototype in code, January 2026",
-    text: "Two days in, it wired a floor plan, its rooms and product sets into a step that generates each room. That prototype became the platform DecorX runs on now.",
-  },
-];
 
 /**
  * The edit view. 2025: his Edit Image Loom of 16 May 2025, at 2:43 and 4:31, cropped to the design. 2026: the
@@ -220,14 +188,17 @@ export default function DecorX() {
       </h2>
 
       <p className={styles.body}>
-        For a year and a half before the platform, I designed DecorX in Figma and shared each version as a recorded
-        walkthrough.
+        For a year and a half, I designed DecorX in Figma and shared each version as a recorded walkthrough. In
+        January 2026 I started building the next version in code.
       </p>
 
-      <Stills
-        items={HISTORY}
-        label="Version"
-        caption="The first two are my 2025 designs, rebuilt from Figma with stand-in dates and photos. The last is a still from my walkthrough video, and its gallery shows placeholder images."
+      {/* His Smart Image Generation Loom of 15 Jan 2026, at 7:45, two days into kelvinman/canvas (first commit
+          13 Jan 2026), which became decorx-ai/canvas. The 2025 stills and the rebuilt 2025 Portal screens came
+          out at his call on 11 Nov 2026. */}
+      <Figure
+        src="history-2026-pipeline.webp"
+        caption="Two days in, the prototype wired a floor plan, its rooms and product sets into a step that generates each room. The gallery shows placeholder images."
+        height={1016}
       />
 
       <h2 id="starting-over" className={styles.subhead}>
@@ -236,8 +207,8 @@ export default function DecorX() {
 
       <p className={styles.body}>
         By early 2026, DecorX was two products. Our team in China built Canvas, for
-        interior designers, from my designs. I started Portal, for retailers, as
-        a prototype in January 2026.
+        interior designers, from my designs. My January prototype
+        became Portal, for retailers.
       </p>
 
       <TwoProducts />
