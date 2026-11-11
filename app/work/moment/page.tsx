@@ -189,7 +189,7 @@ export default function Moment() {
 
       <blockquote className={`${styles.body} ${work.quote}`}>
         <p>&ldquo;He understood our business needs&hellip; He was able to work efficiently in a fast-paced environment.&rdquo;</p>
-        <footer>Arjun Mehta, co-founder and CEO of Moment</footer>
+        <footer>Arjun Mehta, co-founder of Moment</footer>
       </blockquote>
 
       <blockquote className={`${styles.body} ${work.quote}`}>
