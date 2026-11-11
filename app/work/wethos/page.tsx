@@ -171,6 +171,11 @@ export default function Wethos() {
         a sense of what to charge for that kind of project. A library like that didn&apos;t exist before.
       </p>
 
+      <p className={styles.body}>
+        Before they launched, I asked our users to try the new experience, and a couple dozen signed up through our user
+        research club. Templates launched in August 2021 with 60 pre-priced scopes and 600 services to build from.
+      </p>
+
       <TemplateDemo />
 
       <h2 id="design-system" className={styles.subhead}>

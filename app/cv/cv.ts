@@ -64,7 +64,7 @@ export const ROLES = [
     years: "2017 – 22",
     name: "Freelance",
     role: "Product designer",
-    what: "Designed Flipper (2022), an NFT trading dashboard sponsored by BanklessDAO, with rarity ranks, appraisals and in-app buying. Its presale sold out in 3 minutes.",
+    what: "Designed Flipper (2021–22), an NFT trading dashboard sponsored by BanklessDAO, with rarity ranks, appraisals and in-app buying. Its presale sold out in 3 minutes.",
   },
   {
     years: "2017 – 19",

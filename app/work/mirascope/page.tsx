@@ -151,6 +151,12 @@ export default function Mirascope() {
         toolkit, which has 1.5k stars on GitHub.
       </p>
 
+      <p className={styles.body}>
+        The brief for Mirascope&apos;s website and logo was for seasoned developers: playful but professional, never
+        enterprisey. The name comes from the mirror toy that makes a 3D image out of nothing, and from a joke about LLM
+        tools being wrappers.
+      </p>
+
       <Figure
         src="overview.webp"
         caption="A function in Lilypad: its code, and what each version costs and how fast it runs, day by day."

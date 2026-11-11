@@ -223,7 +223,7 @@ export const PROJECTS: Project[] = [
     slug: "flipper",
     name: "Flipper",
     role: "Senior product designer",
-    years: "2022",
+    years: "2021–22",
     summary:
       "An NFT trading dashboard sponsored by BanklessDAO. It showed rarity ranks as soon as a collection revealed, gave each item an appraisal, and let traders buy without leaving the dashboard. Its presale sold out in 3 minutes.",
   },

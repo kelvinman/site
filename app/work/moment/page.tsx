@@ -79,6 +79,11 @@ export default function Moment() {
         in October 2023.
       </p>
 
+      <p className={styles.body}>
+        Moment hired me to refine its beta, organize its design system, and design the mobile launch, social features
+        like following and parties, and the ways fans join in during live events.
+      </p>
+
       <Figure src="app-screens.webp" caption="Murder With My Husband World on iOS: home, board, chats, the 3D space, people." width={1600} height={617} />
 
       <Numbers
@@ -185,6 +190,11 @@ export default function Moment() {
       <blockquote className={`${styles.body} ${work.quote}`}>
         <p>&ldquo;He understood our business needs&hellip; He was able to work efficiently in a fast-paced environment.&rdquo;</p>
         <footer>Arjun Mehta, CEO of Moment</footer>
+      </blockquote>
+
+      <blockquote className={`${styles.body} ${work.quote}`}>
+        <p>&ldquo;I really enjoyed working with you&hellip; you drove a lot of value. Loved to see it.&rdquo;</p>
+        <footer>Nigel Egrari, co-founder of Moment</footer>
       </blockquote>
 
       <p className={styles.label}>Built with</p>
