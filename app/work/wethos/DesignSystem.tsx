@@ -1,8 +1,4 @@
-"use client";
-
-import { useState } from "react";
-import demo from "../../notes/demos/demos.module.css";
-import styles from "./wethos.module.css";
+import { PageViewer } from "./PageViewer";
 
 /**
  * Pages from the Wethos design system I led, one at a time in a fixed frame, with a toggle under it,
@@ -42,38 +38,5 @@ const PAGES = [
 ];
 
 export function DesignSystem() {
-  const [active, setActive] = useState(0);
-  // Falls back to the first page if the chosen one no longer exists.
-  const page = PAGES[active] ?? PAGES[0];
-
-  return (
-    <figure className={demo.demo}>
-      <div className={styles.dsFrame}>
-        {PAGES.map((p, i) => (
-          // eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized
-          <img
-            key={p.name}
-            src={p.src}
-            alt={p.caption}
-            width={p.width}
-            height={p.height}
-            loading="lazy"
-            data-active={i === active || undefined}
-          />
-        ))}
-      </div>
-
-      <div className={demo.toggle} role="group" aria-label="Design system pages">
-        {PAGES.map((p, i) => (
-          <button key={p.name} type="button" aria-pressed={active === i} onClick={() => setActive(i)}>
-            {p.name}
-          </button>
-        ))}
-      </div>
-
-      <figcaption className={demo.caption} aria-live="polite">
-        {page.caption}
-      </figcaption>
-    </figure>
-  );
+  return <PageViewer pages={PAGES} label="Design system pages" />;
 }

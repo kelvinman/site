@@ -7,6 +7,8 @@ import { TemplateDemo } from "./TemplateDemo";
 import work from "../work.module.css";
 import wethos from "./wethos.module.css";
 import { DesignSystem } from "./DesignSystem";
+import { InvoiceDemo } from "./InvoiceDemo";
+import { Website } from "./Website";
 
 // From the Wethos entry on /work and in the CV, the customer story behind the Templates number, Al
 // Huizenga's and Craig's kudos in my Notion hype doc, and my answers of 28 Oct 2026. The one screen
@@ -26,6 +28,7 @@ const SECTIONS = [
   { id: "scoping", title: "Scoping" },
   { id: "templates", title: "Templates" },
   { id: "design-system", title: "The design system" },
+  { id: "website", title: "The website" },
   { id: "working-with-engineering", title: "With engineering" },
   { id: "what-i-learned", title: "What I learned" },
   { id: "more-work", title: "More work" },
@@ -152,7 +155,7 @@ export default function Wethos() {
             loading="lazy"
           />
         </div>
-        <figcaption className={draft.caption}>The redesigned scope builder, on web and on a phone.</figcaption>
+        <figcaption className={draft.caption}>The redesigned scope builder, August 2021, on web and on a phone.</figcaption>
       </figure>
 
       <h2 id="templates" className={styles.subhead}>
@@ -187,6 +190,34 @@ export default function Wethos() {
       </p>
 
       <DesignSystem />
+
+      <p className={styles.body}>
+        Other parts of Wethos reused the phase and service components I designed for scoping. The invoice builder was
+        one, so a freelancer could bill for services straight from their scope.
+      </p>
+
+      <blockquote className={`${styles.body} ${work.quote}`}>
+        <p>
+          &ldquo;You put an incredible amount of work into creating new service and phase components that have already
+          translated to other areas of the platform (invoice builder!). Creating these components and thinking about
+          them in a modular way saves so much time&hellip;&rdquo;
+        </p>
+        <footer>Bo Schlagel, Director of Design</footer>
+      </blockquote>
+
+      <InvoiceDemo />
+
+      <h2 id="website" className={styles.subhead}>
+        The website
+      </h2>
+
+      <p className={styles.body}>
+        I also designed the Wethos website. In 2020 I designed its home, pricing and about pages, and in 2021 I made
+        graphics for it. On my first anniversary, the founders thanked me for my designs on &ldquo;our platform,
+        website, and more.&rdquo;
+      </p>
+
+      <Website />
 
       <h2 id="working-with-engineering" className={styles.subhead}>
         With engineering
