@@ -42,7 +42,8 @@
 
 /* Wide screens: a rail on the left, the column centred, demos wider than the text. The gap keeps the
    contents well clear of the text, and of demos, which reach 60px into it. */
-@media (min-width: 1080px) {
+/* From 1128px, so the rail can keep 84px from the window edge and still sit 80px clear of the text. */
+@media (min-width: 1128px) {
   .page {
     grid-template-columns: 180px minmax(0, 440px) 180px;
     column-gap: 112px;
@@ -53,10 +54,12 @@
     position: sticky;
     top: 84px;
     align-self: start;
+    /* A fixed width, so being pushed right on narrower screens moves the rail instead of squeezing it. */
+    width: 180px;
     margin: -16px 0 0;
-    /* 48px out to the left, but never closer than 24px to the window edge on narrower screens. The
+    /* 48px out to the left, but never closer than 84px to the window edge on narrower screens. The
        columns and gaps add up to 1024px. */
-    margin-left: max(-48px, calc(24px - (100vw - 1024px) / 2));
+    margin-left: max(-48px, calc(84px - (100vw - 1024px) / 2));
   }
 
   .contents {
