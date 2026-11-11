@@ -137,13 +137,13 @@ export default function Wethos() {
       </p>
 
       <figure className={draft.figure}>
-        <div className={wethos.pair}>
+        <div className={wethos.stack}>
           {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
           <img
-            src="/work/wethos/scope-web.webp"
-            alt="The scope builder on web: planned budget, phase breakdown, the scope by phase and the services library"
-            width={1280}
-            height={720}
+            src="/work/wethos/scope-list.webp"
+            alt="The scope builder on web: the scope by phase, each service with its role, quantity and price"
+            width={960}
+            height={375}
             loading="lazy"
           />
           {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}

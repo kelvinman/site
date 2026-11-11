@@ -139,24 +139,6 @@
   }
 }
 
-/* The scope builder on web and on a phone, side by side at the same height, so the two read as
-   one screen at two sizes. */
-.pair {
-  display: grid;
-  grid-template-columns: 1778fr 563fr;
-  align-items: end;
-  gap: 12px;
-  width: 100%;
-}
-
-.pair img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--muted) 24%, transparent);
-}
-
 /* A page from one of my own proposals, shown as a sheet of paper on a soft panel rather than
    blown up to the column's width. */
 .paper {
@@ -270,30 +252,60 @@
   }
 }
 
-/* The invoice itself: a sheet of paper in its own light look in both themes, like the proposal
-   page higher up, with the scope to add services from under it. */
-.invoiceDemo {
+/* The scope builder: the desktop scope list across the column, the phone under it. */
+.stack {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
   width: 100%;
-  padding: 28px 20px 20px;
+}
+
+.stack img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--muted) 24%, transparent);
+}
+
+.stack img + img {
+  max-width: 220px;
+  border-radius: 12px;
+}
+
+/* The invoice itself: a sheet of paper in its own light look in both themes, like the proposal
+   page higher up. The theme colours are reset inside it, so the scope rows that open over it are
+   the template demo's rows, drawn light. */
+.invoiceDemo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 28px 20px;
   border-radius: 12px;
   background: color-mix(in srgb, var(--muted) 12%, transparent);
 }
 
 .sheet {
+  --foreground: #1c1a2b;
+  --muted: #6e6b80;
+  --background: #fff;
+  position: relative;
   width: 100%;
-  max-width: 440px;
-  padding: 28px 28px 24px;
+  max-width: 420px;
+  min-height: 340px;
+  overflow: hidden;
   border-radius: 4px;
   background: #fff;
-  color: #1c1a2b;
+  color: var(--foreground);
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.12);
   font-family: var(--font-read);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
+}
+
+.sheetBody {
+  padding: 28px 28px 24px;
 }
 
 .sheetHead {
@@ -312,9 +324,8 @@
 .sheetMeta dt,
 .lines th,
 .line td span,
-.emptyLine td,
 .totals {
-  color: #6e6b80;
+  color: var(--muted);
 }
 
 .sheetMeta {
@@ -378,10 +389,30 @@
   }
 }
 
+.addFromScope {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid #f0eff5;
+  background: none;
+  color: #6b2cf5;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.addFromScope:focus-visible,
+.panelHead button:focus-visible {
+  outline: 2px solid #6b2cf5;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .totals {
   display: grid;
   gap: 6px;
-  margin-top: 14px;
+  margin-top: 16px;
   margin-left: auto;
   max-width: 220px;
 }
@@ -394,22 +425,69 @@
 .due {
   padding-top: 8px;
   border-top: 1px solid #e6e5ee;
-  color: #1c1a2b;
+  color: var(--foreground);
   font-size: 15px;
   font-weight: 600;
 }
 
-.invoiceDemo .picker {
-  max-width: 440px;
+/* The project's scope, sliding up over the invoice like the panel in the design file. */
+.scopePanel {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  background: #fff;
+  transform: translateY(100%);
+  visibility: hidden;
+  transition:
+    transform 260ms cubic-bezier(0.32, 0.72, 0, 1),
+    visibility 0s linear 260ms;
+}
+
+.scopePanel[data-open] {
+  transform: none;
+  visibility: visible;
+  transition: transform 260ms cubic-bezier(0.32, 0.72, 0, 1);
+  box-shadow: 0 -1px 0 #e6e5ee;
+}
+
+.panelHead {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 16px 12px;
+  border-bottom: 1px solid #e6e5ee;
+  background: #fff;
+  font-weight: 600;
+}
+
+.panelHead span:focus {
+  outline: none;
+}
+
+.panelHead button {
+  padding: 3px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: #6b2cf5;
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {
   .invoiceDemo {
-    padding: 16px 12px 12px;
+    padding: 16px 12px;
+  }
+
+  .sheetBody {
+    padding: 20px 18px 18px;
   }
 
   .sheet {
-    padding: 20px 18px 18px;
+    min-height: 470px;
   }
 
   .sheetMeta {
@@ -425,9 +503,10 @@
   .line {
     animation: none;
   }
+
+  .scopePanel,
+  .scopePanel[data-open] {
+    transition: none;
+  }
 }
 
-.lines .emptyLine td {
-  text-align: left;
-  white-space: normal;
-}
