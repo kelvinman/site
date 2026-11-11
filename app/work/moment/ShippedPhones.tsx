@@ -26,7 +26,7 @@ const PARTS: { area: Area; x: number; y: number; w: number; h: number; round: nu
 type Box = { left: number; top: number; width: number; height: number; radius: number };
 
 /** iOS's status bar icons: signal, wifi and battery, drawn small in white. */
-function StatusIcons() {
+export function StatusIcons() {
   return (
     <svg viewBox="0 0 68 12" aria-hidden="true">
       <rect x="0" y="8" width="3" height="4" rx="1" />
