@@ -393,3 +393,121 @@
     0 1px 2px rgb(28 28 28 / 0.06),
     0 4px 12px -4px rgb(28 28 28 / 0.08);
 }
+
+/* The playground: one Run for both versions, each version a white pane with its prompt, its
+   response and the organization's tags. */
+.run {
+  padding: 3px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #7c5ce6;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 150ms ease-out, opacity 150ms ease-out;
+}
+
+@media (hover: hover) {
+  .run:hover:not(:disabled) {
+    background: #6a49d8;
+  }
+}
+
+.run:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.paneHead {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #efefed;
+}
+
+.prompt {
+  /* Two lines tall, so v1's shorter prompt keeps its pane lined up with v2's. */
+  min-height: calc(2 * 1.45em + 14px);
+  padding: 6px 8px;
+  border: 1px solid #e7e7e5;
+  border-radius: 8px;
+  color: #3a3a38;
+  font-size: 13px;
+}
+
+/* Tall enough for the longer response, so running doesn't make the panes jump. */
+.response {
+  min-height: 88px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #f6f6f4;
+  font-size: 13px;
+  transition: color 150ms ease-out;
+}
+
+.response[data-state="idle"],
+.response[data-state="running"] {
+  color: #8a8a87;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.orgTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 1px 8px;
+  border: 1px solid #e2e2e0;
+  border-radius: 999px;
+  background: #fff;
+  color: #5f5f5c;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.orgTag span {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--tag);
+}
+
+.orgTag[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--tag) 45%, transparent);
+  background: color-mix(in srgb, var(--tag) 10%, #fff);
+  color: #1c1c1c;
+}
+
+.orgTag:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.pane {
+  box-shadow:
+    0 0 0 1px rgb(28 28 28 / 0.05),
+    0 1px 2px rgb(28 28 28 / 0.06),
+    0 4px 12px -4px rgb(28 28 28 / 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .run,
+  .response,
+  .orgTag {
+    transition: none;
+  }
+}
