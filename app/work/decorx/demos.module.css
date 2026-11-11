@@ -423,22 +423,21 @@
   }
 }
 
-/* Stills: one image at a time in a fixed frame, stepped through with the shared toggle. The frame has a
-   faint fill so stills of different shapes sit in the same box. */
+/* Stills: one image at a time, stepped through with the shared toggle. Each still keeps its own shape: they
+   share one grid cell, so the box is as tall as the tallest, and a shorter still sits centred in it with the
+   page showing around it rather than a fill. */
 .stills {
   display: grid;
+  align-items: center;
   width: 100%;
-  aspect-ratio: 3 / 2;
-  border-radius: 6px;
-  overflow: hidden;
-  background: color-mix(in srgb, var(--muted) 10%, transparent);
 }
 
 .stills img {
   grid-area: 1 / 1;
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
+  border-radius: 6px;
   opacity: 0;
   transition: opacity 240ms ease-out;
 }
