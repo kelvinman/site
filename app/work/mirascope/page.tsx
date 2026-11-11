@@ -125,9 +125,11 @@ export default function Mirascope() {
 
       <p className={styles.body}>
         When the team moved to LLM tools, the question was how to tell whether a new version of a prompt is better than
-        the last. In Lilypad, judging an answer happens right beside it: each call in the annotation queue is marked
-        pass or fail against the team&apos;s own criteria, with a reason, so versions get compared on evidence, not a
-        feeling.
+        the last. I expected a visual job and found a structural one, so I spent the first sprint on how the app was
+        organized before how it looked. Calls waiting for review became an inbox, separate from the full list of
+        traces. Comparing moved from a button to a tab and grew from two traces to many. Annotating became as simple as
+        highlighting text in an answer. In the next round, each call was marked pass or fail against the team&apos;s own
+        criteria, with a reason.
       </p>
 
       <LilypadJudge />
