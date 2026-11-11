@@ -19,7 +19,7 @@ function Out({ href, children }: { href: string; children: React.ReactNode }) {
 
 export default function Home() {
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} top-fade`}>
       <div className={`${styles.col} reveal`}>
         <header className={styles.header}>
           <p className={styles.name}>Kelvin Man</p>
