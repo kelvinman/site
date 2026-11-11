@@ -81,7 +81,7 @@ export default function Moment() {
 
       <p className={styles.body}>
         Moment hired me to refine its beta, organize its design system, and design the mobile launch, social features
-        like following and parties, and the ways fans join in during live events.
+        like following and parties, and events inside each World, like a creator appearing live or a merch drop.
       </p>
 
       <Figure src="app-screens.webp" caption="Murder With My Husband World on iOS: home, board, chats, the 3D space, people." width={1600} height={617} />
@@ -189,7 +189,7 @@ export default function Moment() {
 
       <blockquote className={`${styles.body} ${work.quote}`}>
         <p>&ldquo;He understood our business needs&hellip; He was able to work efficiently in a fast-paced environment.&rdquo;</p>
-        <footer>Arjun Mehta, CEO of Moment</footer>
+        <footer>Arjun Mehta, co-founder and CEO of Moment</footer>
       </blockquote>
 
       <blockquote className={`${styles.body} ${work.quote}`}>

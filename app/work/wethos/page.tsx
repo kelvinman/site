@@ -172,8 +172,8 @@ export default function Wethos() {
       </p>
 
       <p className={styles.body}>
-        Before they launched, I asked our users to try the new experience, and a couple dozen signed up through our user
-        research club. Templates launched in August 2021 with 60 pre-priced scopes and 600 services to build from.
+        Before they launched, I invited our user research club to try the new experience, and 23 people said yes, 17 of
+        them the same day. Templates launched in August 2021 with 60 pre-priced scopes and 600 services to build from.
       </p>
 
       <TemplateDemo />

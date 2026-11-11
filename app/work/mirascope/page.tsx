@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 const SECTIONS = [
   { id: "where-they-were", title: "Where they were" },
   { id: "artifice", title: "Artifice" },
+  { id: "website", title: "The website" },
   { id: "lilypad", title: "Lilypad" },
   { id: "what-shipped", title: "What shipped" },
   { id: "what-i-learned", title: "What I learned" },
@@ -119,6 +120,23 @@ export default function Mirascope() {
         library that Artifice and Lilypad were built from.
       </p>
 
+      <h2 id="website" className={styles.subhead}>
+        The website
+      </h2>
+
+      <p className={styles.body}>
+        When SOTAI became Mirascope, I designed the new website and logo. The brief was for seasoned developers: playful
+        but professional, never enterprisey. The name comes from the mirror toy that makes a 3D image, and from a joke
+        about LLM tools being wrappers.
+      </p>
+
+      <Figure
+        src="website.webp"
+        caption="The home page I designed for Mirascope in January 2024."
+        width={1224}
+        height={756}
+      />
+
       <h2 id="lilypad" className={styles.subhead}>
         Lilypad
       </h2>
@@ -149,12 +167,6 @@ export default function Mirascope() {
         SOTAI&apos;s in 2023 and Mirascope&apos;s, with its logo, in 2024. And <strong>Lilypad</strong>,
         open source alongside <Out href="https://github.com/Mirascope/mirascope">Mirascope</Out>, the team&apos;s LLM
         toolkit, which has 1.5k stars on GitHub.
-      </p>
-
-      <p className={styles.body}>
-        The brief for Mirascope&apos;s website and logo was for seasoned developers: playful but professional, never
-        enterprisey. The name comes from the mirror toy that makes a 3D image out of nothing, and from a joke about LLM
-        tools being wrappers.
       </p>
 
       <Figure
