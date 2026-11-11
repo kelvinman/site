@@ -7,6 +7,7 @@ import { TemplateDemo } from "./TemplateDemo";
 import work from "../work.module.css";
 import wethos from "./wethos.module.css";
 import { DesignSystem } from "./DesignSystem";
+import { PageViewer } from "./PageViewer";
 import { InvoiceDemo } from "./InvoiceDemo";
 import { Website } from "./Website";
 
@@ -136,27 +137,27 @@ export default function Wethos() {
         work on both. The rule I set was one way to do one thing, with the desktop matching mobile as much as possible.
       </p>
 
-      <figure className={draft.figure}>
-        <div className={wethos.stack}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
-          <img
-            src="/work/wethos/scope-list.webp"
-            alt="The scope builder on web: the scope by phase, each service with its role, quantity and price"
-            width={960}
-            height={375}
-            loading="lazy"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
-          <img
-            src="/work/wethos/scope-mobile.webp"
-            alt="The same scope on a phone"
-            width={320}
-            height={568}
-            loading="lazy"
-          />
-        </div>
-        <figcaption className={draft.caption}>The redesigned scope builder, August 2021, on web and on a phone.</figcaption>
-      </figure>
+      <PageViewer
+        label="Scope builder screens"
+        aspect="3 / 2"
+        panel
+        pages={[
+          {
+            name: "Web",
+            src: "/work/wethos/scope-list.webp",
+            width: 960,
+            height: 375,
+            caption: "The redesigned scope builder on web, August 2021: each phase, and each service with its role, quantity and price.",
+          },
+          {
+            name: "Phone",
+            src: "/work/wethos/scope-mobile.webp",
+            width: 320,
+            height: 568,
+            caption: "The same scope on a phone, with the same parts in one column.",
+          },
+        ]}
+      />
 
       <h2 id="templates" className={styles.subhead}>
         Templates

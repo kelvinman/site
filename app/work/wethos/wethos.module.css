@@ -252,36 +252,55 @@
   }
 }
 
-/* The scope builder: the desktop scope list and the phone as one picture, the strip centred
-   against the phone's height and the phone overlapping its right end. */
-.stack {
-  display: flex;
-  align-items: center;
+/* The viewer's panel variant: each image whole and centred on a soft panel, crossfading like the
+   framed pages. */
+.dsPanel {
+  position: relative;
   width: 100%;
-  padding: 28px 20px;
+  aspect-ratio: var(--aspect, 4 / 3);
   border-radius: 12px;
   background: color-mix(in srgb, var(--muted) 12%, transparent);
 }
 
-.stack img {
+.slot {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+}
+
+.slot[data-active] {
+  opacity: 1;
+}
+
+.slot img {
   display: block;
+  width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 8px;
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--muted) 24%, transparent);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12);
 }
 
-.stack img:first-child {
-  width: 80%;
+/* A phone screen needs the height on a narrow page, so the panel goes square there. */
+@media (max-width: 600px) {
+  .dsPanel {
+    aspect-ratio: 1 / 1;
+  }
+
+  .slot {
+    inset: 14px;
+  }
 }
 
-.stack img + img {
-  position: relative;
-  width: 24%;
-  margin-left: -4%;
-  border-radius: 12px;
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--muted) 24%, transparent),
-    0 8px 24px rgb(0 0 0 / 0.14);
+@media (prefers-reduced-motion: reduce) {
+  .slot {
+    transition: none;
+  }
 }
 
 /* The invoice itself: a sheet of paper in its own light look in both themes, like the proposal
@@ -488,10 +507,6 @@
 }
 
 @media (max-width: 600px) {
-  .stack {
-    padding: 16px 12px;
-  }
-
   .invoiceDemo {
     padding: 16px 12px;
   }
