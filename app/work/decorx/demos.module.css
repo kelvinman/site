@@ -422,3 +422,43 @@
     display: none;
   }
 }
+
+/* A grid of screens: two columns, one on a phone, each with a hairline edge and a label under it. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 12px;
+  width: 100%;
+}
+
+.grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--muted) 28%, transparent);
+}
+
+.grid span {
+  font-size: 13px;
+  line-height: 19px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* A clip over a grid sits tight to it. */
+.lead {
+  margin-bottom: -20px;
+}

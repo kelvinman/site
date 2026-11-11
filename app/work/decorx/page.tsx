@@ -4,11 +4,12 @@ import { NoteLayout } from "../../notes/NoteLayout";
 import { MoreWork } from "../MoreWork";
 import { Clip } from "./Clip";
 import draft from "./decorx.module.css";
+import { EditGrid, type Shot } from "./EditGrid";
 import { FabricMapper } from "./FabricMapper";
 import { FairQueue } from "./FairQueue";
 import { ShowroomPhone } from "./ShowroomPhone";
 import { TwoProducts } from "./TwoProducts";
-import { Workflow } from "./Workflow";
+import { Plans, Workflow } from "./Workflow";
 import demos from "./demos.module.css";
 
 // Built from "DecorX Case Study - Draft.md" in KelvinOS, the High Point deck and
@@ -27,8 +28,10 @@ export const metadata: Metadata = {
 
 const SECTIONS = [
   { id: "the-problem", title: "The problem" },
+  { id: "before", title: "Before the platform" },
   { id: "starting-over", title: "Two products, then one" },
   { id: "designer", title: "Designer" },
+  { id: "editing", title: "Editing an image" },
   { id: "scenes", title: "Scenes at scale" },
   { id: "fabric", title: "Placing the print" },
   { id: "the-market", title: "The market" },
@@ -40,18 +43,27 @@ const SECTIONS = [
 ];
 
 
+/* "Editing an image", his pick on 11 Nov 2026 (a clip and two stills): only 2026 screens, from DecorX's changelog of
+   28 May 2026. The 2025 stills came out as weak. The video is the changelog's GIF, with the screen recorder's logo
+   covered. */
+const STAGING: Shot = { src: "editor-2026-staging.webp", width: 1600, height: 942, alt: "A dining room in DecorX's editor, with Room Cleaning above it and a Virtual Staging panel of rooms beside it", label: "Virtual staging" };
+const CLOSEUP: Shot = { src: "editor-2026-closeup.webp", width: 1600, height: 942, alt: "A close-up of a leather armchair in DecorX's edit view, with the objects found in the room listed beside it", label: "A product close-up" };
+
 /** A still, from the deck or the changelog. */
 function Figure({
   src,
   caption,
   height = 900,
+  screen = false,
 }: {
   src: string;
   caption: string;
   height?: number;
+  /** A screenshot, which gets a hairline edge so it doesn't blend into the page. */
+  screen?: boolean;
 }) {
   return (
-    <figure className={draft.figure}>
+    <figure className={draft.figure} data-screen={screen || undefined}>
       {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
       <img
         src={`/work/decorx/${src}`}
@@ -137,14 +149,33 @@ export default function DecorX() {
         caption="Kathy Kuo Home's catalog pages, original above and regenerated with their style kit below."
       />
 
+      <h2 id="before" className={styles.subhead}>
+        Before the platform
+      </h2>
+
+      <p className={styles.body}>
+        For a year and a half, I designed DecorX in Figma and shared each version as a recorded walkthrough. In
+        January 2026 I started building the next version in code.
+      </p>
+
+      {/* His Smart Image Generation Loom of 15 Jan 2026, at 7:45, two days into kelvinman/canvas (first commit
+          13 Jan 2026), which became decorx-ai/canvas. The 2025 stills and the rebuilt 2025 Portal screens came
+          out at his call on 11 Nov 2026. */}
+      <Figure
+        src="history-2026-pipeline.webp"
+        caption="Two days in, the prototype wired a floor plan, its rooms and product sets into a step that generates each room. The gallery shows placeholder images."
+        height={1013}
+        screen
+      />
+
       <h2 id="starting-over" className={styles.subhead}>
         Two products, then one
       </h2>
 
       <p className={styles.body}>
-        DecorX began as two products. Our team in China built Canvas, for
-        interior designers, from my designs. I started Portal, for retailers, as
-        a prototype in January 2026.
+        By early 2026, DecorX was two products. Our team in China built Canvas, for
+        interior designers, from my designs. My January prototype
+        became Portal, for retailers.
       </p>
 
       <TwoProducts />
@@ -169,6 +200,26 @@ export default function DecorX() {
         caption="Designer: a sketch in, product renders and room scenes out."
         height={1036}
       />
+
+      <h2 id="editing" className={styles.subhead}>
+        Editing an image
+      </h2>
+
+      <p className={styles.body}>
+        Most generated images are nearly right, so editing them matters as much as making them. I designed the
+        first edit view in May 2025. Each tool had its own key, and the toolbar could sit left, centre or right. By May
+        2026, the edit view could stage products into a room, make close-ups and turn an image into a short video.
+      </p>
+
+      <div className={demos.lead}>
+        <Clip name="editor-2026-video" ratio="796 / 472" caption="A finished room turned into a 5-second video." />
+      </div>
+      <EditGrid shots={[STAGING, CLOSEUP]} caption="All three from DecorX's changelog, May 2026." />
+
+      <p className={styles.body}>
+        The onboarding videos I recorded give customers one rule. Edit when an image is mostly working, and
+        regenerate when the direction is wrong.
+      </p>
 
       <h2 id="scenes" className={styles.subhead}>
         Scenes at scale
@@ -265,6 +316,12 @@ export default function DecorX() {
       </p>
 
       <Workflow />
+
+      <p className={styles.body}>
+        Beyond the code, I wrote the documents that set what we built next.
+      </p>
+
+      <Plans />
 
       <p className={styles.label}>Built with</p>
 

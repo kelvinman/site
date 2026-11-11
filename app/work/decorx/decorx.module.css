@@ -57,6 +57,12 @@
   border-radius: 6px;
 }
 
+/* A screenshot on a light page blends into it, so screens get a hairline edge. Drawn as a shadow so it adds
+   no size. */
+.figure[data-screen] img {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--muted) 28%, transparent);
+}
+
 .caption {
   font-size: 13px;
   line-height: 19px;
