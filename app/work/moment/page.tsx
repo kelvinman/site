@@ -11,14 +11,15 @@ import { LabelVariants } from "./LabelVariants";
 import { ShippedPhones } from "./ShippedPhones";
 import { WorldsDemo } from "./WorldsDemo";
 import { PhoneScreens, type PhoneScreen } from "./PhoneScreens";
-import { MembershipDemo } from "./MembershipDemo";
-import { SheetsDemo } from "./SheetsDemo";
+import { MembershipFlow } from "./MembershipFlow";
+import { AppStoreListing } from "./AppStoreListing";
+import { SheetOverWorld, SheetsRow, SheetAnatomy, SheetLightDark } from "./DesignSystemOptions";
 
 // From the Moment design files in Figma, my archive of Moment screenshots and
 // recordings, the framing of Moment's investor deck (none of its company numbers) and my answers of
 // 27 Oct 2026. Behind the case study password; kept out of search.
-// Added 11 Nov 2026: phone captures from Jessii Vee World (24 to 29 Mar 2023) and the membership
-// designs for Kurtis Conner World (Mar 2023), both from the archive; Arjun's line from Slack (about
+// Added 11 Nov 2026: phone captures from Jessii Vee World (24 to 29 Mar 2023) from the archive; the
+// membership flow from the Membership file in Figma (V13, May 2023); Arjun's line from Slack (about
 // 6 Mar 2023); the App Store screenshots, Smart App Banner and bottom sheets exported from the
 // Figma files App Assets and Moment App; Apple's approval email for Worlds (20 Mar 2023, Pacific).
 
@@ -28,6 +29,7 @@ const SOCIAL: PhoneScreen[] = [
     key: "following",
     label: "Following",
     src: "/work/moment/social-following.webp",
+    height: 1106,
     alt: "People: the accounts a fan follows, the creators with verified badges",
     caption: "People: everyone a fan follows, with the creators' verified badges.",
   },
@@ -35,6 +37,7 @@ const SOCIAL: PhoneScreen[] = [
     key: "notifications",
     label: "Notifications",
     src: "/work/moment/social-notifications.webp",
+    height: 1106,
     alt: "Notifications: new followers with Follow buttons, and the creators' appearances",
     caption: "Notifications: new followers, with a button to follow back, and the creators' appearances.",
   },
@@ -42,6 +45,7 @@ const SOCIAL: PhoneScreen[] = [
     key: "profile",
     label: "Profile",
     src: "/work/moment/social-profile.webp",
+    height: 1106,
     alt: "A profile: an avatar in its outfit, a Following button, and follower counts",
     caption: "A profile: the avatar in its outfit, with a Following button.",
   },
@@ -49,6 +53,7 @@ const SOCIAL: PhoneScreen[] = [
     key: "settings",
     label: "Settings",
     src: "/work/moment/social-settings.webp",
+    height: 1106,
     alt: "Notification settings: switches for follows, party invites and chat messages",
     caption: "Settings: follows, party invites and chat messages, each on its own switch.",
   },
@@ -60,6 +65,8 @@ const BANNER: PhoneScreen[] = [
     key: "light",
     label: "Light",
     src: "/work/moment/banner-light.webp",
+    height: 1104,
+    tone: "light",
     alt: "A World's page in Safari, light, with an Open in the Worlds app banner and a Get the Worlds app sheet",
     caption: "Light mode, with Apple's system blue.",
   },
@@ -67,6 +74,7 @@ const BANNER: PhoneScreen[] = [
     key: "dark",
     label: "Dark",
     src: "/work/moment/banner-dark.webp",
+    height: 1104,
     alt: "The same page and sheet in dark mode",
     caption: "Dark mode, where the same blue turns brighter.",
   },
@@ -198,18 +206,12 @@ export default function Moment() {
         members-only events, merch and chats.
       </p>
 
-      <Figure
-        src="membership-tiers.webp"
-        caption="Three tiers for Kurtis Conner World, from our membership designs in March 2023."
-        width={1600}
-        height={969}
-      />
-
       <p className={styles.body}>
-        A fan who hadn&apos;t joined still saw what membership opened, behind a lock:
+        A fan who hadn&apos;t joined saw a members-only channel behind a lock, and could join from there. Tap through
+        the flow:
       </p>
 
-      <MembershipDemo />
+      <MembershipFlow />
 
       <blockquote className={`${styles.body} ${work.quote}`}>
         <p>
@@ -274,7 +276,15 @@ export default function Moment() {
         components, like the bottom sheet, which had a version for each job:
       </p>
 
-      <SheetsDemo />
+      {/* Four ways to present the sheets, for Kelvin to choose one; the other three come out after. */}
+      <p className={styles.label}>Option 1: over a World</p>
+      <SheetOverWorld />
+      <p className={styles.label}>Option 2: side by side</p>
+      <SheetsRow />
+      <p className={styles.label}>Option 3: anatomy</p>
+      <SheetAnatomy />
+      <p className={styles.label}>Option 4: light and dark</p>
+      <SheetLightDark />
 
       <h2 id="launch" className={styles.subhead}>
         Launch night
@@ -333,12 +343,7 @@ export default function Moment() {
         Space to the iPhone.
       </p>
 
-      <Figure
-        src="app-store.webp"
-        caption="Screenshots for the Worlds app's App Store page."
-        width={1560}
-        height={1127}
-      />
+      <AppStoreListing />
 
       <p className={styles.body}>
         On a phone&apos;s browser, a banner and a sheet pointed fans to the app:

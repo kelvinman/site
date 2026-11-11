@@ -312,264 +312,338 @@
   left: 5.89%;
   width: 88.21%;
   height: 94.73%;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  container-type: inline-size;
   /* The glass's corner, as a share of its width and of its height (it is 494 by 1078). */
   border-radius: 13.4% / 6.15%;
   background: #000;
+  color: #fff;
+}
+
+.glass[data-tone="light"] {
+  background: #fff;
+  color: #000;
+}
+
+/* The notch of the iPhone the frame draws: 162 of its 390 points wide, 34 deep. */
+.notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 41.5cqw;
+  height: 8.2cqw;
+  border-radius: 0 0 5.2cqw 5.2cqw;
+  background: #000;
+  transform: translateX(-50%);
+}
+
+/* The status bar takes the grey the captures had behind theirs (iOS's dark grouped background),
+   so the black notch shows against it, as on the phone. */
+.glass .statusBar {
+  flex: none;
+  background: #1c1c1e;
+}
+
+.glass[data-tone="light"] .statusBar {
+  background: #fff;
+}
+
+/* The captures fill the glass below the status bar, top first. */
+.shots {
+  position: relative;
+  flex: 1;
+  min-height: 0;
 }
 
 .glass .screen {
   object-fit: cover;
+  object-position: top;
 }
 
-/* The bottom sheets, on the app's black, each resting on the stage's floor. The stage is the
-   tallest sheet's shape, so switching never moves the page. */
-.sheetStage {
+/* A desktop frame from the design files, one at a time, crossfading like the phone screens. The
+   frame's own window corner is 20 of its 1512 by 982 pixels. */
+.desktop {
   position: relative;
   width: 100%;
-  max-width: 300px;
-  aspect-ratio: 600 / 790;
+  aspect-ratio: 1512 / 982;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 1.32% / 2.04%;
+  background: #1a1a1a;
+}
+
+.desktop .screen {
+  object-fit: cover;
+}
+
+/* Design system, option 1: the World behind, dimmed, and the sheet rising from the glass's floor.
+   The sheet exports carry 52 of 600 pixels of shadow at each side and 28 below, so they are drawn
+   wider than the glass and dropped by that much. */
+.dim {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 0.55);
+}
+
+.riser {
+  position: absolute;
+  left: -10.5%;
+  bottom: -4.3cqw;
+  width: 121%;
+  height: auto;
+  opacity: 0;
+  transform: translateY(12%);
+  transition:
+    opacity 200ms ease-out,
+    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.riser[data-active] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Option 2: every sheet in a row, bottoms lined up, scrolling sideways when the column is narrow. */
+.sheetRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.sheetCell {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sheetTile {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
   background: #000;
 }
 
-.sheet {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+.sheetTile img {
+  display: block;
+  width: 121%;
+  max-width: none;
   height: auto;
-  opacity: 0;
-  transition: opacity 180ms ease-out;
+  margin-left: -10.5%;
 }
 
-.sheet[data-active] {
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sheet {
-    transition: none;
+@media (max-width: 600px) {
+  .sheetCell {
+    flex: 0 0 120px;
   }
 }
 
-/* Membership: the product in its own light look, whatever the page's theme. Inter-like system
-   type, white cards on a pale grey, Apple's system blue for buttons. */
-.product {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 400px;
-  padding: 12px;
-  border-radius: 16px;
-  background: #f2f2f4;
-  color: #111;
-  font-family: system-ui, -apple-system, "Inter", sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-  letter-spacing: 0;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-width: 0;
-  padding: 12px;
-  border-radius: 14px;
-  background: #fff;
-}
-
-.cardRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.cardHead {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.cardHead b {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.cardHead span,
-.gate span:not(.button) {
-  color: #6b6b70;
-}
-
-.liveArt {
+/* Option 3: one sheet, its shared parts named down its left side. */
+.anatomySheet {
   position: relative;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  max-width: 250px;
+  margin-left: 90px;
+  overflow: visible;
+  border-radius: 12px;
+  background: #000;
 }
 
-.liveArt img {
-  width: 72%;
-  height: auto;
-}
-
-.badge,
-.memberTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 0 6px;
-  border-radius: 5px;
-  background: #007aff;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 17px;
-  text-transform: uppercase;
-}
-
-.badge {
-  position: absolute;
-  top: 4px;
-  left: 14%;
-}
-
-.lock {
-  width: 1.1em;
-  height: 1.1em;
-  flex: none;
-}
-
-/* The same height on both sides, so switching never moves the page. */
-.gate {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 118px;
-  gap: 2px;
-  text-align: center;
-}
-
-.gate > .lock {
-  width: 20px;
-  height: 20px;
-  margin-bottom: 4px;
-}
-
-.gate b {
-  font-weight: 600;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  align-self: stretch;
-  margin-top: 8px;
-  padding: 7px 10px;
-  border-radius: 10px;
-  background: #007aff;
-  color: #fff;
-  font-weight: 600;
-}
-
-.tee {
-  overflow: hidden;
-  border-radius: 10px;
-  background: #ececec;
-}
-
-.tee img {
+.anatomySheet img {
   display: block;
   width: 100%;
   height: auto;
-  filter: blur(9px);
-  transform: scale(1.08);
-  transition: filter 240ms ease-out;
+  border-radius: 12px;
 }
 
-.tee[data-open] img {
-  filter: none;
-}
-
-.merchName {
-  margin-top: 8px;
-  padding: 7px 0;
-  font-weight: 600;
-  text-align: center;
-}
-
-.chatHead {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.chat {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  list-style: none;
-}
-
-.chat li {
+.part {
+  position: absolute;
+  right: calc(100% - 10%);
   display: flex;
   align-items: center;
   gap: 6px;
-  min-width: 0;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--foreground);
+  white-space: nowrap;
+  transform: translateY(-50%);
+  transition: top 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.chat i {
-  flex: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
+/* A short rule from the name to the part. */
+.part::after {
+  content: "";
+  width: 44px;
+  height: 1px;
+  background: color-mix(in srgb, var(--foreground) 50%, transparent);
 }
 
-.bar {
-  flex: 0 1 auto;
-  min-width: 16px;
-  height: 8px;
+/* Option 4: the same sheet in light and dark, side by side, with the color pairs under them. */
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.pairSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.pairSide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px 16px 6px 6px;
+  outline: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
+  outline-offset: -1px;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.swatches div {
+  display: contents;
+}
+
+.swatches dt {
+  grid-column: 1 / -1;
+  color: var(--muted);
+}
+
+.swatches dd {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatches i {
+  width: 14px;
+  height: 14px;
   border-radius: 4px;
-  background: #e2e2e6;
+  outline: 1px solid color-mix(in srgb, var(--muted) 35%, transparent);
 }
 
-.youName {
+/* The App Store page, in the App Store's light look whatever the page's theme: the icon with the
+   name and a Get button beside it, a hairline, then the screenshots scrolling sideways. */
+.store {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px 0 16px;
+  border-radius: 20px;
+  background: #fff;
+  color: #000;
+  outline: 1px solid color-mix(in srgb, var(--muted) 30%, transparent);
+  outline-offset: -1px;
+  font-family: system-ui, -apple-system, sans-serif;
+  letter-spacing: 0;
+}
+
+.storeHead {
+  display: flex;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.storeIcon {
+  width: 104px;
+  height: 104px;
+  border-radius: 23px;
+  outline: 1px solid rgb(0 0 0 / 0.08);
+  outline-offset: -1px;
+}
+
+.storeName {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2px 0;
+}
+
+.storeName b {
+  font-size: 22px;
   font-weight: 600;
+  line-height: 26px;
 }
 
-.you {
-  animation: arrive 240ms ease-out;
+.storeGet {
+  padding: 5px 22px;
+  border-radius: 999px;
+  background: #007aff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
 }
 
-@keyframes arrive {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
+.storeRule {
+  height: 1px;
+  margin: 20px 20px 16px;
+  background: rgb(60 60 67 / 0.18);
+}
+
+.storeShots {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 20px;
+  scrollbar-width: none;
+}
+
+.storeShots img {
+  flex: none;
+  width: 47%;
+  height: auto;
+  border-radius: 14px;
+  outline: 1px solid rgb(0 0 0 / 0.1);
+  outline-offset: -1px;
+  scroll-snap-align: start;
+}
+
+.storeDevice {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px 0;
+  font-size: 13px;
+  color: rgb(60 60 67 / 0.6);
+}
+
+.storeDevice svg {
+  width: 10px;
+  height: 16px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tee img {
+  .riser,
+  .part {
     transition: none;
   }
 
-  .you {
-    animation: none;
-  }
-}
-
-@media (max-width: 420px) {
-  .cardRow {
-    grid-template-columns: 1fr;
-  }
-
-  .tee {
-    max-width: 200px;
-    align-self: center;
-    width: 100%;
+  .riser {
+    transform: none;
   }
 }
