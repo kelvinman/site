@@ -1,0 +1,380 @@
+/* Artifice in its own light look whatever the site's theme: white cards on a pale grey, Ant Design's
+   orange for the one action, sampled from the launch screenshots. */
+
+/* The screenshot stepper: every step stacked in one box of the screenshots' shape, the chosen one
+   faded in, so switching never changes the figure's height. */
+.screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1224 / 872;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgb(28 28 28 / 0.08);
+  background: #f0f0f0;
+  box-shadow: 0 1px 2px rgb(28 28 28 / 0.04), 0 12px 32px -12px rgb(28 28 28 / 0.1);
+}
+
+.screen img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 220ms ease-out;
+}
+
+.screen img[data-on="true"] {
+  opacity: 1;
+}
+
+/* The dataset card, on the data library's grey. */
+.library {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 560px;
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid rgb(28 28 28 / 0.08);
+  background: #f0f0f0;
+  box-shadow: 0 1px 2px rgb(28 28 28 / 0.04), 0 12px 32px -12px rgb(28 28 28 / 0.08);
+  color: rgb(0 0 0 / 0.88);
+  font-family: var(--font-read);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 420px;
+  /* Tight on the left, top and right so the name and button sit near the edge, as in the product. */
+  padding: 12px 12px 20px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.edited {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+/* Status tags in Ant Design's three tones: plain grey, orange while a job runs, green when done. */
+.tag {
+  padding: 0 7px;
+  border: 1px solid #d9d9d9;
+  border-radius: 999px;
+  background: #fafafa;
+  font-size: 12px;
+  line-height: 20px;
+  transition:
+    background 160ms ease-out,
+    border-color 160ms ease-out,
+    color 160ms ease-out;
+}
+
+.tag[data-tone="busy"] {
+  border-color: #ffd591;
+  background: #fff7e6;
+  color: #d46b08;
+}
+
+.tag[data-tone="done"] {
+  border-color: #b7eb8f;
+  background: #f6ffed;
+  color: #389e0d;
+}
+
+.primary {
+  flex: none;
+  min-width: 72px;
+  padding: 4px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: #fa8c16;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 160ms ease-out;
+}
+
+@media (hover: hover) {
+  button.primary:hover {
+    background: #ffa940;
+  }
+}
+
+.primary[data-off="true"] {
+  background: #f5f5f5;
+  color: #bfbfbf;
+  cursor: default;
+}
+
+/* A thin bar under the header while a job runs, filling like the task panel's. */
+.progress {
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f5f5f5;
+  opacity: 0;
+  transition: opacity 160ms ease-out;
+}
+
+.progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: #fa8c16;
+}
+
+.progress[data-on="true"] {
+  opacity: 1;
+}
+
+.progress[data-on="true"] span {
+  animation: fill 1800ms ease-out forwards;
+}
+
+@keyframes fill {
+  to {
+    width: 100%;
+  }
+}
+
+.counts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  text-align: center;
+}
+
+.counts div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.counts dd {
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.counts dt {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen img,
+  .tag,
+  .primary,
+  .progress {
+    transition: none;
+  }
+
+  .progress[data-on="true"] span {
+    width: 100%;
+    animation: none;
+  }
+}
+
+/* Feature analysis: the column picker, its four stats, the learned curve and a slider along it. */
+.explain {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.features {
+  display: inline-flex;
+  align-self: flex-start;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 2px;
+  border-radius: 8px;
+  background: #e4e4e4;
+  scrollbar-width: none;
+}
+
+.features button {
+  flex: none;
+  padding: 2px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: #595959;
+  font: inherit;
+  font-family: var(--font-inconsolata), Menlo, monospace;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 160ms ease-out, color 160ms ease-out;
+}
+
+.features button[aria-pressed="true"] {
+  background: #fff;
+  color: rgb(0 0 0 / 0.88);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
+}
+
+.statRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.statRow div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.statRow dt {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+.statRow dd {
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart {
+  padding: 10px 8px 4px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.grid {
+  stroke: #f0f0f0;
+  stroke-width: 1;
+}
+
+.tick {
+  fill: #8c8c8c;
+  font-family: var(--font-read);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.curve {
+  fill: none;
+  stroke: #40a9ff;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.point {
+  fill: #40a9ff;
+}
+
+.cursor {
+  stroke: #fa8c16;
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.now {
+  fill: #fff;
+  stroke: #fa8c16;
+  stroke-width: 2;
+}
+
+.readout {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: 12px;
+  color: #595959;
+  font-size: 13px;
+}
+
+.readout b {
+  display: inline-block;
+  min-width: 4ch;
+  color: rgb(0 0 0 / 0.88);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.readout label {
+  font-family: var(--font-inconsolata), Menlo, monospace;
+}
+
+.range {
+  width: 100%;
+  accent-color: #fa8c16;
+  cursor: pointer;
+}
+
+/* On a phone the chart shrinks to half size, so its labels are drawn larger to stay readable, and the
+   four stats stay in one row with smaller numbers. */
+@media (max-width: 480px) {
+  .explain {
+    padding: 12px;
+  }
+
+  .statRow {
+    gap: 6px;
+  }
+
+  .statRow div {
+    padding: 6px 8px;
+  }
+
+  .statRow dd {
+    font-size: 15px;
+  }
+
+  .tick {
+    font-size: 17px;
+  }
+
+  .readout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .readout .range {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .readout span {
+    text-align: right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .features button {
+    transition: none;
+  }
+}

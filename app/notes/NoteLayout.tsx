@@ -50,7 +50,7 @@ export function NoteLayout({
   }, [sections]);
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} top-fade`}>
       <nav className={styles.rail} aria-label="Note">
         <Link href={back.href} className={styles.back}>
           ← {back.label}

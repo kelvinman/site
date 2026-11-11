@@ -1,0 +1,104 @@
+/* The nested outline in the add-in pane: a line down each open level, like Word's outline. */
+.tree,
+.children {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tree {
+  font-size: 12px;
+}
+
+/* Each level indents and hangs off a thin vertical line. */
+.children {
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1px solid var(--line, #dcdcd6);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 26px;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.row[data-selected] {
+  background: var(--selected, #eef3fe);
+}
+
+.chevron {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 160ms ease-out;
+}
+
+.chevron[aria-expanded="true"] {
+  transform: rotate(90deg);
+}
+
+.dot {
+  flex: none;
+  width: 16px;
+  height: 6px;
+  background: radial-gradient(circle, var(--dot, #d4d4cf) 3px, transparent 3.5px);
+}
+
+.dot[data-done] {
+  --dot: #12a15e;
+}
+
+.name {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.count {
+  flex: none;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--soft, #6b6b66);
+}
+
+/* The half-filled circle the counter replaced: a pie of how much is done. */
+.circle {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: conic-gradient(#2f6bea var(--share), var(--track, #e2e2de) 0);
+}
+
+.todo {
+  color: #9a9a94;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    transition: none;
+  }
+}
