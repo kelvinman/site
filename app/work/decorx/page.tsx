@@ -7,8 +7,9 @@ import draft from "./decorx.module.css";
 import { FabricMapper } from "./FabricMapper";
 import { FairQueue } from "./FairQueue";
 import { ShowroomPhone } from "./ShowroomPhone";
+import { Stills, type Still } from "./Stills";
 import { TwoProducts } from "./TwoProducts";
-import { Workflow } from "./Workflow";
+import { Plans, Workflow } from "./Workflow";
 import demos from "./demos.module.css";
 
 // Built from "DecorX Case Study - Draft.md" in KelvinOS, the High Point deck and
@@ -27,8 +28,10 @@ export const metadata: Metadata = {
 
 const SECTIONS = [
   { id: "the-problem", title: "The problem" },
+  { id: "before", title: "Before the platform" },
   { id: "starting-over", title: "Two products, then one" },
   { id: "designer", title: "Designer" },
+  { id: "editing", title: "Editing an image" },
   { id: "scenes", title: "Scenes at scale" },
   { id: "fabric", title: "Placing the print" },
   { id: "the-market", title: "The market" },
@@ -39,6 +42,95 @@ const SECTIONS = [
   { id: "more-work", title: "More work" },
 ];
 
+
+/**
+ * The versions before the platform, from his walkthrough Looms (Loom Notes.md, DecorX): Caracole (INT), 11 Sep
+ * 2024, at 5:00; LLM Inpainting Flow, 14 Jan 2025, at 6:15; Portal, 23 May 2025, at 0:30, cropped above the
+ * signed-in customer's name; Smart Image Generation, 15 Jan 2026, at 7:45, two days into kelvinman/canvas (first
+ * commit 13 Jan 2026), which became decorx-ai/canvas. The 2025 Portal was a different product that shared the
+ * name (his account, 11 Nov 2026, DecorX/History.md).
+ */
+const HISTORY: Still[] = [
+  {
+    label: "Sep 2024",
+    src: "history-2024-visualizer.webp",
+    width: 846,
+    height: 584,
+    alt: "Caracole's trade site with a Visualizations tab of six room images",
+    title: "A visualizer inside a brand's site",
+    text: "Shoppers on Caracole's trade site uploaded a photo of a room and placed a product in it. A chat bubble, powered by DecorX, took on the brand's colour.",
+  },
+  {
+    label: "Jan 2025",
+    src: "history-2025-copilot.webp",
+    width: 844,
+    height: 606,
+    alt: "Three chat windows: picking the furniture to replace, then choosing a room type from suggested replies",
+    title: "The same flow, inside a chat",
+    text: "Every step became a message, with suggested replies styled as buttons. Keeping it all in one chat meant a brand could add it to its own site.",
+  },
+  {
+    label: "Mar 2025",
+    src: "history-2025-portal.webp",
+    width: 998,
+    height: 614,
+    alt: "The 2025 Portal: Magic Background, Background Removal and Attributes Generation, with a project of four room images",
+    title: "The first Portal, for brands",
+    text: "A tool for brands to put products on new backgrounds, remove backgrounds and fill in product details from a spreadsheet. Today's Portal reused the name for a new product.",
+  },
+  {
+    label: "Jan 2026",
+    src: "history-2026-pipeline.webp",
+    width: 1442,
+    height: 916,
+    alt: "Nodes on a canvas: product sets and a floor plan with five rooms, wired into Generate Rooms and a gallery",
+    title: "The first prototype in code",
+    text: "Two days in, it wired a floor plan, its rooms and product sets into a step that generates each room. That prototype became the platform DecorX runs on now.",
+  },
+];
+
+/**
+ * The edit view. 2025: his Edit Image Loom of 16 May 2025, at 2:43 and 4:31, cropped to the design. 2026: the
+ * changelog's Designer screenshot (room cleaning and virtual staging, May 2026) and the Compare view (30 Oct 2026).
+ */
+const EDITOR: Still[] = [
+  {
+    label: "Erase",
+    src: "editor-2025-erase.webp",
+    width: 994,
+    height: 662,
+    alt: "The 2025 edit view with two paintings on the wall painted over in purple, a brush size slider and an Erase button",
+    title: "Erase, 2025",
+    text: "Paint over what should go, and DecorX fills the space.",
+  },
+  {
+    label: "Ratio",
+    src: "editor-2025-aspect.webp",
+    width: 984,
+    height: 656,
+    alt: "The 2025 edit view with a grid of six aspect ratios over the image",
+    title: "Aspect ratio, 2025",
+    text: "Pick a new shape from six ratios, from square to 9:16.",
+  },
+  {
+    label: "Staging",
+    src: "editor-2026-staging.webp",
+    width: 1600,
+    height: 954,
+    alt: "A dining room in DecorX's editor, with Room Cleaning above it and a Virtual Staging panel of rooms beside it",
+    title: "Staging and room cleaning, 2026",
+    text: "Stage products into a photo of a room, or clean the room of its furniture first.",
+  },
+  {
+    label: "Compare",
+    src: "editor-2026-compare.webp",
+    width: 1430,
+    height: 894,
+    alt: "A generated dining room beside the product photo of the table in it, with the edit tools on the right",
+    title: "Compare, 2026",
+    text: "Check an edit against the real product photo before keeping it.",
+  },
+];
 
 /** A still, from the deck or the changelog. */
 function Figure({
@@ -137,12 +229,27 @@ export default function DecorX() {
         caption="Kathy Kuo Home's catalog pages, original above and regenerated with their style kit below."
       />
 
+      <h2 id="before" className={styles.subhead}>
+        Before the platform
+      </h2>
+
+      <p className={styles.body}>
+        For a year and a half before the platform, I designed DecorX in Figma and shared each version as a recorded
+        walkthrough.
+      </p>
+
+      <Stills
+        items={HISTORY}
+        label="Version"
+        caption="Stills from my walkthrough videos. The first three are designs in Figma, and the last one's gallery shows placeholder images."
+      />
+
       <h2 id="starting-over" className={styles.subhead}>
         Two products, then one
       </h2>
 
       <p className={styles.body}>
-        DecorX began as two products. Our team in China built Canvas, for
+        By early 2026, DecorX was two products. Our team in China built Canvas, for
         interior designers, from my designs. I started Portal, for retailers, as
         a prototype in January 2026.
       </p>
@@ -169,6 +276,26 @@ export default function DecorX() {
         caption="Designer: a sketch in, product renders and room scenes out."
         height={1036}
       />
+
+      <h2 id="editing" className={styles.subhead}>
+        Editing an image
+      </h2>
+
+      <p className={styles.body}>
+        Most generated images are nearly right, so editing them matters as much as making them. I designed the
+        first edit view in May 2025. Each tool had its own key, and the toolbar could sit left, centre or right.
+      </p>
+
+      <Stills
+        items={EDITOR}
+        label="Edit tool"
+        caption="Two stills from my May 2025 design in Figma, and two from DecorX's changelog."
+      />
+
+      <p className={styles.body}>
+        The onboarding videos I recorded give customers one rule. Edit when an image is mostly working, and
+        regenerate when the direction is wrong.
+      </p>
 
       <h2 id="scenes" className={styles.subhead}>
         Scenes at scale
@@ -265,6 +392,12 @@ export default function DecorX() {
       </p>
 
       <Workflow />
+
+      <p className={styles.body}>
+        Beyond the code, I wrote the documents that set what we built next.
+      </p>
+
+      <Plans />
 
       <p className={styles.label}>Built with</p>
 
