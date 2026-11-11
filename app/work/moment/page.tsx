@@ -13,7 +13,7 @@ import { WorldsDemo } from "./WorldsDemo";
 import { PhoneScreens, type PhoneScreen } from "./PhoneScreens";
 import { MembershipFlow } from "./MembershipFlow";
 import { AppStoreListing } from "./AppStoreListing";
-import { SheetOverWorld, SheetsRow, SheetAnatomy, SheetLightDark } from "./DesignSystemOptions";
+import { SheetsDemo } from "./SheetsDemo";
 
 // From the Moment design files in Figma, my archive of Moment screenshots and
 // recordings, the framing of Moment's investor deck (none of its company numbers) and my answers of
@@ -276,15 +276,7 @@ export default function Moment() {
         components, like the bottom sheet, which had a version for each job:
       </p>
 
-      {/* Four ways to present the sheets, for Kelvin to choose one; the other three come out after. */}
-      <p className={styles.label}>Option 1: over a World</p>
-      <SheetOverWorld />
-      <p className={styles.label}>Option 2: side by side</p>
-      <SheetsRow />
-      <p className={styles.label}>Option 3: anatomy</p>
-      <SheetAnatomy />
-      <p className={styles.label}>Option 4: light and dark</p>
-      <SheetLightDark />
+      <SheetsDemo />
 
       <h2 id="launch" className={styles.subhead}>
         Launch night
