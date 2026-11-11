@@ -252,26 +252,36 @@
   }
 }
 
-/* The scope builder: the desktop scope list across the column, the phone under it. */
+/* The scope builder: the desktop scope list and the phone as one picture, the strip centred
+   against the phone's height and the phone overlapping its right end. */
 .stack {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 16px;
   width: 100%;
+  padding: 28px 20px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--muted) 12%, transparent);
 }
 
 .stack img {
   display: block;
-  width: 100%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--muted) 24%, transparent);
 }
 
+.stack img:first-child {
+  width: 80%;
+}
+
 .stack img + img {
-  max-width: 220px;
+  position: relative;
+  width: 24%;
+  margin-left: -4%;
   border-radius: 12px;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--muted) 24%, transparent),
+    0 8px 24px rgb(0 0 0 / 0.14);
 }
 
 /* The invoice itself: a sheet of paper in its own light look in both themes, like the proposal
@@ -478,6 +488,10 @@
 }
 
 @media (max-width: 600px) {
+  .stack {
+    padding: 16px 12px;
+  }
+
   .invoiceDemo {
     padding: 16px 12px;
   }
