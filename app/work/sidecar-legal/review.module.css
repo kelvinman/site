@@ -1,0 +1,581 @@
+/* The review step in the product's own light look, whatever the site's theme: a Word page on Word's grey,
+   and the add-in pane at Word's narrow default width beside it. */
+.app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 232px;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  width: 100%;
+  max-width: 560px;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #ececea;
+  color: #1f1f1f;
+  font-family: var(--font-read);
+  font-size: 13px;
+  line-height: 1.45;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.06);
+}
+
+.app:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Word's blue title bar with the ribbon's tab names, across the top of both the page and the add-in. */
+.word {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, auto) 1fr;
+  grid-column: 1 / -1;
+  align-items: center;
+  row-gap: 8px;
+  padding: 8px 14px 0;
+  background: #185abd;
+  color: #fff;
+  font-size: 12px;
+}
+
+.lights {
+  display: flex;
+  gap: 6px;
+}
+
+.lights i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.35);
+}
+
+.file {
+  overflow: hidden;
+  font-weight: 500;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ribbon {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 16px;
+  overflow: hidden;
+  font-size: 11.5px;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.ribbon span {
+  padding-bottom: 6px;
+  white-space: nowrap;
+}
+
+.ribbon span[data-on] {
+  color: #fff;
+  box-shadow: inset 0 -2px 0 #fff;
+}
+
+/* The Home tab's controls, for looks only: font, size, bold, italic, underline, alignment and styles. */
+.tools {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  overflow: hidden;
+  border-bottom: 1px solid #dcdcd6;
+  background: #f7f7f5;
+  color: #3a3a37;
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+.tools b,
+.tools i,
+.tools u {
+  width: 14px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13px;
+  text-align: center;
+}
+
+.select {
+  padding: 2px 18px 2px 6px;
+  border: 1px solid #dcdcd6;
+  border-radius: 4px;
+  background: #fff
+    linear-gradient(45deg, transparent 50%, #6b6b66 50%) no-repeat right 8px top 50% / 4px 4px;
+}
+
+.select:first-child {
+  min-width: 96px;
+}
+
+.sep {
+  width: 1px;
+  height: 16px;
+  background: #dcdcd6;
+}
+
+/* Three lines of a paragraph, left-aligned or centred. */
+.align {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 14px;
+}
+
+.tools .align i {
+  width: 14px;
+  height: 1.5px;
+  background: #3a3a37;
+}
+
+.tools .align i:nth-child(2) {
+  width: 9px;
+}
+
+.align[data-center] {
+  align-items: center;
+}
+
+.style {
+  padding: 2px 8px;
+  border: 1px solid #dcdcd6;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.style:first-of-type {
+  border-color: #9fb8ea;
+}
+
+/* The document: a white page that scrolls inside Word's grey. */
+.doc {
+  position: relative;
+  margin: 14px 14px 0;
+  padding: 18px 18px 40px;
+  overflow-y: auto;
+  background: #fff;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12.5px;
+  line-height: 1.55;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+  scrollbar-width: thin;
+}
+
+.caption {
+  margin-bottom: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.para {
+  margin: 0 -6px 12px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: background 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.para[data-current] {
+  background: #eef3fe;
+  box-shadow: inset 2px 0 0 #2f6bea;
+}
+
+.para del {
+  color: #b42318;
+  text-decoration-thickness: 1px;
+}
+
+.para ins {
+  color: #1d5bd8;
+  text-decoration: none;
+}
+
+.para[data-current] ins {
+  background: #dce7fc;
+}
+
+.para:not([data-open]) {
+  animation: settle 300ms ease-out;
+}
+
+@keyframes settle {
+  from {
+    background: #e5edfd;
+  }
+}
+
+/* The add-in. */
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border-left: 1px solid #dcdcd6;
+  background: #fff;
+}
+
+.paneHead {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px 0;
+  border-bottom: 1px solid #ececea;
+}
+
+.brand {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b6b66;
+}
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #8a8a84;
+}
+
+.tabs span {
+  padding-bottom: 6px;
+}
+
+.tabs span[data-on] {
+  color: #1d5bd8;
+  box-shadow: inset 0 -2px 0 #2f6bea;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  overflow-y: auto;
+  animation: rise 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav button {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid #dcdcd6;
+  border-radius: 6px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.count {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: #4a4a46;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.accept,
+.rewrite {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 120ms ease-out, background 150ms ease-out;
+}
+
+.accept {
+  border: 0;
+  background: #2f6bea;
+  color: #fff;
+}
+
+.rewrite {
+  border: 1px solid #dcdcd6;
+  background: #fff;
+  color: inherit;
+}
+
+.rewrite[aria-pressed="true"] {
+  border-color: #2f6bea;
+  color: #1d5bd8;
+}
+
+.accept:active,
+.rewrite:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) {
+  .accept:hover {
+    background: #2a60d4;
+  }
+}
+
+.accepted {
+  font-size: 12px;
+  color: #12804a;
+}
+
+.label {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b6b66;
+}
+
+.citeHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.citeHead .label {
+  margin-top: 0;
+}
+
+/* A small Text / PDF switch, in the add-in's own look. */
+.mini {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 6px;
+  background: #f0f0ee;
+}
+
+.mini button {
+  padding: 1px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: #6b6b66;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.mini button[aria-pressed="true"] {
+  background: #fff;
+  color: #1f1f1f;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
+}
+
+/* A PDF page in miniature: grey lines of text, the cited lines highlighted. */
+.pdf {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 14px;
+  border: 1px solid #e4e4e0;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+}
+
+.pdf i {
+  height: 4px;
+  border-radius: 2px;
+  background: #e2e2de;
+}
+
+.pdf i:nth-child(3n) {
+  width: 70%;
+}
+
+.pdf i[data-hit] {
+  background: #f6d860;
+  box-shadow: 0 0 0 2px #fbeeb0;
+}
+
+.cite {
+  margin: 0;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: #f5f5f3;
+  font-size: 12px;
+}
+
+.source {
+  font-size: 11.5px;
+  color: #1d5bd8;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.hint {
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 11px;
+  color: #8a8a84;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 4px;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: #4a4a46;
+}
+
+.group li::before {
+  content: "• ";
+  color: #8a8a84;
+}
+
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: auto;
+  padding: 16px;
+  text-align: center;
+  animation: rise 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.check {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e3f5ec;
+  color: #12804a;
+  font-weight: 700;
+}
+
+/* On a phone, the add-in sits under the page, the way it would in a narrow window. */
+@media (max-width: 520px) {
+  .app {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 200px minmax(0, 1fr);
+    height: 620px;
+  }
+
+  .pane {
+    margin-top: 10px;
+    border-top: 1px solid #dcdcd6;
+    border-left: 0;
+  }
+
+  .style,
+  .style + .sep {
+    display: none;
+  }
+
+  .doc {
+    margin: 10px 10px 0;
+  }
+
+  .hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .review,
+  .done,
+  .para:not([data-open]) {
+    animation: none;
+  }
+
+  .para {
+    transition: none;
+  }
+}
+
+/* Word's dark mode, which the add-in matched: dark ribbon, dark page, dark pane. */
+.app[data-dark] {
+  --line: #4a4a47;
+  --selected: #2c3a57;
+  --soft: #a8a8a2;
+  --track: #4a4a47;
+  --dot: #5a5a56;
+  background: #2b2b2b;
+  color: #e8e8e6;
+}
+
+.app[data-dark] .tools {
+  border-color: #444;
+  background: #323232;
+  color: #ddd;
+}
+
+.app[data-dark] .select,
+.app[data-dark] .style {
+  border-color: #555;
+  background-color: #3a3a3a;
+}
+
+.app[data-dark] .sep {
+  background: #555;
+}
+
+.app[data-dark] .tools .align i {
+  background: #ddd;
+}
+
+.app[data-dark] .doc {
+  background: #1f1f1f;
+  color: #e8e8e6;
+}
+
+.app[data-dark] .para[data-current] {
+  background: #2c3a57;
+}
+
+.app[data-dark] .pane {
+  border-color: #444;
+  background: #262626;
+}
+
+.app[data-dark] .paneHead {
+  border-color: #3a3a3a;
+}
+
+.app[data-dark] .brand,
+.app[data-dark] .label {
+  color: #a8a8a2;
+}
+
+.app[data-dark] .tabs {
+  color: #8f8f89;
+}
+
+.app[data-dark] .tabs span[data-on] {
+  color: #8fb2f5;
+  box-shadow: inset 0 -2px 0 #8fb2f5;
+}

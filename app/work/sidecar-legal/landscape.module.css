@@ -1,0 +1,152 @@
+/* The tools map: what each tool is for across, who it serves down. Icons are round. */
+/* The tool's own icon, or its first letter where no official site could be confirmed. */
+.logo,
+.letter {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.logo {
+  background: #fff;
+  object-fit: contain;
+}
+
+.letter {
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--muted) 22%, transparent);
+  color: var(--foreground);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.chip[data-us] .letter {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Map: what each tool is for across, who it serves down, sorted from each tool's own site. */
+.map {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.colHead,
+.rowHead {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.colHead {
+  padding: 0 4px 2px;
+}
+
+.colHead[data-us] {
+  color: var(--accent);
+}
+
+.mapRow {
+  display: contents;
+}
+
+.rowHead {
+  align-self: center;
+}
+
+.cell {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 4px;
+  min-height: 48px;
+  margin: 0;
+  padding: 6px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--muted) 8%, transparent);
+  list-style: none;
+}
+
+.cell[data-col="litigation"] {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px 3px 4px;
+  border-radius: 999px;
+  background: var(--background);
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--muted) 18%, transparent);
+}
+
+.chip em {
+  font-style: normal;
+  color: var(--muted);
+}
+
+.chip[data-us] {
+  background: color-mix(in srgb, var(--accent) 16%, var(--background));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.chip[data-us] .letter {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.chip[data-us] em {
+  color: var(--accent);
+}
+
+.unplaced {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.unplaced ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.unplaced li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media (max-width: 480px) {
+  .map {
+    grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .unplaced {
+    grid-template-columns: 1fr;
+  }
+
+  .chip {
+    white-space: normal;
+  }
+}

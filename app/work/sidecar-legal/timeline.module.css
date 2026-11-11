@@ -1,0 +1,137 @@
+/* A vertical timeline in the site's colours: a line down the left, a dot per step, filled for his rounds and
+   hollow for what came from Sidecar. The open step shows its sentence. */
+.line {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 440px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.line li {
+  position: relative;
+  padding: 0 0 4px 22px;
+}
+
+/* The line between dots. */
+.line li::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: -10px;
+  left: 4px;
+  width: 1px;
+  background: color-mix(in srgb, var(--muted) 30%, transparent);
+}
+
+.line li:last-child::before {
+  display: none;
+}
+
+/* The dot. */
+.line li::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.line li[data-kind="them"]::after {
+  border: 1.5px solid var(--muted);
+  background: var(--background);
+}
+
+.line button {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  width: 100%;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 150ms ease-out;
+}
+
+.line button[aria-expanded="true"] {
+  color: var(--foreground);
+}
+
+@media (hover: hover) {
+  .line button:hover {
+    color: var(--foreground);
+  }
+}
+
+.date {
+  flex: none;
+  width: 52px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  font-size: 14px;
+}
+
+.text {
+  margin: 0 0 8px 64px;
+  font-size: 13px;
+  line-height: 19px;
+  color: var(--muted);
+  animation: open 220ms ease-out;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend span::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.legend span[data-kind="them"]::before {
+  border: 1.5px solid var(--muted);
+  background: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text {
+    animation: none;
+  }
+
+  .line button {
+    transition: none;
+  }
+}

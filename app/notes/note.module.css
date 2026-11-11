@@ -8,7 +8,34 @@
   padding: 100px 24px;
 }
 
+/* A band across the top of the window that fades the page colour to clear, so text dissolves as it
+   scrolls under the top edge instead of being cut off. The stops ease out rather than run straight,
+   after benji.org's notes. It sits above the article and below the rail. */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 9;
+  height: 128px;
+  background: linear-gradient(
+    var(--background) 0%,
+    color-mix(in srgb, var(--background) 74%, transparent) 19%,
+    color-mix(in srgb, var(--background) 54%, transparent) 34%,
+    color-mix(in srgb, var(--background) 38%, transparent) 47%,
+    color-mix(in srgb, var(--background) 28%, transparent) 56.5%,
+    color-mix(in srgb, var(--background) 19%, transparent) 65%,
+    color-mix(in srgb, var(--background) 11%, transparent) 73%,
+    color-mix(in srgb, var(--background) 6%, transparent) 80%,
+    color-mix(in srgb, var(--background) 3%, transparent) 87%,
+    color-mix(in srgb, var(--background) 1%, transparent) 93%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
 .rail {
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -37,18 +64,23 @@
   min-width: 0;
 }
 
-/* Wide screens: a rail on the left, the column centred, demos wider than the text. */
-@media (min-width: 1000px) {
+/* Wide screens: a rail on the left, the column centred, demos wider than the text. The gap keeps the
+   contents well clear of the text, and of demos, which reach 60px into it. */
+@media (min-width: 1080px) {
   .page {
-    grid-template-columns: 200px minmax(0, 440px) 200px;
-    column-gap: 40px;
+    grid-template-columns: 180px minmax(0, 440px) 180px;
+    column-gap: 112px;
   }
 
+  /* The rail sits a little above the title and out toward the left edge, so it reads as its own column. */
   .rail {
     position: sticky;
-    top: 100px;
+    top: 84px;
     align-self: start;
-    margin-bottom: 0;
+    margin: -16px 0 0;
+    /* 48px out to the left, but never closer than 24px to the window edge on narrower screens. The
+       columns and gaps add up to 1024px. */
+    margin-left: max(-48px, calc(24px - (100vw - 1024px) / 2));
   }
 
   .contents {

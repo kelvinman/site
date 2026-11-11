@@ -1,0 +1,262 @@
+/* The new draft flow inside the add-in pane, in the product's light look. Pairs with review.module.css. */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 12px;
+  overflow-y: auto;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps > li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 26px;
+  counter-increment: step;
+}
+
+/* A numbered circle per step that turns into a blue tick once the step is done. */
+.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #c9c9c3;
+  border-radius: 50%;
+  color: #6b6b66;
+  font-size: 10.5px;
+}
+
+.steps > li[data-done]::before {
+  content: "✓";
+  border-color: #2f6bea;
+  background: #2f6bea;
+  color: #fff;
+}
+
+.ask {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #dcdcd6;
+  border-radius: 6px;
+}
+
+.search[data-disabled] {
+  opacity: 0.5;
+}
+
+.search input {
+  width: 100%;
+  padding: 5px 8px;
+  border: 0;
+  border-bottom: 1px solid #ececea;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+}
+
+/* 16px on touch screens, so iOS does not zoom the page when the field takes focus. */
+@media (pointer: coarse) {
+  .search input {
+    font-size: 16px;
+  }
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.search:focus-within {
+  border-color: #2f6bea;
+}
+
+.search ul {
+  margin: 0;
+  padding: 2px 0;
+  list-style: none;
+}
+
+.search button {
+  width: 100%;
+  padding: 3px 8px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .search button:hover {
+    background: #eef3fe;
+  }
+}
+
+.none {
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #8a8a84;
+}
+
+.picked {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.tick {
+  display: none;
+}
+
+.value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.change {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #1d5bd8;
+  font: inherit;
+  font-size: 11.5px;
+  cursor: pointer;
+}
+
+.button {
+  align-self: flex-start;
+  padding: 5px 14px;
+  border: 1px solid #dcdcd6;
+  border-radius: 6px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.steps button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.outline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+}
+
+.outline li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  border-radius: 4px;
+  color: #9a9a94;
+}
+
+.outline li::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e2e2de;
+}
+
+.outline li[data-state="now"] {
+  background: #eef3fe;
+  color: #1f1f1f;
+}
+
+.outline li[data-state="now"]::after {
+  background: #2f6bea;
+  animation: blink 900ms ease-in-out infinite;
+}
+
+.outline li[data-state="done"] {
+  color: #1f1f1f;
+}
+
+.outline li[data-state="done"]::after {
+  background: #12a15e;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* The empty page before drafting: a blinking caret. */
+.empty {
+  height: 100%;
+}
+
+.caret {
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background: #1f1f1f;
+  animation: blink 1s steps(1) infinite;
+}
+
+.drafted {
+  margin-bottom: 12px;
+  animation: appear 400ms ease-out;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+}
+
+/* Grey bars where the next paragraph is being written. */
+.writing {
+  height: 34px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(#ececea 0 6px, transparent 6px 14px);
+  animation: blink 900ms ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drafted,
+  .writing,
+  .caret,
+  .outline li[data-state="now"]::after {
+    animation: none;
+  }
+}
