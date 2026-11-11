@@ -5,6 +5,7 @@ import { MoreWork } from "../MoreWork";
 import draft from "../decorx/decorx.module.css";
 import work from "../work.module.css";
 import { ArtificeCard } from "./ArtificeCard";
+import { ArtificeExplain } from "./ArtificeExplain";
 import { ArtificeSteps } from "./ArtificeSteps";
 import { LilypadJudge } from "./LilypadJudge";
 import { LilypadPlayground } from "./LilypadPlayground";
@@ -126,6 +127,13 @@ export default function Mirascope() {
       </p>
 
       <ArtificeSteps />
+
+      <p className={styles.body}>
+        For each column, Artifice drew the curve the model had learned for it. The curve shows how that
+        column&apos;s value moves the model&apos;s answer.
+      </p>
+
+      <ArtificeExplain />
 
       <h2 id="design-library" className={styles.subhead}>
         The design library
