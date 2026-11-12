@@ -98,8 +98,7 @@ export default function SidecarLegal() {
       <Numbers
         items={[
           ["22", "drafting tools compared"],
-          ["2", "products designed"],
-          ["May to Oct", "2025, design into code"],
+          ["May to Nov", "2025, design into code"],
         ]}
       />
 
@@ -113,8 +112,10 @@ export default function SidecarLegal() {
       </p>
 
       <p className={styles.body}>
-        Shruti Merchant and Jon Tippens, Sidecar&apos;s founders, had the idea, a product plan and early designs. They
-        brought me in to make the add-in clear to lawyers, who are wary of new tools, and convincing in a demo.
+        Shruti Merchant and Jon Tippens, Sidecar&apos;s founders, had the idea, a product plan and early designs. Their
+        users were litigators at small firms, most of them paid only when they won a case. Sidecar was still in stealth
+        and selling to its first design partner firms, so they brought me in to make the add-in clear to lawyers, who
+        are wary of new tools, and convincing in those demos.
       </p>
 
       <h2 id="learning-the-product" className={styles.subhead}>
@@ -218,7 +219,8 @@ export default function SidecarLegal() {
 
       <p className={styles.body}>
         I shared most rounds with Shruti and Jon as recorded walkthroughs, and they answered by email and in Figma
-        comments. Their notes, and an attorney&apos;s feedback, changed the design as we went.
+        comments. Shruti and I also met weekly to decide what to design next. Jon took the design to Cody, an attorney,
+        and his notes changed it as we went.
       </p>
 
       <Timeline />
@@ -226,6 +228,11 @@ export default function SidecarLegal() {
       <p className={styles.body}>
         The product thinking behind the drafting tool is Shruti&apos;s and Jon&apos;s. E&amp;W Design Studio made
         Sidecar&apos;s brand.
+      </p>
+
+      <p className={styles.body}>
+        Sidecar&apos;s team kept working from my files after the main rounds ended. New staff were still asking for
+        access to them in December 2025.
       </p>
 
       <h2 id="the-payout-project" className={styles.subhead}>

@@ -141,16 +141,21 @@ export default function Moment() {
 
       <p className={styles.body}>
         I designed Worlds for web and mobile. Each creator got a space for their community, with chat, a board, a 3D
-        world, live events and a shop.{" "}
-        <a href="https://news.patreon.com/articles/patreon-acquires-moment" target="_blank" rel="noopener noreferrer">
-          Patreon acquired Moment
-        </a>{" "}
-        in October 2023.
+        world, live events and a shop.
       </p>
 
       <p className={styles.body}>
         Moment hired me to refine its beta, organize its design system, and design the mobile launch, social features
         like following and parties, and events inside each World, like a creator appearing live or a merch drop.
+      </p>
+
+      <p className={styles.body}>
+        Worlds started with big creators, like Paris Hilton and the Jonas Brothers. Moment&apos;s bet was recurring income
+        from a creator&apos;s biggest fans, with memberships turning some free fans into paying members.
+      </p>
+
+      <p className={styles.body}>
+        The founders set the priorities every two weeks. I worked through them with Giel, Moment&apos;s other designer.
       </p>
 
       <Figure src="app-screens.webp" caption="Murder With My Husband World on iOS: home, board, chats, the 3D space, people." width={1600} height={617} />
@@ -159,7 +164,6 @@ export default function Moment() {
         items={[
           ["10 months", "August to May"],
           ["5", "creator worlds live"],
-          ["Oct 2023", "acquired by Patreon"],
         ]}
       />
 
@@ -346,6 +350,14 @@ export default function Moment() {
         label="Appearance"
         note="The member and online counts were placeholders, blurred here."
       />
+
+      <p className={styles.body}>
+        After I left,{" "}
+        <a href="https://news.patreon.com/articles/patreon-acquires-moment" target="_blank" rel="noopener noreferrer">
+          Patreon acquired Moment
+        </a>{" "}
+        in October 2023.
+      </p>
 
 
       <h2 id="what-i-learned" className={styles.subhead}>

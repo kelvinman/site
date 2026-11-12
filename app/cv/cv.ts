@@ -57,7 +57,7 @@ export const ROLES = [
     years: "2020 – 22",
     name: "Wethos",
     role: "Product designer, then senior",
-    what: "Led the design system, built for design-to-code handoff with engineering, on a platform for scoping projects and splitting payments across independent teams. Designed Templates, which customers credited with cutting proposal writing from 5–7 hours to 1.",
+    what: "Led the design system, built for design-to-code handoff with engineering, on a platform for scoping projects and splitting payments across independent teams. Designed Templates, featured in a Wethos customer story for cutting proposal time from 5–7 hours to 1.",
     href: "https://www.wethos.co",
   },
   {

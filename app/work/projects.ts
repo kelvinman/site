@@ -174,7 +174,7 @@ export const PROJECTS: Project[] = [
     slug: "moment",
     name: "Moment",
     caseStudy: true,
-    line: "A space for each creator's community, before Patreon bought it.",
+    line: "A space for each creator's community, at a startup Patreon later bought.",
     role: "Senior product designer",
     years: "2022–23",
     summary:
@@ -205,7 +205,7 @@ export const PROJECTS: Project[] = [
     role: "Product designer, then senior",
     years: "2020–22",
     caseStudy: true,
-    line: "Ready-made scopes that cut proposal writing from hours to one.",
+    line: "Ready-made scopes, featured in a customer story for cutting proposal time from hours to one.",
     cover: {
       src: "/work/cover-wethos.webp",
       alt: "Wethos Templates: ready-made project scopes with a price, team size and phases",
@@ -213,7 +213,7 @@ export const PROJECTS: Project[] = [
       height: 906,
     },
     summary:
-      "At Wethos, a platform for freelancers and small studios to scope projects and split payments, I led the design system and designed Templates, which customers credited with cutting proposal writing from 5 to 7 hours down to 1.",
+      "At Wethos, a platform for freelancers and small studios to scope projects and split payments, I led the design system and designed Templates, featured in a Wethos customer story for cutting proposal time from 5 to 7 hours to 1.",
     quote: {
       text: "…for bringing the 'building contracts' designs to the tech team early and often, and iterating to get to a model that's clear and simple and feasible.",
       who: "Al Huizenga, Director of Product Management, Wethos",

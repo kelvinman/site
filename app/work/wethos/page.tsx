@@ -17,7 +17,7 @@ import { Website } from "./Website";
 // password; kept out of search.
 export const metadata: Metadata = {
   title: "Wethos · Kelvin Man",
-  description: "Templates that cut proposal writing from hours to one, and the design system behind them.",
+  description: "Templates, featured in a Wethos customer story for cutting proposal time from hours to one, and the design system behind them.",
   robots: { index: false, follow: false },
   // The card sits outside /work/wethos, so link previews can load it without the password.
   openGraph: { title: "Wethos · Kelvin Man", url: "/work/wethos", siteName: "Kelvin Man", type: "article", images: "/og/work-wethos.png" },
@@ -75,8 +75,8 @@ export default function Wethos() {
 
       <p className={styles.body}>
         Wethos is a platform for freelancers and small studios to scope projects, staff them and split the payments. It
-        was my only full-time job, before SuperNice. I led the design system and designed Templates, which customers
-        credited with cutting proposal writing from five to seven hours down to one.
+        was my only full-time job, before SuperNice. I led the design system and designed Templates. Samad Saifudin, who runs a marketing studio, told Wethos they cut
+        his proposals from five to seven hours down to one. He was one of the people who tested the designs with me.
       </p>
 
       <Figure
@@ -88,9 +88,9 @@ export default function Wethos() {
 
       <Numbers
         items={[
-          ["1 hour", "to write a proposal, down from 5 to 7"],
+          ["5x", "faster proposals"],
           ["2 years", "full time"],
-          ["Aug 2021", "templates designed"],
+          ["Aug 2021", "templates launched"],
         ]}
       />
 
@@ -223,6 +223,11 @@ export default function Wethos() {
       <h2 id="working-with-engineering" className={styles.subhead}>
         With engineering
       </h2>
+
+      <p className={styles.body}>
+        Every week I brought the designs to a technical review with Al Huizenga and the engineers. The contract builder
+        took several rounds with Al and Bo before we had a model the team could build.
+      </p>
 
       <blockquote className={`${styles.body} ${work.quote}`}>
         <p>

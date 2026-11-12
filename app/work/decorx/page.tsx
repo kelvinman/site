@@ -38,6 +38,7 @@ const SECTIONS = [
   { id: "everyone-gets-a-share", title: "Everyone gets a share" },
   { id: "showroom-app", title: "The showroom app" },
   { id: "how-i-worked", title: "How I worked" },
+  { id: "what-happened", title: "What happened" },
   { id: "what-i-learned", title: "What I learned" },
   { id: "more-work", title: "More work" },
 ];
@@ -134,6 +135,17 @@ export default function DecorX() {
       </p>
 
       <p className={styles.body}>
+        In January 2026, our goal was a product good enough to win pilots with large retailers, starting with
+        Wayfair. Our plan in February set two rules. It had to be a real product people use, not a demo, and we
+        wouldn&apos;t build enterprise features before a customer asked for them.
+      </p>
+
+      <p className={styles.body}>
+        We judged success by whether customers used DecorX and paid for it. In October, Mark and I started recording a
+        starting number for every project, so we can tell whether what we ship changes anything.
+      </p>
+
+      <p className={styles.body}>
         Every DecorX project starts from a style kit, which captures a
         brand&apos;s look from a few reference images.
       </p>
@@ -181,9 +193,10 @@ export default function DecorX() {
       <TwoProducts />
 
       <p className={styles.body}>
-        Customers wanted both, and two links confused them. Rather than merge
-        two builds, we moved customers onto Portal, and the team in China builds
-        on it now.
+        Customers wanted both, and two links confused them. In May we looked at ways for the two products to share
+        accounts and brand kits. I suggested a simpler route, bringing Canvas into Portal so there was nothing to keep
+        in sync. Mark backed it in June, and the team in China moved the data over. The team in China builds on
+        Portal now.
       </p>
 
       <h2 id="designer" className={styles.subhead}>
@@ -263,6 +276,11 @@ export default function DecorX() {
         turned those picks into a project with the buyer&apos;s own style kit and room scenes in about 5 minutes.
       </p>
 
+      <p className={styles.body}>
+        In September our plan for the show had five separate workstreams. I cut it to one flow, from a buyer scanning a
+        QR code to a rep&apos;s follow-up, and set a cutoff before the team flew so we had time to test it.
+      </p>
+
       <Figure
         src="high-point-fabrics.webp"
         caption="Fabric swatches in the Rowe Furniture showroom at High Point Market, October 2026."
@@ -271,7 +289,7 @@ export default function DecorX() {
 
       <Numbers
         items={[
-          ["39", "sales reps"],
+          ["11", "projects per rep in a week"],
           ["94%", "got a style kit"],
           ["13,800", "picks matched"],
         ]}
@@ -323,6 +341,12 @@ export default function DecorX() {
 
       <Plans />
 
+      <p className={styles.body}>
+        In October the team had grown faster than our roles were written down. I proposed to Mark that every project
+        get a named lead and a short update each Friday. Mark agreed, and he took the backend handoff to the team in
+        China himself.
+      </p>
+
       <p className={styles.label}>Built with</p>
 
       <dl className={demos.credits}>
@@ -333,6 +357,32 @@ export default function DecorX() {
         <dt>Team in China</dt>
         <dd>the Designer chat and moving the data over</dd>
       </dl>
+
+      <h2 id="what-happened" className={styles.subhead}>
+        What happened
+      </h2>
+
+      <p className={styles.body}>
+        Layla Grayce, a retailer
+        whose sign-up had stalled until I reached out, is now a paying customer.
+      </p>
+
+      <p className={styles.body}>
+        Early on, every image was generated at 4K. Most people never need 4K, so I asked our backend engineer to make
+        2K the default. That halved the cost of each image and made generation faster.
+      </p>
+
+      <Numbers
+        items={[
+          ["8x", "images in October vs March"],
+          ["50%", "lower cost per image"],
+        ]}
+      />
+
+      <p className={styles.body}>
+        What I can&apos;t show yet is a number moving from a recorded baseline. The baselines started in October,
+        and the first project measured against them is getting new sign-ups to their first image.
+      </p>
 
       <h2 id="what-i-learned" className={styles.subhead}>
         What I learned

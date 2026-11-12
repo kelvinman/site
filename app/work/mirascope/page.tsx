@@ -95,9 +95,8 @@ export default function Mirascope() {
 
       <Numbers
         items={[
-          ["2.5 years", "coming back"],
-          ["5", "projects"],
-          ["Apr 2023", "Artifice on Show HN"],
+          ["4 times", "hired back in 2.5 years"],
+          ["5", "projects, 2022 to 2025"],
         ]}
       />
 
@@ -106,7 +105,7 @@ export default function Mirascope() {
       </h2>
 
       <p className={styles.body}>
-        Two founders out of Google AI, building tools for people who aren&apos;t data scientists. When I joined, they had a
+        Two founders out of Google AI, building tools for data scientists. When I joined, they had a
         live product, a prototype and few customers yet. It worked, but it was written for people who already knew machine
         learning.
       </p>
@@ -116,6 +115,11 @@ export default function Mirascope() {
         could reshape it so that someone who wasn&apos;t an engineer could follow it too.
       </p>
 
+      <p className={styles.body}>
+        I presented to both founders, Will and Linus, every week. Will&apos;s call to put all of a model&apos;s
+        configuration on one tab came from reviewing my wireframes.
+      </p>
+
       <h2 id="artifice" className={styles.subhead}>
         Artifice
       </h2>
@@ -123,7 +127,7 @@ export default function Mirascope() {
       <p className={styles.body}>
         Artifice let anyone build interpretable machine learning models without code: prepare the data, set the
         model&apos;s rules from what they already knew, train it, and see why it decides what it does. My part was
-        making a very technical product approachable for people who aren&apos;t data scientists.
+        making it clear enough that people who weren&apos;t data scientists could use it too.
       </p>
 
       <ArtificeSteps />
@@ -220,9 +224,9 @@ export default function Mirascope() {
         <strong>Artifice</strong>, launched on{" "}
         <Out href="https://news.ycombinator.com/item?id=35742104">Hacker News</Out> in April 2023.{" "}
         <strong>Two versions of the design library</strong> behind their products. <strong>Two websites</strong>,
-        SOTAI&apos;s in 2023 and Mirascope&apos;s, with its logo, in 2024. And <strong>Lilypad</strong>,
-        open source alongside <Out href="https://github.com/Mirascope/mirascope">Mirascope</Out>, the team&apos;s LLM
-        toolkit, which has 1.5k stars on GitHub.
+        SOTAI&apos;s in 2023 and Mirascope&apos;s, with its logo, in 2024. And <strong>Lilypad</strong>, which later
+        became part of Mirascope Cloud. <Out href="https://github.com/Mirascope/mirascope">Mirascope</Out>, the
+        team&apos;s LLM toolkit, has 1.5k stars on GitHub.
       </p>
 
       <Figure
