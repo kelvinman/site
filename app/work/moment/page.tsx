@@ -14,6 +14,7 @@ import { PhoneScreens, type PhoneScreen } from "./PhoneScreens";
 import { MembershipFlow } from "./MembershipFlow";
 import { AppStoreListing } from "./AppStoreListing";
 import { SheetsDemo } from "./SheetsDemo";
+import { Zoom } from "../Zoom";
 
 // From the Moment design files in Figma, my archive of Moment screenshots and
 // recordings, the framing of Moment's investor deck (none of its company numbers) and my answers of
@@ -106,8 +107,7 @@ const SECTIONS = [
 function Figure({ src, caption, width, height }: { src: string; caption: string; width: number; height: number }) {
   return (
     <figure className={draft.figure}>
-      {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
-      <img src={`/work/moment/${src}`} alt={caption} width={width} height={height} loading="lazy" />
+      <Zoom src={`/work/moment/${src}`} alt={caption} width={width} height={height} loading="lazy" />
       <figcaption className={draft.caption}>{caption}</figcaption>
     </figure>
   );

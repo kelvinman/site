@@ -1,5 +1,6 @@
 import demo from "../../notes/demos/demos.module.css";
 import styles from "./demos.module.css";
+import { Zoom } from "../Zoom";
 
 export type Shot = { src: string; width: number; height: number; alt: string; label: string };
 
@@ -10,8 +11,7 @@ export function EditGrid({ shots, caption }: { shots: Shot[]; caption: string })
       <div className={styles.grid}>
         {shots.map((s) => (
           <div key={s.src}>
-            {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
-            <img src={`/work/decorx/${s.src}`} alt={s.alt} width={s.width} height={s.height} loading="lazy" />
+            <Zoom src={`/work/decorx/${s.src}`} alt={s.alt} width={s.width} height={s.height} loading="lazy" />
             <span>{s.label}</span>
           </div>
         ))}

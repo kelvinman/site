@@ -14,6 +14,7 @@ import { RangePlot } from "./RangePlot";
 import { ReviewEdits } from "./ReviewEdits";
 import { Timeline } from "./Timeline";
 import { Welcome } from "./Welcome";
+import { Zoom } from "../Zoom";
 
 // The drafting tool sections draw on his first draft walkthrough (9 May 2025), his Looms of 19 and
 // 30 May 2025, the [OAI Legal] and [Sidecar] Figma files, and his email with the founders. The
@@ -49,8 +50,7 @@ const SECTIONS = [
 function Figure({ src, caption, width, height }: { src: string; caption: string; width: number; height: number }) {
   return (
     <figure className={draft.figure}>
-      {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
-      <img src={src} alt={caption} width={width} height={height} loading="lazy" />
+      <Zoom src={src} alt={caption} width={width} height={height} loading="lazy" />
       <figcaption className={draft.caption}>{caption}</figcaption>
     </figure>
   );

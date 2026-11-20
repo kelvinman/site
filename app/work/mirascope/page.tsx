@@ -10,6 +10,7 @@ import { ArtificeSteps } from "./ArtificeSteps";
 import { LilypadJudge } from "./LilypadJudge";
 import { LilypadPlayground } from "./LilypadPlayground";
 import { LilypadTraces } from "./LilypadTraces";
+import { Zoom } from "../Zoom";
 
 // From the Mirascope entry on /work and in the CV, the [Mirascope] Lilypad file in
 // Figma (page V5, the demos and stills), the studiosupernice.com case study, and my answers of
@@ -42,8 +43,7 @@ const SECTIONS = [
 function Figure({ src, caption, width, height }: { src: string; caption: string; width: number; height: number }) {
   return (
     <figure className={draft.figure}>
-      {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
-      <img src={`/work/mirascope/${src}`} alt={caption} width={width} height={height} loading="lazy" />
+      <Zoom src={`/work/mirascope/${src}`} alt={caption} width={width} height={height} loading="lazy" />
       <figcaption className={draft.caption}>{caption}</figcaption>
     </figure>
   );

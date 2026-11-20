@@ -11,6 +11,7 @@ import { ShowroomPhone } from "./ShowroomPhone";
 import { TwoProducts } from "./TwoProducts";
 import { Plans, Workflow } from "./Workflow";
 import demos from "./demos.module.css";
+import { Zoom } from "../Zoom";
 
 // Built from "DecorX Case Study - Draft.md" in KelvinOS, the High Point deck and
 // its recordings, with my answers of 26 Oct 2026 worked in. The prose is still a model's draft,
@@ -65,8 +66,7 @@ function Figure({
 }) {
   return (
     <figure className={draft.figure} data-screen={screen || undefined}>
-      {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
-      <img
+      <Zoom
         src={`/work/decorx/${src}`}
         alt={caption}
         width={1600}

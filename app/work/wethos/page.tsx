@@ -10,6 +10,7 @@ import { DesignSystem } from "./DesignSystem";
 import { PageViewer } from "./PageViewer";
 import { InvoiceDemo } from "./InvoiceDemo";
 import { Website } from "./Website";
+import { Zoom } from "../Zoom";
 
 // From the Wethos entry on /work and in the CV, the customer story behind the Templates number, Al
 // Huizenga's and Craig's kudos in my Notion hype doc, and my answers of 28 Oct 2026. The one screen
@@ -40,8 +41,7 @@ const SECTIONS = [
 function Figure({ src, caption, width, height }: { src: string; caption: string; width: number; height: number }) {
   return (
     <figure className={draft.figure}>
-      {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
-      <img src={src} alt={caption} width={width} height={height} loading="lazy" />
+      <Zoom src={src} alt={caption} width={width} height={height} loading="lazy" />
       <figcaption className={draft.caption}>{caption}</figcaption>
     </figure>
   );
@@ -111,8 +111,7 @@ export default function Wethos() {
 
       <figure className={draft.figure}>
         <div className={wethos.paper}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are pre-sized */}
-          <img
+          <Zoom
             src="/work/wethos/early-proposal.webp"
             alt="The first page of a proposal I wrote in 2020, with the client's details hidden"
             width={1200}
