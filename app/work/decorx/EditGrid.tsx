@@ -11,7 +11,7 @@ export function EditGrid({ shots, caption }: { shots: Shot[]; caption: string })
       <div className={styles.grid}>
         {shots.map((s) => (
           <div key={s.src}>
-            <Zoom src={`/work/decorx/${s.src}`} alt={s.alt} width={s.width} height={s.height} loading="lazy" />
+            <Zoom src={`/work/decorx/${s.src}`} alt={s.alt} caption={s.label} width={s.width} height={s.height} loading="lazy" />
             <span>{s.label}</span>
           </div>
         ))}
