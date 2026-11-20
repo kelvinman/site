@@ -13,10 +13,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-/** Links under a role: out to another site in a new tab, or to a page on this one in place. */
-function Links({ links }: { links: Out[] }) {
+/** Links under a role: out to another site in a new tab, or to a page on this one in place. The case study
+ * comes first, as a plain link rather than a client-side one, so its password check runs on the way in. */
+function Links({ links, caseStudy }: { links: Out[]; caseStudy?: string }) {
   return (
     <p className={styles.links}>
+      {caseStudy && <a href={caseStudy}>Read the case study →</a>}
       {links.map((link) =>
         link.href.startsWith("/") ? (
           <Link key={link.href} href={link.href}>
@@ -68,11 +70,11 @@ function CoverImage({ cover, href }: { cover: Cover; href?: string }) {
 
 function Entry({ project }: { project: Project }) {
   // Notes that mention this entry link to it, so it links back to them after its own links.
-  // The name is plain text; its link sits with the others, named for where it goes. With a case study it
-  // goes beside "Read the case study", otherwise first among the role's links.
+  // The name is plain text; its link sits first among the role's links, after the case study, named for
+  // where it goes.
   const site = project.href ? { label: siteLabel(project.href), href: project.href } : undefined;
   const links = [
-    ...(site && !project.caseStudy ? [site] : []),
+    ...(site ? [site] : []),
     ...(project.links ?? []),
     ...mentionsOf(project.slug).map((note) => ({ label: note.title, href: `/notes/${note.slug}` })),
   ];
@@ -88,6 +90,11 @@ function Entry({ project }: { project: Project }) {
         <CoverImage cover={project.cover} href={project.caseStudy ? `/work/${project.slug}` : undefined} />
       )}
       <p className={styles.text}>{project.summary}</p>
+
+      {/* The links for the whole role sit under its summary, before the parts, so none reads as one part's. */}
+      {(project.caseStudy || links.length > 0) && (
+        <Links links={links} caseStudy={project.caseStudy ? `/work/${project.slug}` : undefined} />
+      )}
 
       {project.parts && (
         <ul className={styles.parts}>
@@ -116,19 +123,6 @@ function Entry({ project }: { project: Project }) {
         </blockquote>
       )}
 
-      {links.length > 0 && <Links links={links} />}
-
-      {project.caseStudy && (
-        // A plain link, not a client-side one, so the case study password check runs on the way in.
-        <p className={styles.links}>
-          <a href={`/work/${project.slug}`}>Read the case study →</a>
-          {site && (
-            <a href={site.href} target="_blank" rel="noopener noreferrer">
-              {site.label} ↗
-            </a>
-          )}
-        </p>
-      )}
     </article>
   );
 }
