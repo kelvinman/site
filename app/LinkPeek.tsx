@@ -96,7 +96,8 @@ export function LinkPeek() {
       const el = ref.current;
       if (!el || event.pointerType !== "mouse") return;
       const link = event.target instanceof Element ? event.target.closest("a[href]") : null;
-      const src = link && PREVIEWS[link.getAttribute("href") ?? ""];
+      // A link that is itself a picture, like a cover on /work, already shows what the preview would.
+      const src = link && !link.querySelector("img") && PREVIEWS[link.getAttribute("href") ?? ""];
       // Off a link it still trails the pointer while it shrinks away.
       const gone = presence.to === 0 && presence.value < 0.01;
       if (!src && gone) return;
