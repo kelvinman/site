@@ -49,8 +49,8 @@ export default function Home() {
         </p>
 
         <p className={styles.body}>
-          When I&apos;m not designing or building, I&apos;m making generative art, learning to loop on guitar, or at
-          a gallery somewhere in LA.
+          When I&apos;m not designing or building, I&apos;m making generative art, learning to loop on guitar, or at{" "}
+          <Link href="/galleries">a gallery somewhere in LA</Link>.
         </p>
 
         <p className={styles.body}>

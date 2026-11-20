@@ -134,5 +134,7 @@ const manifest = Object.fromEntries([
   ...entries.map(({ slug }) => [`/work#${slug}`, `/peek/entry-${slug}.jpg`]),
   // A project that lives on this site, like Defer at /defer/, is linked by that path, so it gets its cover too.
   ...entries.filter(({ href }) => href?.startsWith("/")).map(({ slug, href }) => [href, `/peek/entry-${slug}.jpg`]),
+  // The galleries page is linked from the home page; its card is three of its photos, made by hand.
+  ...(existsSync(new URL("peek/galleries.jpg", PUBLIC)) ? [["/galleries", "/peek/galleries.jpg"]] : []),
 ]);
 writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
