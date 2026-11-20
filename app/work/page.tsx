@@ -32,6 +32,14 @@ function Links({ links }: { links: Out[] }) {
   );
 }
 
+/** What to call a role's own link: the company's website, or the place a side project lives. */
+function siteLabel(href: string) {
+  if (href.startsWith("/")) return "Open it";
+  if (href.includes("github.com")) return "GitHub";
+  if (href.includes("figma.com")) return "Figma Community";
+  return "Website";
+}
+
 /** The role's cover image, linking to its case study when there is one. */
 function CoverImage({ cover, href }: { cover: Cover; href?: string }) {
   const img = (
@@ -60,22 +68,18 @@ function CoverImage({ cover, href }: { cover: Cover; href?: string }) {
 
 function Entry({ project }: { project: Project }) {
   // Notes that mention this entry link to it, so it links back to them after its own links.
+  // The name is plain text; its link sits with the others, named for where it goes. With a case study it
+  // goes beside "Read the case study", otherwise first among the role's links.
+  const site = project.href ? { label: siteLabel(project.href), href: project.href } : undefined;
   const links = [
+    ...(site && !project.caseStudy ? [site] : []),
     ...(project.links ?? []),
     ...mentionsOf(project.slug).map((note) => ({ label: note.title, href: `/notes/${note.slug}` })),
   ];
   return (
     <article id={project.slug} className={styles.project}>
       <div className={styles.head}>
-        <h2 className={styles.name}>
-          {project.href ? (
-            <a href={project.href} target="_blank" rel="noopener noreferrer">
-              {project.name}
-            </a>
-          ) : (
-            project.name
-          )}
-        </h2>
+        <h2 className={styles.name}>{project.name}</h2>
         <span className={styles.leader} aria-hidden="true" />
         <span className={styles.years}>{project.years}</span>
       </div>
@@ -115,8 +119,14 @@ function Entry({ project }: { project: Project }) {
       {links.length > 0 && <Links links={links} />}
 
       {project.caseStudy && (
+        // A plain link, not a client-side one, so the case study password check runs on the way in.
         <p className={styles.links}>
           <a href={`/work/${project.slug}`}>Read the case study →</a>
+          {site && (
+            <a href={site.href} target="_blank" rel="noopener noreferrer">
+              {site.label} ↗
+            </a>
+          )}
         </p>
       )}
     </article>
