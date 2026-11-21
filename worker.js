@@ -133,7 +133,8 @@ async function shareTags(request, env, path) {
 /**
  * The page asking for the password, set like the top of the case study it stands in for: the way back
  * to Work, the case study's name and one line about it, then the password. Same fonts, colours and
- * column as the rest of the site. The name and line come from the case study's own share tags.
+ * column as the rest of the site. The name and line come from the case study's own share tags. The
+ * password shows as it is typed, since it is a shared code handed out, not a secret of the visitor's.
  */
 function lockedPage(next, wrong, tags = "") {
   const meta = (key) => (tags.match(new RegExp(`property="og:${key}" content="([^"]*)"`)) || [])[1] || "";
@@ -189,7 +190,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 ${about ? `<p class="read">${about}</p>` : ""}
 <p class="read">It shows client work, so it's shared with a password. If you don't have it, email <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>.</p>
 <form method="post" action="/unlock">
-<input type="password" name="password" aria-label="Password" placeholder="Password" autocomplete="current-password" autofocus required>
+<input type="text" name="password" aria-label="Password" placeholder="Password" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" autofocus required>
 <input type="hidden" name="next" value="${escape(next)}">
 <button type="submit">Open</button>
 </form>
