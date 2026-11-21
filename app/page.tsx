@@ -9,14 +9,15 @@ import { OWN } from "./work/projects";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 /** Opens in a new tab, for links that leave the site. */
-function Out({ href, children }: { href: string; children: React.ReactNode }) {
+function Out({ href, peek = true, children }: { href: string; peek?: boolean; children: React.ReactNode }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <a href={href} target="_blank" rel="noopener noreferrer" data-no-peek={peek ? undefined : true}>
       {children}
     </a>
   );
 }
 
+// The teams in the intro are named, not shown: no link preview on them (peek={false}).
 export default function Home() {
   return (
     <main className={`${styles.page} top-fade`}>
@@ -40,12 +41,12 @@ export default function Home() {
         <p className={styles.body}>
           I studied informatics, started out writing front-end code, moved
           into product, and taught myself design. Along the way I&apos;ve worked
-          with teams at <Out href="https://meta.com">Meta</Out>,{" "}
-          <Out href="https://microsoft.com">Microsoft</Out>,{" "}
-          <Out href="https://salesforce.com">Salesforce</Out>,{" "}
-          <Out href="https://github.com">GitHub</Out>, Moment (acquired by{" "}
-          <Out href="https://www.patreon.com">Patreon</Out>),{" "}
-          <Out href="https://mirascope.com">Mirascope</Out>, and more.
+          with teams at <Out href="https://meta.com" peek={false}>Meta</Out>,{" "}
+          <Out href="https://microsoft.com" peek={false}>Microsoft</Out>,{" "}
+          <Out href="https://salesforce.com" peek={false}>Salesforce</Out>,{" "}
+          <Out href="https://github.com" peek={false}>GitHub</Out>, Moment (acquired by{" "}
+          <Out href="https://www.patreon.com" peek={false}>Patreon</Out>),{" "}
+          <Out href="https://mirascope.com" peek={false}>Mirascope</Out>, and more.
         </p>
 
         <p className={styles.body}>
