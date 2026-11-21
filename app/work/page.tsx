@@ -21,7 +21,7 @@ function Links({ links, caseStudy }: { links: Out[]; caseStudy?: string }) {
     <p className={styles.links}>
       {caseStudy && (
         <a href={caseStudy} data-no-peek>
-          Read the case study
+          Case study
         </a>
       )}
       {links.map((link) =>
@@ -39,9 +39,25 @@ function Links({ links, caseStudy }: { links: Out[]; caseStudy?: string }) {
   );
 }
 
+/** The summary, with summaryLink's words linked to the role's own link when it has them. */
+function withLink(project: Project) {
+  const words = project.summaryLink;
+  const at = words && project.href ? project.summary.indexOf(words) : -1;
+  if (!words || at < 0) return project.summary;
+  return (
+    <>
+      {project.summary.slice(0, at)}
+      <a href={project.href} target="_blank" rel="noopener noreferrer" data-no-peek>
+        {words}
+      </a>
+      {project.summary.slice(at + words.length)}
+    </>
+  );
+}
+
 /** What to call a role's own link: the company's website, or the place a side project lives. */
 function siteLabel(href: string) {
-  if (href.startsWith("/")) return "Open it";
+  if (href.startsWith("/")) return "See it live";
   if (href.includes("github.com")) return "GitHub";
   if (href.includes("figma.com")) return "Figma Community";
   return "Website";
@@ -77,11 +93,13 @@ function CoverImage({ cover, href }: { cover: Cover; href?: string }) {
 function Entry({ project }: { project: Project }) {
   // Notes that mention this entry link to it, so it links back to them after its own links.
   // The name is plain text; its link sits first among the role's links, named for where it goes.
-  const site = project.href ? { label: siteLabel(project.href), href: project.href } : undefined;
+  // Not when the summary already links it.
+  const site = project.href && !project.summaryLink ? { label: siteLabel(project.href), href: project.href } : undefined;
   const links = [
     ...(site ? [site] : []),
     ...(project.links ?? []),
-    ...mentionsOf(project.slug).map((note) => ({ label: note.title, href: `/notes/${note.slug}` })),
+    // A note's title alone reads like a slogan in a row of links, so one note is just "Note".
+    ...mentionsOf(project.slug).map((note, _, all) => ({ label: all.length > 1 ? `Note: ${note.title}` : "Note", href: `/notes/${note.slug}` })),
   ];
   return (
     <article id={project.slug} className={styles.project}>
@@ -94,7 +112,7 @@ function Entry({ project }: { project: Project }) {
       {project.cover && (
         <CoverImage cover={project.cover} href={project.caseStudy ? `/work/${project.slug}` : undefined} />
       )}
-      <p className={styles.text}>{project.summary}</p>
+      <p className={styles.text}>{withLink(project)}</p>
 
       {/* The links for the whole role sit under its summary, before the parts, so none reads as one part's. */}
       {(project.caseStudy || links.length > 0) && (
