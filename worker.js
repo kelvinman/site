@@ -109,7 +109,7 @@ async function unlock(request, env, url) {
     value = await token(env.CASE_STUDY_PASSWORD);
     maxAge = MONTH;
   } else {
-    return lockedPage(target, true);
+    return lockedPage(target, true, await shareTags(request, env, target));
   }
   return new Response(null, {
     status: 303,
@@ -130,36 +130,64 @@ async function shareTags(request, env, path) {
   return ((await res.text()).match(/<meta (?:property="og:|name="twitter:)[^>]*>/g) || []).join("\n");
 }
 
-/** A small page in the site's colours asking for the password. */
+/**
+ * The page asking for the password, set like the top of the case study it stands in for: the way back
+ * to Work, the case study's name and one line about it, then the password. Same fonts, colours and
+ * column as the rest of the site. The name and line come from the case study's own share tags.
+ */
 function lockedPage(next, wrong, tags = "") {
+  const meta = (key) => (tags.match(new RegExp(`property="og:${key}" content="([^"]*)"`)) || [])[1] || "";
+  const name = meta("title").split(" · ")[0] || "Case study";
+  const about = meta("description");
   const html = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1c1a18">
 <meta name="robots" content="noindex, nofollow">
-<title>Case study · Kelvin Man</title>
+<title>${escape(name)} · Kelvin Man</title>
 ${tags}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&family=Inconsolata:wght@400;500&display=swap">
 <style>
-:root { --background: #f8f7f4; --foreground: #1f1b18; --muted: #77706a; --accent: #b0502c; color-scheme: light dark; }
-@media (prefers-color-scheme: dark) { :root { --background: #1c1a18; --foreground: #f3f1ee; --muted: #a39d96; --accent: #e48a62; } }
+:root { --background: #1c1a18; --foreground: #f3f1ee; --muted: #a39d96; --accent: #e48a62; --read: "Hanken Grotesk", system-ui, sans-serif; color-scheme: dark; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { min-height: 100vh; display: flex; justify-content: center; padding: 100px 24px; background: var(--background); color: var(--foreground); font: 14px/21px Menlo, ui-monospace, monospace; }
-main { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 16px; }
-p { font-family: system-ui, sans-serif; font-size: 15px; line-height: 23px; }
+body { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 440px); justify-content: center; align-content: start; padding: 100px 24px; background: var(--background); color: var(--foreground); font: 14px/21px Inconsolata, Menlo, monospace; letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; }
+@media (max-width: 600px) { body { font-size: 15px; line-height: 23px; } }
+a { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); text-underline-offset: 2px; }
+.back { color: var(--muted); text-decoration: none; margin-bottom: 40px; justify-self: start; }
+@media (min-width: 1128px) {
+  /* The same three columns as a case study, with the way back in the left one, out toward the edge. */
+  body { grid-template-columns: 180px minmax(0, 440px) 180px; column-gap: 112px; }
+  .back { margin: -16px 0 0 max(-48px, calc(84px - (100vw - 1024px) / 2)); }
+}
+.back:hover { color: var(--foreground); }
+main { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+h1 { font: inherit; }
 .muted { color: var(--muted); }
-a { color: var(--accent); }
-form { display: flex; gap: 8px; }
-input { flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 8px 10px; border: 1px solid color-mix(in srgb, var(--muted) 45%, transparent); border-radius: 6px; background: transparent; color: var(--foreground); }
-button { font: inherit; padding: 8px 14px; border: 0; border-radius: 6px; background: var(--foreground); color: var(--background); cursor: pointer; }
-.error { color: var(--accent); font-size: 13px; }
+.read { font-family: var(--read); }
+form { display: flex; gap: 8px; width: 100%; margin-top: 8px; }
+input { flex: 1; min-width: 0; font: inherit; font-size: 16px; line-height: 22px; padding: 8px 12px; border: 1px solid color-mix(in srgb, var(--muted) 35%, transparent); border-radius: 8px; background: color-mix(in srgb, var(--muted) 6%, transparent); color: var(--foreground); }
+input::placeholder { color: var(--muted); }
+input:focus { outline: none; border-color: var(--accent); }
+button { font: inherit; font-weight: 500; padding: 8px 16px; border: 0; border-radius: 8px; background: var(--foreground); color: var(--background); cursor: pointer; }
+button:hover { opacity: 0.88; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.error { color: var(--accent); }
 </style>
 </head>
 <body>
+<a class="back" href="/work">← Work</a>
 <main>
-<p class="muted"><a href="/work">← Work</a></p>
-<h1 style="font: inherit">Case study</h1>
-<p>This one shows client work, so it's shared with a password. If you don't have it, email <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>.</p>
+<header>
+<h1>${escape(name)}</h1>
+<p class="muted">Case study</p>
+</header>
+<p class="muted" aria-hidden="true">—</p>
+${about ? `<p class="read">${about}</p>` : ""}
+<p class="read">It shows client work, so it's shared with a password. If you don't have it, email <a href="mailto:hello@kelvinman.com">hello@kelvinman.com</a>.</p>
 <form method="post" action="/unlock">
 <input type="password" name="password" aria-label="Password" placeholder="Password" autocomplete="current-password" autofocus required>
 <input type="hidden" name="next" value="${escape(next)}">
