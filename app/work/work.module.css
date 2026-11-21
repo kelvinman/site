@@ -33,9 +33,22 @@
   white-space: nowrap;
 }
 
+/* The role, with the case study link set right on the same line, like the years above. */
+.roleLine {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  flex-wrap: wrap;
+  margin-top: -12px;
+}
+
 .role {
   color: var(--muted);
-  margin-top: -12px;
+}
+
+.caseLink {
+  white-space: nowrap;
 }
 
 .text {
@@ -81,13 +94,6 @@
   font-family: inherit;
   font-size: 0.93em;
   color: var(--muted);
-}
-
-/* The case study's line, then the role's other links under it. */
-.linkStack {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
 }
 
 .links {
