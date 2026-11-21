@@ -14,8 +14,6 @@ export type Project = {
   role: string;
   years: string;
   summary: string;
-  /** Words in the summary to link to href, in place of a separate link under it. */
-  summaryLink?: string;
   parts?: Part[];
   cover?: Cover;
   shots?: Shot[];
@@ -308,7 +306,6 @@ export const OWN: Project[] = [
       height: 788,
     },
     summary: "Verified badges I drew for Moment and shared on Figma Community, where 18.1k people have used them.",
-    summaryLink: "Figma Community",
     home: { summary: "Verified badges I drew for Moment and shared on Figma Community, used by 18.1k people." },
   },
 ];
