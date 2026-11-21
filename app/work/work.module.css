@@ -83,6 +83,13 @@
   color: var(--muted);
 }
 
+/* The case study's line, then the role's other links under it. */
+.linkStack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .links {
   display: flex;
   flex-wrap: wrap;

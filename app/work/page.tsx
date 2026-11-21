@@ -14,11 +14,22 @@ export const metadata: Metadata = {
 };
 
 /** Links under a role: out to another site in a new tab, or to a page on this one in place. The case study
- * comes first, as a plain link rather than a client-side one, so its password check runs on the way in. */
+ * comes first, on its own line, as a plain link rather than a client-side one, so its password check runs
+ * on the way in. */
 function Links({ links, caseStudy }: { links: Out[]; caseStudy?: string }) {
+  // The case study gets a line of its own, above the role's other links, so its arrow isn't set beside ↗ ones.
+  if (caseStudy) {
+    return (
+      <div className={styles.linkStack}>
+        <p className={styles.links}>
+          <a href={caseStudy}>Read the case study →</a>
+        </p>
+        {links.length > 0 && <Links links={links} />}
+      </div>
+    );
+  }
   return (
     <p className={styles.links}>
-      {caseStudy && <a href={caseStudy}>Read the case study →</a>}
       {links.map((link) =>
         link.href.startsWith("/") ? (
           <Link key={link.href} href={link.href}>
