@@ -33,22 +33,9 @@
   white-space: nowrap;
 }
 
-/* The role, with the case study link set right on the same line, like the years above. */
-.roleLine {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 4px 16px;
-  flex-wrap: wrap;
-  margin-top: -12px;
-}
-
 .role {
   color: var(--muted);
-}
-
-.caseLink {
-  white-space: nowrap;
+  margin-top: -12px;
 }
 
 .text {
@@ -147,13 +134,14 @@
   border-radius: 0;
 }
 
-.cover a {
+.cover > a {
   display: block;
   transition: opacity 150ms ease-out;
 }
 
+
 @media (hover: hover) {
-  .cover a:hover {
+  .cover > a:hover {
     opacity: 0.88;
   }
 }

@@ -195,7 +195,6 @@ export const PROJECTS: Project[] = [
         label: "TechCrunch",
         href: "https://techcrunch.com/2023/10/17/patreon-acquires-livestream-ticketed-events-startup-moment/",
       },
-      { label: "Figma Community", href: "https://www.figma.com/community/file/1157094402778889516/verified-icons" },
     ],
   },
   {

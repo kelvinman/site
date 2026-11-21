@@ -13,18 +13,25 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-/** Links under a role: out to another site in a new tab, or to a page on this one in place. */
-function Links({ links }: { links: Out[] }) {
+/** Links under a role: out to another site in a new tab, or to a page on this one in place. Plain underlined
+ * words with no arrows, and no preview card on hover (data-no-peek). The case study comes first, as a plain
+ * link rather than a client-side one, so its password check runs on the way in. */
+function Links({ links, caseStudy }: { links: Out[]; caseStudy?: string }) {
   return (
     <p className={styles.links}>
+      {caseStudy && (
+        <a href={caseStudy} data-no-peek>
+          Read the case study
+        </a>
+      )}
       {links.map((link) =>
         link.href.startsWith("/") ? (
-          <Link key={link.href} href={link.href}>
-            {link.label} →
+          <Link key={link.href} href={link.href} data-no-peek>
+            {link.label}
           </Link>
         ) : (
-          <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
-            {link.label} ↗
+          <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" data-no-peek>
+            {link.label}
           </a>
         ),
       )}
@@ -56,6 +63,7 @@ function CoverImage({ cover, href }: { cover: Cover; href?: string }) {
   return (
     <div className={styles.cover}>
       {href ? (
+        // A plain link, not a client-side one, so the case study password check runs on the way in.
         <a href={href} aria-label="Read the case study">
           {img}
         </a>
@@ -82,23 +90,16 @@ function Entry({ project }: { project: Project }) {
         <span className={styles.leader} aria-hidden="true" />
         <span className={styles.years}>{project.years}</span>
       </div>
-      <div className={styles.roleLine}>
-        <p className={styles.role}>{project.role}</p>
-        {project.caseStudy && (
-          // Set right like the years above it, so it reads as part of the heading. A plain link, not a
-          // client-side one, so the case study password check runs on the way in.
-          <a href={`/work/${project.slug}`} className={styles.caseLink}>
-            Case study →
-          </a>
-        )}
-      </div>
+      <p className={styles.role}>{project.role}</p>
       {project.cover && (
         <CoverImage cover={project.cover} href={project.caseStudy ? `/work/${project.slug}` : undefined} />
       )}
       <p className={styles.text}>{project.summary}</p>
 
       {/* The links for the whole role sit under its summary, before the parts, so none reads as one part's. */}
-      {links.length > 0 && <Links links={links} />}
+      {(project.caseStudy || links.length > 0) && (
+        <Links links={links} caseStudy={project.caseStudy ? `/work/${project.slug}` : undefined} />
+      )}
 
       {project.parts && (
         <ul className={styles.parts}>

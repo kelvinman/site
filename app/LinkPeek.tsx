@@ -97,7 +97,9 @@ export function LinkPeek() {
       if (!el || event.pointerType !== "mouse") return;
       const link = event.target instanceof Element ? event.target.closest("a[href]") : null;
       // A link that is itself a picture, like a cover on /work, already shows what the preview would.
-      const src = link && !link.querySelector("img") && PREVIEWS[link.getAttribute("href") ?? ""];
+      // Nor does one marked data-no-peek, like the links under each role on /work.
+      const src =
+        link && !link.querySelector("img") && !link.hasAttribute("data-no-peek") && PREVIEWS[link.getAttribute("href") ?? ""];
       // Off a link it still trails the pointer while it shrinks away.
       const gone = presence.to === 0 && presence.value < 0.01;
       if (!src && gone) return;
