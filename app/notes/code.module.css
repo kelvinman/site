@@ -35,19 +35,19 @@
 }
 
 .keyword {
-  color: #b3321b;
+  color: #ff8f73;
 }
 
 .string {
-  color: #1f4e79;
+  color: #9cc4ec;
 }
 
 .number {
-  color: #a35a00;
+  color: #f0b25e;
 }
 
 .fn {
-  color: #7a3b8f;
+  color: #d7a6e8;
 }
 
 .punct {
@@ -90,24 +90,6 @@
 @media (hover: none) {
   .copy {
     opacity: 1;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .keyword {
-    color: #ff8f73;
-  }
-
-  .string {
-    color: #9cc4ec;
-  }
-
-  .number {
-    color: #f0b25e;
-  }
-
-  .fn {
-    color: #d7a6e8;
   }
 }
 

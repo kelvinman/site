@@ -2,20 +2,12 @@
   /* Two typefaces, one job each: sentences in Hanken Grotesk, everything around them (names,
      dates, headings, captions, code) in Inconsolata. */
   --font-read: var(--font-hanken-grotesk), system-ui, sans-serif;
-  /* Stone: a warm off-white and near-black, with terracotta as the one colour, on links. */
-  --background: #f8f7f4;
-  --foreground: #1f1b18;
-  --muted: #77706a;
-  --accent: #b0502c;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1c1a18;
-    --foreground: #f3f1ee;
-    --muted: #a39d96;
-    --accent: #e48a62;
-  }
+  /* Dark only, since 20 Nov 2026: a warm near-black and off-white, with terracotta as the one colour,
+     on links. The light version was dropped after no light palette or typeface matched it. */
+  --background: #1c1a18;
+  --foreground: #f3f1ee;
+  --muted: #a39d96;
+  --accent: #e48a62;
 }
 
 *,
@@ -28,7 +20,7 @@
 
 html {
   height: 100%;
-  color-scheme: light dark;
+  color-scheme: dark;
 }
 
 body {

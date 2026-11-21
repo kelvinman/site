@@ -28,10 +28,8 @@ export const metadata: Metadata = {
 
 // The browser's toolbar on phones takes the page's background colour.
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8f7f4" },
-    { media: "(prefers-color-scheme: dark)", color: "#1c1a18" },
-  ],
+  themeColor: "#1c1a18",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
