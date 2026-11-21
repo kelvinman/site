@@ -17,7 +17,7 @@ Live at [kelvinman.com](https://www.kelvinman.com).
 - **Two typefaces, one job each.** Sentences are set in Hanken Grotesk; everything around them (names, dates, labels, captions, code) is Inconsolata.
 - **CSS Modules**, no UI library. Colours are a handful of variables in `app/globals.css`, with a dark mode.
 - **Motion that stays out of the way.** Pages fade up as they load, demos play only while on screen, and everything holds still under `prefers-reduced-motion`.
-- **Icons and link previews** are plain files in `app/` (`icon.png`, `apple-icon.png`, `opengraph-image.png`), which Next.js picks up on its own.
+- **Icons and link previews** are plain files in `app/` (`icon.png`, `apple-icon.png`, `opengraph-image.png`), which Next.js picks up on its own. `node scripts/icons.mjs` redraws the icons, and `node scripts/share-cards.mjs` redraws the share cards (home, notes and case studies) from the covers and logos in `scripts/share-cards/`, both in the dark palette.
 
 ## Layout
 
