@@ -170,6 +170,8 @@
   justify-content: center;
   gap: 2px;
   overflow: hidden;
+  /* Centered on its own, not by the button it rests in, so it stays put when the print is picked up. */
+  text-align: center;
 }
 
 /* Every caption in one pen. The pen is two settings on the page, so trying another means
