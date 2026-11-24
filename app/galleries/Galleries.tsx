@@ -82,7 +82,8 @@ function ByExhibition({ visits }: { visits: Visit[] }) {
           const title = visit.show ?? visit.venue ?? day(visit.date);
           // Shows hung inside one visit (MOCA's two, say) are named on the prints' pill instead.
           const inside = [...new Map(visit.photos.filter((p) => p.show).map((p) => [p.show!, p.link])).entries()];
-          const meta = [visit.show && visit.venue, visit.runs, title === day(visit.date) ? null : day(visit.date)].filter(Boolean);
+          // Only the day Kelvin went, not the dates the show is on view (24 Nov 2026).
+          const meta = [visit.show && visit.venue, title === day(visit.date) ? null : day(visit.date)].filter(Boolean);
           return (
             <section key={visit.slug} className={styles.room}>
               <header className={styles.wallText}>
